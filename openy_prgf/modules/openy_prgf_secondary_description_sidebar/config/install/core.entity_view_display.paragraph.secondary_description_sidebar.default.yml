@@ -2,16 +2,17 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.field.paragraph.2c.field_prfg_display_line_above
-    - field.field.paragraph.2c.field_prgf_2c_left
-    - field.field.paragraph.2c.field_prgf_2c_right
-    - paragraphs.paragraphs_type.2c
-id: paragraph.2c.default
+    - field.field.paragraph.secondary_description_sidebar.field_prgf_left_column_block
+    - field.field.paragraph.secondary_description_sidebar.field_prgf_right_column_block
+    - paragraphs.paragraphs_type.secondary_description_sidebar
+  module:
+    - text
+id: paragraph.secondary_description_sidebar.default
 targetEntityType: paragraph
-bundle: 2c
+bundle: secondary_description_sidebar
 mode: default
 content:
-  field_prgf_2c_left:
+  field_prgf_left_column_block:
     weight: 0
     label: hidden
     settings:
@@ -20,7 +21,7 @@ content:
     third_party_settings: {  }
     type: entity_reference_entity_view
     region: content
-  field_prgf_2c_right:
+  field_prgf_right_column_block:
     weight: 1
     label: hidden
     settings:
@@ -31,5 +32,4 @@ content:
     region: content
 hidden:
   created: true
-  field_prfg_display_line_above: true
   uid: true
