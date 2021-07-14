@@ -15,4 +15,5 @@ dependencies:
   - openy_block_custom_simple:openy_block_custom_simple
   - paragraphs:paragraphs
   - plugin:plugin
+  - openy_ckeditor
 core_incompatible: false
