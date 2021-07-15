@@ -121,7 +121,7 @@ class BranchContactsInfo extends BlockBase implements ContainerFactoryPluginInte
     $branch_selector = openy_branch_selector_get_link($node->id());
     $render_array['#openy_branch_selector'] = $this->renderer->render($branch_selector);
 
-    if ($node->hasField(field_branch_hours)) {
+    if ($node->hasField('field_branch_hours')) {
       $branch_hours = $node->get('field_branch_hours')->view([
         'type' => 'openy_today_custom_hours',
         'settings' => [],
