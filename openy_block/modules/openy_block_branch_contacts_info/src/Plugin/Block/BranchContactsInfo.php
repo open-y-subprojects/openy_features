@@ -81,39 +81,47 @@ class BranchContactsInfo extends BlockBase implements ContainerFactoryPluginInte
     $render_array = [];
 
     $node = $this->routeMatch->getParameter('node');
-    if ($node instanceof NodeInterface && in_array($node->getType(), ['branch', 'camp', 'facility'])) {
-      $render_array = ['#theme' => 'block_branch_contacts_info'];
-      $render_array['#node_bundle'] = $node->getType();
+    if (!$node instanceof NodeInterface) {
+      return $render_array;
+    }
 
-      $address = $node->get('field_location_address')->get(0);
-      if ($address) {
-        $address_array = $address->toArray();
-        $location_address = "{$address_array['address_line1']} {$address_array['locality']}, {$address_array['administrative_area']} {$address_array['postal_code']}";
-        $directions_url = Url::fromUri('https://www.google.com/maps/dir/', [
-          'query' => [
-            'api' => 1,
-            'destination' => $this->alias_cleaner
-              ->cleanString($location_address),
-          ],
-        ])->toString();
-        $render_array['#directions_url'] = $directions_url;
-        $render_array['#address_title'] = $location_address;
-      }
+    if (!in_array($node->getType(), ['branch', 'camp', 'facility'])) {
+      return $render_array;
+    }
 
-      $phone = $node->get('field_location_phone')->get(0);
-      if ($phone) {
-        $render_array['#phone'] = $phone->getString();
-      }
+    $render_array = ['#theme' => 'block_branch_contacts_info'];
+    $render_array['#node_bundle'] = $node->getType();
 
-      $render_array['#fax'] = $node->field_location_fax->value;
-      $render_array['#email'] = $node->field_location_email->value;
-      $render_array['#directions_field_title'] = $node->field_location_directions->title;
-      $render_array['#directions_field_url'] = $node->field_location_directions->url;
+    $address = $node->get('field_location_address')->get(0);
+    if ($address) {
+      $address_array = $address->toArray();
+      $location_address = "{$address_array['address_line1']} {$address_array['locality']}, {$address_array['administrative_area']} {$address_array['postal_code']}";
+      $directions_url = Url::fromUri('https://www.google.com/maps/dir/', [
+        'query' => [
+          'api' => 1,
+          'destination' => $this->alias_cleaner
+            ->cleanString($location_address),
+        ],
+      ])->toString();
+      $render_array['#directions_url'] = $directions_url;
+      $render_array['#address_title'] = $location_address;
+    }
 
-      $render_array['#branch_title'] = $node->getTitle();
-      $branch_selector = openy_branch_selector_get_link($node->id());
-      $render_array['#openy_branch_selector'] = $this->renderer->render($branch_selector);
+    $phone = $node->get('field_location_phone')->get(0);
+    if ($phone) {
+      $render_array['#phone'] = $phone->getString();
+    }
 
+    $render_array['#fax'] = $node->field_location_fax->value;
+    $render_array['#email'] = $node->field_location_email->value;
+    $render_array['#directions_field_title'] = $node->field_location_directions->title;
+    $render_array['#directions_field_url'] = $node->field_location_directions->url;
+
+    $render_array['#branch_title'] = $node->getTitle();
+    $branch_selector = openy_branch_selector_get_link($node->id());
+    $render_array['#openy_branch_selector'] = $this->renderer->render($branch_selector);
+
+    if ($node->hasField(field_branch_hours)) {
       $branch_hours = $node->get('field_branch_hours')->view([
         'type' => 'openy_today_custom_hours',
         'settings' => [],
