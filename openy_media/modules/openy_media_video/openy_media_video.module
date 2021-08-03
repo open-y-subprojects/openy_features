@@ -12,9 +12,9 @@ use Drupal\openy_media_video\OpenyMediaVideoPreRender;
  */
 function openy_media_video_element_info_alter(&$info) {
   if (isset($info['video_embed_iframe'])) {
-    $info['video_embed_iframe']['#pre_render'][] =
-      [
-        OpenyMediaVideoPreRender::class, 'videoEmbedIframePrerender'
-      ];
+    array_unshift(
+      $info['video_embed_iframe']['#pre_render'],
+      [OpenyMediaVideoPreRender::class, 'videoEmbedIframePrerender']
+    );
   }
 }
