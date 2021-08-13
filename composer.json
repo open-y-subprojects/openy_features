@@ -4,7 +4,7 @@
   "type": "drupal-module",
   "require": {
     "ymcatwincities/openy": "*",
-    "open-y-subprojects/openy_node_alert": "dev-skyk_updates",
+    "open-y-subprojects/openy_node_alert": "^1.1.0",
     "open-y-subprojects/openy_demo_content": "^1.0",
     "ynorth-projects/openy_node_session": "^0.9 || ^1.1.0"
   },
