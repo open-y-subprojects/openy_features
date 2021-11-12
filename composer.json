@@ -5,7 +5,7 @@
   "require": {
     "ymcatwincities/openy": "*",
     "open-y-subprojects/openy_node_alert": "^1.1.0",
-    "open-y-subprojects/openy_demo_content": "^1.0",
+    "open-y-subprojects/openy_demo_content": "dev-fix_parent_menu_link",
     "ynorth-projects/openy_node_session": "^0.9 || ^1.1.0"
   },
   "license": "GPL-2.0+",
