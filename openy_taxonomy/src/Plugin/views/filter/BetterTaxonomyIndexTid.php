@@ -197,6 +197,10 @@ class BetterTaxonomyIndexTid extends ManyToOne {
 
         if ($tree) {
           foreach ($tree as $term) {
+            
+            if (!$term->isPublished() && !$this->currentUser->hasPermission('administer taxonomy')) {
+              continue;
+            }
             $choice = new \stdClass();
             $choice->option = [$term->id() => str_repeat('-', $term->depth) . \Drupal::service('entity.repository')->getTranslationFromContext($term)->label()];
             $options[] = $choice;
@@ -208,6 +212,7 @@ class BetterTaxonomyIndexTid extends ManyToOne {
         $query = \Drupal::entityQuery('taxonomy_term')
           // @todo Sorting on vocabulary properties -
           //   https://www.drupal.org/node/1821274.
+          ->condition('status', TRUE)
           ->sort('weight')
           ->sort('name')
           ->addTag('taxonomy_term_access');
