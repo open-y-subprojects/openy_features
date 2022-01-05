@@ -16,7 +16,7 @@ function openy_prgf_blog_camp_update_8001() {
  * Add Paragraph Latest Blog Posts (Camp) field_prgf_title & update configs.
  */
 function openy_prgf_blog_camp_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_blog_camp');
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_blog_camp');
   $config_dir .= '/config/install/';
   // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');

@@ -9,7 +9,7 @@
  * Update Paragraph Categories Listing field_prgf_block.
  */
 function openy_prgf_categories_listing_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_categories_listing');
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_categories_listing');
   $config_dir .= '/config/install/';
 
   // Update multiple configurations.

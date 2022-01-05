@@ -32,7 +32,7 @@ function openy_prgf_gallery_update_8001() {
  * Update Open Y gallery paragraph feature configs.
  */
 function openy_prgf_gallery_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_gallery') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_gallery') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.paragraph.gallery.default' => [
@@ -59,7 +59,7 @@ function openy_prgf_gallery_update_8002() {
  * Update Open Y paragraph gallery feature configs for Blazy support.
  */
 function openy_prgf_gallery_update_8003() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_gallery') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_gallery') . '/config/install/';
   // Import configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -72,7 +72,7 @@ function openy_prgf_gallery_update_8003() {
  * Update Open Y paragraph gallery feature config for Focal Point support.
  */
 function openy_prgf_gallery_update_8004() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_gallery') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_gallery') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'image.style.prgf_gallery' =>[
@@ -94,7 +94,7 @@ function openy_prgf_gallery_update_8004() {
  * Update Open Y paragraph banner feature configs for OpenY Focal Point support.
  */
 function openy_prgf_gallery_update_8005() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_gallery') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_gallery') . '/config/install/';
   // Import configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -110,7 +110,7 @@ function openy_prgf_gallery_update_8005() {
  * Update Open Y Paragraph Gallery feature to use link attributes widget.
  */
 function openy_prgf_gallery_update_8006() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_gallery') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_gallery') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.paragraph.gallery.default' =>[
@@ -132,7 +132,7 @@ function openy_prgf_gallery_update_8006() {
  * Make Gallery heading optional.
  */
 function openy_prgf_gallery_update_8007() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_gallery') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_gallery') . '/config/install/';
   $configs = [
     'field.field.paragraph.gallery.field_prgf_headline' => [
       'required',
@@ -152,7 +152,7 @@ function openy_prgf_gallery_update_8007() {
  * Create the 'Gallery thumbnail image style.
  */
 function openy_prgf_gallery_update_8008() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_gallery') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_gallery') . '/config/install/';
   // Import configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);

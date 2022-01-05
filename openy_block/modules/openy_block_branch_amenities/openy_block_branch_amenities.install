@@ -9,7 +9,7 @@
  * Update configs for Drupal Core upgrade.
  */
 function openy_block_branch_amenities_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_block_branch_amenities') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_branch_amenities') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.block_content.branch_amenities.default' => [
@@ -32,7 +32,7 @@ function openy_block_branch_amenities_update_8001() {
  */
 function openy_block_branch_amenities_update_8002()
 {
-  $config_dir = drupal_get_path('module', 'openy_block_branch_amenities') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_branch_amenities') . '/config/install/';
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -48,7 +48,7 @@ function openy_block_branch_amenities_update_8002()
  * Update Open Y Block Branch Amenities feature to use link attributes widget.
  */
 function openy_block_branch_amenities_update_8003() {
-  $config_dir = drupal_get_path('module', 'openy_block_branch_amenities') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_branch_amenities') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.block_content.branch_amenities.default' =>[
@@ -70,7 +70,7 @@ function openy_block_branch_amenities_update_8003() {
  * Update configs for remove custom formatters.
  */
 function openy_block_branch_amenities_update_8004() {
-  $config_dir = drupal_get_path('module', 'openy_block_branch_amenities') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_branch_amenities') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_view_display.block_content.branch_amenities.default' => [

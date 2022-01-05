@@ -9,7 +9,7 @@
  * Update Activity for rabbit hole, hiding pages from anonymous users.
  */
 function openy_node_activity_update_8003() {
-  $config_dir = drupal_get_path('module', 'openy_node_activity') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_activity') . '/config/install/';
   // Import new configuration
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -43,7 +43,7 @@ function openy_node_activity_update_8003() {
  * Update description for fields.
  */
 function openy_node_activity_update_8004() {
-  $config_dir = drupal_get_path('module', 'openy_node_activity') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_activity') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'field.field.node.activity.field_activity_category' =>[
@@ -67,7 +67,7 @@ function openy_node_activity_update_8004() {
  * Update Open Y activity node feature configs.
  */
 function openy_node_activity_update_8005() {
-  $config_dir = drupal_get_path('module', 'openy_node_activity') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_activity') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.node.activity.default' => [
@@ -95,7 +95,7 @@ function openy_node_activity_update_8005() {
  * Update feature configs for Drupal Core upgrade.
  */
 function openy_node_activity_update_8006() {
-  $config_dir = drupal_get_path('module', 'openy_node_activity') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_activity') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.node.activity.default' => [
@@ -118,7 +118,7 @@ function openy_node_activity_update_8006() {
  * Update entity reference handler for field_activity_category.
  */
 function openy_node_activity_update_8007() {
-  $config_dir = drupal_get_path('module', 'openy_node_activity') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_activity') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'field.field.node.activity.field_activity_category' => [

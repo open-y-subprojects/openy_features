@@ -25,7 +25,7 @@ function openy_prgf_small_banner_dependencies() {
  * Update Paragraph Small Banner with field_prgf_description.
  */
 function openy_prgf_small_banner_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_small_banner') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_small_banner') . '/config/install/';
   // Import new configuration
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -61,7 +61,7 @@ function openy_prgf_small_banner_update_8001() {
  * Update description for fields.
  */
 function openy_prgf_small_banner_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_small_banner') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_small_banner') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'field.field.paragraph.small_banner.field_prgf_color' => [
@@ -92,7 +92,7 @@ function openy_prgf_small_banner_update_8002() {
  */
 function openy_prgf_small_banner_update_8003() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_prgf_small_banner');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_prgf_small_banner');
   $config .= '/config/install/';
   $config .= 'field.field.paragraph.small_banner.field_prgf_description.yml';
   $config_importer->update(
@@ -107,7 +107,7 @@ function openy_prgf_small_banner_update_8003() {
  */
 function openy_prgf_small_banner_update_8004() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_prgf_small_banner');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_prgf_small_banner');
   $config .= '/config/install/';
   $config .= 'core.entity_form_display.paragraph.small_banner.default.yml';
   $config_importer->update(
@@ -121,7 +121,7 @@ function openy_prgf_small_banner_update_8004() {
  * Update Open Y paragraph small banner feature configs for Blazy support.
  */
 function openy_prgf_small_banner_update_8005() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_small_banner') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_small_banner') . '/config/install/';
   // Import configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -136,7 +136,7 @@ function openy_prgf_small_banner_update_8005() {
  * Update Open Y paragraph small banner feature config for Focal Point support.
  */
 function openy_prgf_small_banner_update_8006() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_small_banner') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_small_banner') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'image.style.prgf_small_banner' => [
@@ -157,7 +157,7 @@ function openy_prgf_small_banner_update_8006() {
  * Update prgf_small_banner image style.
  */
 function openy_prgf_small_banner_update_8007() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_small_banner') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_small_banner') . '/config/install/';
   $configs = [
     'image.style.prgf_small_banner' => 'effects',
     'core.entity_view_display.paragraph.small_banner.default' => 'content.field_prgf_description',
@@ -174,7 +174,7 @@ function openy_prgf_small_banner_update_8007() {
  * Update Open Y paragraph banner feature configs for OpenY Focal Point support.
  */
 function openy_prgf_small_banner_update_8008() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_small_banner') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_small_banner') . '/config/install/';
   // Import configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);

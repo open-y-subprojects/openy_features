@@ -9,7 +9,7 @@
  * Update Paragraph Embedded GroupEx Pro Schedule field_prgf_block.
  */
 function openy_prgf_embedded_groupexpro_schedule_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_embedded_groupexpro_schedule');
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_embedded_groupexpro_schedule');
   $config_dir .= '/config/install/';
 
   // Update multiple configurations.

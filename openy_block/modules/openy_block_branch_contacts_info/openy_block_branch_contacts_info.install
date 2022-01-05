@@ -8,7 +8,7 @@
  * Creates new Paragraph Type "Branch Contacts Info".
  */
 function openy_block_branch_contacts_info_install() {
-  $config_dir = drupal_get_path('module', 'openy_block_branch_contacts_info') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_branch_contacts_info') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.paragraph.branch_contacts_info.default',

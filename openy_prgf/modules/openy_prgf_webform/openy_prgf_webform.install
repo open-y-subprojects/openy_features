@@ -10,7 +10,7 @@
  */
 function openy_prgf_webform_update_8001() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_prgf_webform');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_prgf_webform');
   $config .= '/config/install/';
   $config .= 'field.field.paragraph.webform.field_prgf_webform.yml';
   $config_importer->update(

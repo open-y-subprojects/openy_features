@@ -18,7 +18,7 @@ function openy_prgf_class_location_uninstall() {
  * Update class location paragraph configuration.
  */
 function openy_prgf_class_location_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_class_location') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_class_location') . '/config/install/';
   // Import new configuration
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);

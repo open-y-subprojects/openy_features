@@ -7,7 +7,7 @@
  * Import class_location view mode.
  */
 function openy_location_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_location') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_location') . '/config/install/';
   // Import new configuration
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -21,7 +21,7 @@ function openy_location_update_8001() {
  */
 function openy_location_update_8002() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config_path = drupal_get_path('module', 'openy_location') . '/config/install/';
+  $config_path = \Drupal::service('extension.list.module')->getPath('openy_location') . '/config/install/';
   $configs = [
     'field.storage.node.field_location_address',
     'field.storage.node.field_location_area',

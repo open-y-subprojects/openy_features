@@ -17,7 +17,7 @@ function openy_block_menu_update_8001() {
  * Update configs for Drupal Core upgrade.
  */
 function openy_block_menu_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_block_menu') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_menu') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.block_content.menu_block.default' => [
@@ -38,7 +38,7 @@ function openy_block_menu_update_8002() {
  * Update Open Y Block Menu feature to use link attributes widget.
  */
 function openy_block_menu_update_8003() {
-  $config_dir = drupal_get_path('module', 'openy_block_menu') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_menu') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.block_content.menu_block.default' => [

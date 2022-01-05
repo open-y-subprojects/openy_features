@@ -18,7 +18,7 @@ function openy_media_local_video_install() {
  * Add media directories to config.
  */
 function openy_media_local_video_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_media_local_video') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_media_local_video') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.media.video_local.default' => [

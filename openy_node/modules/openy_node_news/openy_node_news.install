@@ -9,7 +9,7 @@
  * Update config for the image style after focal point support was added.
  */
 function openy_node_news_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_node_news') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_news') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'image.style.node_news' => [
@@ -30,7 +30,7 @@ function openy_node_news_update_8001() {
  * Add sitemap settings for news node type.
  */
 function openy_node_news_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_node_news') . '/config/install';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_news') . '/config/install';
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -42,7 +42,7 @@ function openy_node_news_update_8002() {
  * Update feature configs.
  */
 function openy_node_news_update_8003() {
-  $config_dir = drupal_get_path('module', 'openy_node_news') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_news') . '/config/install/';
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -54,7 +54,7 @@ function openy_node_news_update_8003() {
  * Update feature configs after entity reference handler update and descriptions actualization.
  */
 function openy_node_news_update_8004() {
-  $config_dir = drupal_get_path('module', 'openy_node_news') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_news') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'field.field.node.news.field_news_location' => [
@@ -92,7 +92,7 @@ function openy_node_news_update_8004() {
  * Update node news image view mode for teaser.
  */
 function openy_node_news_update_8005() {
-  $config_dir = drupal_get_path('module', 'openy_node_news') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_news') . '/config/install/';
   $configs = [
     'core.entity_view_display.node.news.teaser' => [
       'content.field_news_image.settings.view_mode',

@@ -9,7 +9,7 @@
  * Update description for field and block.
  */
 function openy_block_basic_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_block_basic') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_basic') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'block_content.type.basic_block' => [
@@ -33,7 +33,7 @@ function openy_block_basic_update_8001() {
  * Update configs for Drupal Core upgrade.
  */
 function openy_block_basic_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_block_basic') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_basic') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.block_content.basic_block.default' => [

@@ -9,7 +9,7 @@
  * Update description for fields.
  */
 function openy_prgf_featured_content_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_featured_content') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_featured_content') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.paragraph.featured_content.default' =>[
@@ -47,7 +47,7 @@ function openy_prgf_featured_content_update_8001() {
  * Update Open Y Paragraph Featured content feature to use link attributes widget.
  */
 function openy_prgf_featured_content_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_featured_content') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_featured_content') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.paragraph.featured_content.default' =>[

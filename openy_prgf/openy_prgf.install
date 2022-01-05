@@ -70,7 +70,7 @@ function openy_prgf_update_8007() {
     'openy_prgf_featured_highlights',
   ]);
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_prgf');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_prgf');
   $config .= '/config/install/';
   $config .= 'openy_prgf.settings.yml';
   $config_importer->update($config,
@@ -84,7 +84,7 @@ function openy_prgf_update_8007() {
  */
 function openy_prgf_update_8008() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config_path = drupal_get_path('module', 'openy_prgf') . '/config/install/';
+  $config_path = \Drupal::service('extension.list.module')->getPath('openy_prgf') . '/config/install/';
   $configs = [
     'field.storage.paragraph.field_prfg_display_line_above',
     'field.storage.paragraph.field_prgf_block',
@@ -109,7 +109,7 @@ function openy_prgf_update_8008() {
  */
 function openy_prgf_update_8009() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_prgf');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_prgf');
   $config .= '/config/install/';
   $config .= 'openy_prgf.settings.yml';
   $config_importer->update($config,

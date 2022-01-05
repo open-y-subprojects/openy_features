@@ -10,7 +10,7 @@
  */
 function openy_prgf_blog_listing_update_8001() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_prgf_blog_listing');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_prgf_blog_listing');
   $config .= '/config/install/';
   $config .= 'views.view.listing_blog_posts.yml';
   $config_importer->update(
@@ -24,7 +24,7 @@ function openy_prgf_blog_listing_update_8001() {
  * Update Paragraph Blog Listing field_prgf_block & Listing Blog Posts views.
  */
 function openy_prgf_blog_listing_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_blog_listing');
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_blog_listing');
   $config_dir .= '/config/install/';
 
   // Update multiple configurations.
@@ -47,7 +47,7 @@ function openy_prgf_blog_listing_update_8002() {
  * Add Paragraph Blog Listing field_prgf_title & update configs.
  */
 function openy_prgf_blog_listing_update_8003() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_blog_listing');
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_blog_listing');
   $config_dir .= '/config/install/';
 
   // Import new configuration
@@ -81,7 +81,7 @@ function openy_prgf_blog_listing_update_8003() {
  */
 function openy_prgf_blog_listing_update_8004() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_prgf_blog_listing');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_prgf_blog_listing');
   $config .= '/config/install/';
   $config .= 'views.view.listing_blog_posts.yml';
   $config_importer->update(
@@ -95,7 +95,7 @@ function openy_prgf_blog_listing_update_8004() {
  * Update Listing Blog Posts for core upgrade.
  */
 function openy_prgf_blog_listing_update_8005() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_blog_listing') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_blog_listing') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'views.view.listing_blog_posts' => [

@@ -9,7 +9,7 @@
  * Update Open Y Featured Highlights feature to use link attributes widget.
  */
 function openy_block_featured_highlights_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_block_featured_highlights') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_featured_highlights') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.block_content.featured_highlights_block.default' =>[
