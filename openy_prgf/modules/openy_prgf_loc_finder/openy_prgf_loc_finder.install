@@ -9,7 +9,7 @@
  * Add new field to Location Finder Filters paragraph.
  */
 function openy_prgf_loc_finder_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_loc_finder');
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_loc_finder');
   $config_dir .= '/config/install/';
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $param_updater = \Drupal::service('openy_upgrade_tool.param_updater');
@@ -42,7 +42,7 @@ function openy_prgf_loc_finder_update_8002() {
  * Update description for fields.
  */
 function openy_prgf_loc_finder_update_8003() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_loc_finder') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_loc_finder') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'field.field.paragraph.prgf_location_finder.field_prgf_location_finder' =>[

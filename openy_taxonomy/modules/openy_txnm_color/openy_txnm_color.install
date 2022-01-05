@@ -10,7 +10,7 @@
  */
 function openy_txnm_color_update_8001() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_txnm_color');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_txnm_color');
   $config .= '/config/install/';
   $config .= 'taxonomy.vocabulary.color.yml';
   $config_importer->update($config, 'taxonomy.vocabulary.color', 'description');
@@ -20,7 +20,7 @@ function openy_txnm_color_update_8001() {
  * Import rabbit_hole config.
  */
 function openy_txnm_color_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_txnm_color') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_txnm_color') . '/config/install/';
   // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -33,7 +33,7 @@ function openy_txnm_color_update_8002() {
  * Update Open Y color taxonomy feature configs.
  */
 function openy_txnm_color_update_8003() {
-  $config_dir = drupal_get_path('module', 'openy_txnm_color') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_txnm_color') . '/config/install/';
   // Update multiple configurations.
   $configs = [
 
@@ -63,7 +63,7 @@ function openy_txnm_color_update_8003() {
  * Update configs for Drupal Core upgrade.
  */
 function openy_txnm_color_update_8004() {
-  $config_dir = drupal_get_path('module', 'openy_txnm_color') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_txnm_color') . '/config/install/';
   $configs = [
     'core.entity_form_display.taxonomy_term.color.default' => [
       'content.langcode',

@@ -23,7 +23,7 @@ function openy_node_class_update_dependencies() {
  */
 function openy_node_class_update_8001() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_node_class');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_node_class');
   $config .= '/config/install/';
   $config .= 'core.entity_view_display.node.class.teaser.yml';
   $config_importer->update(
@@ -37,7 +37,7 @@ function openy_node_class_update_8001() {
  * Update class, adding header content, & bottom content.
  */
 function openy_node_class_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_node_class') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_class') . '/config/install/';
   // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -96,7 +96,7 @@ function openy_node_class_update_8002() {
  * Import scheduler config.
  */
 function openy_node_class_update_8003() {
-  $config_dir = drupal_get_path('module', 'openy_node_class') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_class') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.node.class.default' => [
@@ -121,7 +121,7 @@ function openy_node_class_update_8003() {
  * Update description for fields.
  */
 function openy_node_class_update_8004() {
-  $config_dir = drupal_get_path('module', 'openy_node_class') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_class') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'field.field.node.class.field_bottom_content' => [
@@ -158,7 +158,7 @@ function openy_node_class_update_8004() {
  * Add Program Subcategory to sitemap.
  */
 function openy_node_class_update_8005() {
-  $config_dir = drupal_get_path('module', 'openy_node_class') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_class') . '/config/install/';
   // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -172,7 +172,7 @@ function openy_node_class_update_8005() {
  */
 function openy_node_class_update_8006() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_node_class');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_node_class');
   $config .= '/config/install/';
   $config .= 'field.field.node.class.field_meta_tags.yml';
   $config_importer->update(
@@ -187,7 +187,7 @@ function openy_node_class_update_8006() {
  */
 function openy_node_class_update_8007() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_node_class');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_node_class');
   $config .= '/config/install/';
   $config .= 'core.entity_form_display.node.class.default.yml';
   $config_importer->update(
@@ -201,7 +201,7 @@ function openy_node_class_update_8007() {
  * Update Pathauto pattern settings for Class CT and URL aliases for Class nodes.
  */
 function openy_node_class_update_8008() {
-  $config_dir = drupal_get_path('module', 'openy_node_class') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_class') . '/config/install/';
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -223,7 +223,7 @@ function openy_node_class_update_8008() {
  * Update Open Y class node feature configs.
  */
 function openy_node_class_update_8009() {
-  $config_dir = drupal_get_path('module', 'openy_node_class') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_class') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.node.class.default' => [
@@ -251,7 +251,7 @@ function openy_node_class_update_8009() {
  * Update feature configs for Drupal Core upgrade.
  */
 function openy_node_class_update_8010() {
-  $config_dir = drupal_get_path('module', 'openy_node_class') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_class') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.node.class.default' => [

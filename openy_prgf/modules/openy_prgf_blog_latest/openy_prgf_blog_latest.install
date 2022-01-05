@@ -16,7 +16,7 @@ function openy_prgf_blog_latest_update_8001() {
  * Add Paragraph Latest Blog Posts field_prgf_title & update configs.
  */
 function openy_prgf_blog_latest_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_blog_latest');
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_blog_latest');
   $config_dir .= '/config/install/';
 
   // Import new configuration.

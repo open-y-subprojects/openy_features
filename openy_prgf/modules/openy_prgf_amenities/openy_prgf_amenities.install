@@ -17,7 +17,7 @@ function openy_prgf_amenities_update_8001() {
  */
 function openy_prgf_amenities_update_8002() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_prgf_amenities');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_prgf_amenities');
   $config .= '/config/install/';
   $config .= 'views.view.branches.yml';
   $config_importer->update(

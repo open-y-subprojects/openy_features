@@ -9,7 +9,7 @@
  * Update Open Y Paragraph Promo Card feature to use link attributes widget.
  */
 function openy_prgf_promo_card_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_promo_card') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_promo_card') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.paragraph.promo_card.default' =>[

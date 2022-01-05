@@ -12,12 +12,12 @@ function openy_taxonomy_install() {
   $config = \Drupal::configFactory()->loadMultiple(['views.view.taxonomy_term']);
   if (array_key_exists('views.view.taxonomy_term', $config)) {
     $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
-    $config = drupal_get_path('module', 'openy_taxonomy');
+    $config = \Drupal::service('extension.list.module')->getPath('openy_taxonomy');
     $config .= '/config/override/views.view.taxonomy_term.yml';
     $config_updater->update($config, 'views.view.taxonomy_term', 'display');
   }
   else {
-    $config_dir = drupal_get_path('module', 'openy_taxonomy') . '/config/override/';
+    $config_dir = \Drupal::service('extension.list.module')->getPath('openy_taxonomy') . '/config/override/';
     // Import new configuration
     $config_importer = \Drupal::service('openy_upgrade_tool.importer');
     $config_importer->setDirectory($config_dir);
@@ -32,7 +32,7 @@ function openy_taxonomy_install() {
  */
 function openy_taxonomy_update_8001() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_taxonomy');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_taxonomy');
   $config .= '/config/override/';
   $config .= 'views.view.taxonomy_term.yml';
   $config_importer->update($config, 'views.view.taxonomy_term', 'display.default.display_options.pager');
@@ -49,7 +49,7 @@ function openy_taxonomy_update_8002() {
  * Update tour with token support for demo.
  */
 function openy_taxonomy_update_8003() {
-  $config_dir = drupal_get_path('module', 'openy_taxonomy') . '/config/optional/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_taxonomy') . '/config/optional/';
   // Update multiple configurations.
   $configs = [
     'tour.tour.openy-taxonomy-overview' =>[
@@ -73,7 +73,7 @@ function openy_taxonomy_update_8003() {
  */
 function openy_taxonomy_update_8004() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_taxonomy');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_taxonomy');
   $config .= '/config/override/';
   $config .= 'views.view.taxonomy_term.yml';
   $config_importer->update($config, 'views.view.taxonomy_term', 'display.page_1.display_options');
@@ -83,7 +83,7 @@ function openy_taxonomy_update_8004() {
  * Update storage persist_with_no_fields property for field_taxonomy_content.
  */
 function openy_taxonomy_update_8005() {
-  $config_dir = drupal_get_path('module', 'openy_taxonomy') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_taxonomy') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'field.storage.taxonomy_term.field_taxonomy_content' =>[

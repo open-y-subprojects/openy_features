@@ -20,7 +20,7 @@ function openy_prgf_camp_menu_uninstall() {
  * Update Paragraph Camp Menu field_prgf_block.
  */
 function openy_prgf_camp_menu_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_camp_menu');
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_camp_menu');
   $config_dir .= '/config/install/';
 
   // Update multiple configurations.

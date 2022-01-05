@@ -10,7 +10,7 @@
  */
 function openy_block_update_8001() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config_path = drupal_get_path('module', 'openy_block') . '/config/install/';
+  $config_path = \Drupal::service('extension.list.module')->getPath('openy_block') . '/config/install/';
   $config = 'field.storage.block_content.field_block_content';
   $config_importer->update($config_path . $config . '.yml',
     $config,

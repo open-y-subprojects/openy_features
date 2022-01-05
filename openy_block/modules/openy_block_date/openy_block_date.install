@@ -9,7 +9,7 @@
  * Update configs for Drupal Core upgrade.
  */
 function openy_block_date_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_block_date') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_date') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.block_content.date_block.default' => [
@@ -30,7 +30,7 @@ function openy_block_date_update_8001() {
  * Update fields instances settings.
  */
 function openy_block_date_update_8002() {
-  $config_dir = drupal_get_path('module', 'openy_block_date') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_date') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'field.field.block_content.date_block.field_content_date_between' => [

@@ -9,7 +9,7 @@
  * Implement hook_install().
  */
 function openy_node_install() {
-  $config_dir = drupal_get_path('module', 'openy_node') . '/config/override/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/override/';
     // Import new configuration
     $config_importer = \Drupal::service('openy_upgrade_tool.importer');
     $config_importer->setDirectory($config_dir);
@@ -36,7 +36,7 @@ function openy_node_update_dependencies() {
  * Update Node Category with field_bottom_content.
  */
 function openy_node_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_node') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/install/';
   // Import new configuration
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -50,7 +50,7 @@ function openy_node_update_8001() {
  */
 function openy_node_update_8002() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_node');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_node');
   $config .= '/config/optional/';
   $config .= 'tour.tour.openy-node-add.yml';
   $config_importer->update($config, 'tour.tour.openy-node-add', 'tips');
@@ -61,7 +61,7 @@ function openy_node_update_8002() {
  */
 function openy_node_update_8003() {
   // Image Style & OG Meta tags defaults
-  $config_dir = drupal_get_path('module', 'openy_node') . '/config/install';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/install';
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -69,7 +69,7 @@ function openy_node_update_8003() {
     'field.storage.node.field_meta_tags',
   ]);
 
-  $config_dir = drupal_get_path('module', 'openy_node') . '/config/override';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/override';
 
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -77,7 +77,7 @@ function openy_node_update_8003() {
   ]);
 
 
-  $config = drupal_get_path('module', 'openy_node') . 'openy_node.info.yml';
+  $config = \Drupal::service('extension.list.module')->getPath('openy_node') . 'openy_node.info.yml';
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
   $config_importer->update($config, 'openy_node.info', 'dependencies');
 }
@@ -86,7 +86,7 @@ function openy_node_update_8003() {
  * Update view mode page.
  */
 function openy_node_update_8004() {
-  $config_dir = drupal_get_path('module', 'openy_node') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/install/';
   // Import new configuration
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -100,7 +100,7 @@ function openy_node_update_8004() {
  */
 function openy_node_update_8005() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_node');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_node');
   $config .= '/config/optional/';
   $config .= 'tour.tour.openy-landing-page-add.yml';
   $config_importer->update($config, 'tour.tour.openy-landing-page-add', 'tips');
@@ -111,7 +111,7 @@ function openy_node_update_8005() {
  */
 function openy_node_update_8006() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config_path = drupal_get_path('module', 'openy_node') . '/config/install/';
+  $config_path = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/install/';
   $configs = [
     'field.storage.node.field_bottom_content',
     'field.storage.node.field_content',

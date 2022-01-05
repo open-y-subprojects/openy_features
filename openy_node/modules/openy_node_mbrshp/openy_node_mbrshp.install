@@ -26,7 +26,7 @@ function openy_node_mbrshp_update_dependencies() {
  */
 function openy_node_mbrshp_update_8001() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_node_mbrshp');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_node_mbrshp');
   $config .= '/config/install/';
   $config .= 'field.field.node.membership.field_mbrshp_description.yml';
   $config_importer->update($config,
@@ -41,7 +41,7 @@ function openy_node_mbrshp_update_8001() {
 function openy_node_mbrshp_update_8002() {
   $module = 'openy_node_mbrshp';
   $bundle = 'membership';
-  $config_dir = drupal_get_path('module', $module) . '/config/install';
+  $config_dir = \Drupal::service('extension.list.module')->getPath($module) . '/config/install';
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -53,7 +53,7 @@ function openy_node_mbrshp_update_8002() {
  * Update Membership for rabbit hole, hiding pages from anonymous users.
  */
 function openy_node_mbrshp_update_8003() {
-  $config_dir = drupal_get_path('module', 'openy_node_mbrshp') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_mbrshp') . '/config/install/';
   // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -85,7 +85,7 @@ function openy_node_mbrshp_update_8003() {
  */
 function openy_node_mbrshp_update_8005() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_node_mbrshp');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_node_mbrshp');
   $config .= '/config/install/';
   $config .= 'core.entity_view_display.node.membership.default.yml';
   $config_importer->update($config,
@@ -98,7 +98,7 @@ function openy_node_mbrshp_update_8005() {
  * Update description for fields.
  */
 function openy_node_mbrshp_update_8006() {
-  $config_dir = drupal_get_path('module', 'openy_node_mbrshp') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_mbrshp') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'field.field.node.membership.field_mbrshp_description' => [
@@ -144,7 +144,7 @@ function openy_node_mbrshp_update_8007() {
  * Update entity reference for field image - Fixing configs.
  */
 function openy_node_mbrshp_update_8008() {
-  $config_dir = drupal_get_path('module', 'openy_node_mbrshp') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_mbrshp') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.node.membership.default' => [
@@ -166,7 +166,7 @@ function openy_node_mbrshp_update_8008() {
  * Update Open Y membership node feature configs.
  */
 function openy_node_mbrshp_update_8009() {
-  $config_dir = drupal_get_path('module', 'openy_node_mbrshp') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_mbrshp') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_view_display.node.membership.default' => [
@@ -193,7 +193,7 @@ function openy_node_mbrshp_update_8009() {
  * Update feature configs for Drupal Core upgrade.
  */
 function openy_node_mbrshp_update_8010() {
-  $config_dir = drupal_get_path('module', 'openy_node_mbrshp') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_mbrshp') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.node.membership.default' => [
@@ -217,7 +217,7 @@ function openy_node_mbrshp_update_8010() {
  */
 function openy_node_mbrshp_update_8011() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config = drupal_get_path('module', 'openy_node_mbrshp');
+  $config = \Drupal::service('extension.list.module')->getPath('openy_node_mbrshp');
   $config .= '/config/install/';
   $config .= 'core.entity_view_display.node.membership.default.yml';
   $config_importer->update($config,
@@ -230,7 +230,7 @@ function openy_node_mbrshp_update_8011() {
  * Update Open Y Node Membership feature to use link attributes widget.
  */
 function openy_node_mbrshp_update_8012() {
-  $config_dir = drupal_get_path('module', 'openy_node_mbrshp') . '/config/install/';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_mbrshp') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'core.entity_form_display.paragraph.membership_info.default' =>[

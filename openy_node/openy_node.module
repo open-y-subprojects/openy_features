@@ -34,7 +34,7 @@ function openy_node_modules_installed($modules) {
     $config_importer = \Drupal::service('openy_upgrade_tool.importer');
     foreach ($config_list as $module => $config) {
       if ($module_handler->moduleExists($module)) {
-        $config_dir = drupal_get_path('module', $module) . '/config/install';
+        $config_dir = \Drupal::service('extension.list.module')->getPath($module) . '/config/install';
         $config_importer->setDirectory($config_dir);
         $config_importer->importConfigSimple($config);
       }
@@ -55,7 +55,7 @@ function openy_node_form_system_site_information_settings_alter(&$form, FormStat
     '#type' => "checkbox",
     '#title' => t('Disable /node page'),
     '#description' => t(
-      'Allows disabling/enabling the default Drupal frontpage Views configuration that 
+      'Allows disabling/enabling the default Drupal frontpage Views configuration that
     introduce /node and /rss.xml URLs. By default these URLs are disabled in Open Y.'
     ),
     '#default_value' => $view->status() ? 0 : 1,

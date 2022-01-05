@@ -10,5 +10,5 @@
  */
 function openy_menu_main_theme_registry_alter(&$theme_registry) {
   // Use custom template for simple_menu_icons instead default.
-  $theme_registry['simple_menu_icons_css_item']['path'] = drupal_get_path('module', 'openy_menu_main') . '/templates';
+  $theme_registry['simple_menu_icons_css_item']['path'] = \Drupal::service('extension.list.module')->getPath('openy_menu_main') . '/templates';
 }

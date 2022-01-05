@@ -9,7 +9,7 @@
  * Update Paragraph Schedule Search field_prgf_block.
  */
 function openy_prgf_schedule_search_update_8001() {
-  $config_dir = drupal_get_path('module', 'openy_prgf_schedule_search');
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_schedule_search');
   $config_dir .= '/config/install/';
 
   // Update multiple configurations.
