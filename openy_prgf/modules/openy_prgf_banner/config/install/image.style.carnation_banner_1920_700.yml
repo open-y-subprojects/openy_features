@@ -22,3 +22,9 @@ effects:
       width: '1920'
       height: '700'
       crop_type: focal_point
+  c7411970-f7a8-4836-9953-d7142ae43808:
+    uuid: c7411970-f7a8-4836-9953-d7142ae43808
+    id: image_convert
+    weight: 3
+    data:
+      extension: webp
