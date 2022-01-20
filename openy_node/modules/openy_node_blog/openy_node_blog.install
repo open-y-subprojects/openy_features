@@ -331,3 +331,16 @@ function openy_node_blog_update_8013() {
     }
   }
 }
+
+/**
+ * Apply Webp to all image styles.
+ */
+function openy_node_blog_update_8015() {
+  $path = drupal_get_path('module', 'openy_node_blog') . '/config/install';
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'image.style.node_blog',
+    'image.style.node_blog_teaser'
+  ]);
+}

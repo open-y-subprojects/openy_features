@@ -138,3 +138,15 @@ function openy_node_update_8007() {
     $view->save();
   }
 }
+
+/**
+ * Apply Webp to all image styles.
+ */
+function openy_node_update_8009() {
+  $path = drupal_get_path('module', 'openy_node') . '/config/install';
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'image.style.facebook'
+  ]);
+}
