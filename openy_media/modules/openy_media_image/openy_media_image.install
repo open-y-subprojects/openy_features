@@ -364,7 +364,7 @@ function openy_media_image_update_8014() {
  * Apply Webp to all image styles.
  */
 function openy_media_image_update_8016() {
-  $path = drupal_get_path('module', 'openy_media_image') . '/config/install';
+  $path = \Drupal::service('extension.list.module')->getPath('openy_media_image') . '/config/install';
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
@@ -374,7 +374,7 @@ function openy_media_image_update_8016() {
     'image.style.thumbnail_for_preview'
   ]);
 
-  $path = drupal_get_path('module', 'openy_media_image') . '/config/override';
+  $path = \Drupal::service('extension.list.module')->getPath('openy_media_image') . '/config/override';
 
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([

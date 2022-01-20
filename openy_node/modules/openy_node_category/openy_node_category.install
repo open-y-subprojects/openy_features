@@ -338,7 +338,7 @@ function openy_node_category_update_8015() {
  * Apply Webp to all image styles.
  */
 function openy_node_category_update_8017() {
-  $path = drupal_get_path('module', 'openy_node_category') . '/config/install';
+  $path = \Drupal::service('extension.list.module')->getPath('openy_node_category') . '/config/install';
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
