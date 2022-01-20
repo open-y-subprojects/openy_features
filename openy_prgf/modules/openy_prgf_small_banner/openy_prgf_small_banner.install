@@ -185,3 +185,15 @@ function openy_prgf_small_banner_update_8008() {
     'image.style.prgf_small_banner'
   ]);
 }
+
+/**
+ * Apply Webp to all image styles.
+ */
+function openy_prgf_small_banner_update_8010() {
+  $path = \Drupal::service('extension.list.module')->getPath('openy_prgf_small_banner') . '/config/install';
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'image.style.prgf_small_banner'
+  ]);
+}

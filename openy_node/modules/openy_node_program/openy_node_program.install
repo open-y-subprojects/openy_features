@@ -312,3 +312,15 @@ function openy_node_program_update_8013() {
     'field.field.node.program.field_header_content',
   ]);
 }
+
+/**
+ * Apply Webp to all image styles.
+ */
+function openy_node_program_update_8015() {
+  $path = \Drupal::service('extension.list.module')->getPath('openy_node_program') . '/config/install';
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'image.style.node_program_header'
+  ]);
+}

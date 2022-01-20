@@ -61,3 +61,15 @@ function openy_node_social_post_update_8002() {
     }
   }
 }
+
+/**
+ * Apply Webp to all image styles.
+ */
+function openy_node_social_post_update_8004() {
+  $path = \Drupal::service('extension.list.module')->getPath('openy_node_social_post') . '/config/install';
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'image.style.social_post_preview'
+  ]);
+}

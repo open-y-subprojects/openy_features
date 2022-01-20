@@ -1,4 +1,3 @@
-uuid: 78ebfcf1-6599-48fd-83ba-0c6492499e9b
 langcode: en
 status: true
 dependencies:
@@ -15,3 +14,9 @@ effects:
       width: '192'
       height: '70'
       crop_type: focal_point
+  c354e877-a3e3-423c-95fe-c251049d91fb:
+    uuid: c354e877-a3e3-423c-95fe-c251049d91fb
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

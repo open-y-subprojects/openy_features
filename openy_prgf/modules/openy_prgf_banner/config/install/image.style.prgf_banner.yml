@@ -22,3 +22,9 @@ effects:
     weight: -10
     data:
       crop_type: crop_960_600
+  e4410f29-3b93-4211-9926-85fd1d95e786:
+    uuid: e4410f29-3b93-4211-9926-85fd1d95e786
+    id: image_convert
+    weight: 3
+    data:
+      extension: webp

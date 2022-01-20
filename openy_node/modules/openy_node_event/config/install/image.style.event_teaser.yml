@@ -11,3 +11,10 @@ effects:
     data:
       width: 266
       height: 247
+      anchor: center-center
+  b643fcfd-02c5-416a-a2ea-d0f69b38b10d:
+    uuid: b643fcfd-02c5-416a-a2ea-d0f69b38b10d
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp
