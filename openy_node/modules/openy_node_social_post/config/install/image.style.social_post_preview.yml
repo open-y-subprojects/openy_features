@@ -1,6 +1,6 @@
 langcode: en
 status: true
-dependencies: {  }:
+dependencies: {  }
 name: social_post_preview
 label: 'Social post preview'
 effects:
