@@ -11,17 +11,19 @@ third_party_settings:
   datalayer:
     expose: 1
     label: field_location_directions
+_core:
+  default_config_hash: wECsSrrpKwpR9l0_0o0esc5NK7Rf-JTr46G-JOhFzEU
 id: node.branch.field_location_directions
 field_name: field_location_directions
 entity_type: node
 bundle: branch
 label: Directions
-description: ''
+description: 'To remove the "Get Directions" link from the location page, just leave URL and Link text fields blank.'
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  link_type: 17
   title: 1
+  link_type: 17
 field_type: link

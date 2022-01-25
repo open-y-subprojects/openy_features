@@ -478,7 +478,7 @@ function openy_loc_branch_update_8023() {
  * Address Field not "Required".
  */
 function openy_loc_branch_update_8024() {
-  $path = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/optional';
+  $path = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install';
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
