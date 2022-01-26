@@ -22,3 +22,9 @@ effects:
     weight: -10
     data:
       crop_type: crop_1920_700
+  11339185-f4e9-47a3-8a8c-fd3e0133db81:
+    uuid: 11339185-f4e9-47a3-8a8c-fd3e0133db81
+    id: image_convert
+    weight: 3
+    data:
+      extension: webp
