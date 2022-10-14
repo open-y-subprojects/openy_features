@@ -1,0 +1,30 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display blog pagination
+ *
+ * Available variables:
+ * - next_link: Rendered <a> tag for the Next blog post, if exists.
+ * - prev_link: Rendered <a> tag for the Prev blog post, if exists.
+ * - wrapperClass: Helper classes for pagination html wrapper.
+ *
+ * @see openy_node_blog_preprocess_simple_pagination().
+ *
+ * @ingroup themeable
+ */
+#}
+{{ attach_library('openy_node_blog/pagination') }}
+<div class="clearfix blog-pager--items {{ wrapperClass }}">
+    {% if prev_link %}
+        <div class="blog-pager--previous blog-pager--section">
+            <div class="blog-pager--header">{{ 'Previous story' | t }}</div>
+            <div class="blog-pager--content">{{ prev_link }}</div>
+        </div>
+    {% endif %}
+    {% if next_link %}
+        <div class="blog-pager--next">
+            <div class="blog-pager--header">{{ 'Next story' | t }}</div>
+            <div class="blog-pager--content">{{ next_link }}</div>
+        </div>
+    {% endif %}
+</div>

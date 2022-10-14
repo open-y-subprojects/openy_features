@@ -1,0 +1,50 @@
+.blog-pager--items {
+  border-top: solid 1px #5c2e91;
+  border-bottom: solid 1px #5c2e91;
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+
+.blog-pager--items .blog-pager--previous,
+.blog-pager--items .blog-pager--next {
+  width: 50%;
+  min-height: 134px;
+}
+
+.blog-pager--items .blog-pager--previous {
+  padding-right: 2em;
+  float: left;
+}
+
+.blog-pager--items .blog-pager--next {
+  padding-left: 2em;
+  text-align: right;
+  float: right;
+}
+
+.blog-pager--items .blog-pager--header {
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.21;
+  letter-spacing: 2px;
+  height: 17px;
+  margin-top: 1em;
+}
+
+.blog-pager--items .blog-pager--content {
+  margin-top: 24px;
+}
+
+.blog-pager--items a {
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.85;
+}
+
+.blog-pager--items.both .blog-pager--previous{
+  border-right: solid 1px #5c2e91;
+}
