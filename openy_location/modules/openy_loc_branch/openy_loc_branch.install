@@ -522,3 +522,25 @@ function openy_loc_branch_update_8025() {
     }
   }
 }
+
+/**
+ * Directions field default values.
+ */
+function openy_loc_branch_update_8026() {
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
+  // Update multiple configurations.
+  $configs = [
+    'field.field.node.branch.field_location_directions' =>[
+      'description',
+      'default_value'
+    ],
+  ];
+
+  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
+  foreach ($configs as $config_name => $params) {
+    $config = $config_dir . $config_name . '.yml';
+    foreach ($params as $param) {
+      $config_updater->update($config, $config_name, $param);
+    }
+  }
+}
