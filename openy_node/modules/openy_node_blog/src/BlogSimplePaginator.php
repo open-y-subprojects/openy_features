@@ -42,8 +42,13 @@ class BlogSimplePaginator {
     $currentNode = $this->routeMatch->getParameter('node');
     $query = $this->nodeStorage->getQuery();
 
-    $compare = $direction == 'prev' ? '<' : '>';
-    $sort = $direction == 'prev' ? 'DESC' : 'ASC';
+    $compare = '>';
+    $sort = 'ASC';
+    
+    if ($direction == 'prev') {
+      $compare = '<';
+      $sort = 'DESC';
+    }
 
     $result = $query->condition('created', $currentNode->getCreatedTime(), $compare)
                  ->condition('type', $currentNode->bundle())
@@ -62,7 +67,7 @@ class BlogSimplePaginator {
       return $link;
     }
 
-    return null;
+    return NULL;
   }
 
   /**
@@ -88,7 +93,11 @@ class BlogSimplePaginator {
   public function build() {
     $prevLink = $this->getPrevLink();
     $nextLink = $this->getNextLink();
-    $class = ($prevLink && $nextLink) ? 'both' : '';
+    $class = '';
+    if ($prevLink && $nextLink) {
+      $class = 'both';
+    }
+
     return [
       '#theme' => 'simple_pagination',
       '#prev_link' => $prevLink,

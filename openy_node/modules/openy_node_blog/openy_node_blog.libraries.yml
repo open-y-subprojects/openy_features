@@ -2,4 +2,4 @@ pagination:
   version: 1.x
   css:
     theme:
-      assets/css/openy_node_blog.pagination.css: {}
+      assets/css/openy_node_blog.pagination.css: { preprocess: true }
