@@ -3,6 +3,7 @@ status: true
 dependencies:
   config:
     - field.field.node.branch.field_bottom_content
+    - field.field.node.branch.field_branch_holiday_hours
     - field.field.node.branch.field_branch_hours
     - field.field.node.branch.field_content
     - field.field.node.branch.field_header_content
@@ -25,6 +26,7 @@ dependencies:
     - geolocation
     - metatag
     - openy_field_custom_hours
+    - openy_field_holiday_hours
     - telephone
     - user
 id: node.branch.default
@@ -49,12 +51,19 @@ content:
       link: ''
     third_party_settings: {  }
     region: content
-  field_branch_hours:
-    weight: 6
+  field_branch_holiday_hours:
+    type: openy_holiday_hours
     label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 6
+    region: content
+  field_branch_hours:
     type: openy_custom_hours_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
     region: content
   field_content:
     type: entity_reference_revisions_entity_view

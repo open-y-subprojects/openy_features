@@ -486,3 +486,39 @@ function openy_loc_branch_update_8024() {
     'field.field.node.branch.field_location_directions',
   ]);
 }
+
+/**
+ * Added Branch Holiday Hours field.
+ */
+function openy_loc_branch_update_8025() {
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
+  $config_importer = \Drupal::service('openy_upgrade_tool.importer');
+  $config_importer->setDirectory($config_dir);
+  $config_importer->importConfigs([
+    'field.storage.node.field_branch_holiday_hours',
+    'field.field.node.branch.field_branch_holiday_hours',
+    'core.entity_view_display.node.branch.class_location',
+    'core.entity_view_display.node.branch.full',
+    'core.entity_view_display.node.branch.sidebar_teaser',
+    'core.entity_view_display.node.branch.teaser',
+  ]);
+
+  // Update multiple configurations.
+  $configs = [
+    'core.entity_form_display.node.branch.default' => [
+      'third_party_settings.field_group.group_branch_hours',
+      'content',
+    ],
+    'core.entity_view_display.node.branch.default' => [
+      'content'
+    ]
+  ];
+
+  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
+  foreach ($configs as $config_name => $params) {
+    $config = $config_dir . $config_name . '.yml';
+    foreach ($params as $param) {
+      $config_updater->update($config, $config_name, $param);
+    }
+  }
+}

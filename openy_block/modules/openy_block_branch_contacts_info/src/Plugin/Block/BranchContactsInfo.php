@@ -126,6 +126,26 @@ class BranchContactsInfo extends BlockBase implements ContainerFactoryPluginInte
         'type' => 'openy_today_custom_hours',
         'settings' => [],
       ]);
+    }
+
+    if ($node->hasField('field_branch_holiday_hours') && isset($branch_hours)) {
+      $holiday_hours = $node->get('field_branch_holiday_hours')->view([
+        'type' => 'openy_holiday_hours',
+        'settings' => [],
+      ]);
+      if ($holiday_hours[0]['#rows']) {
+        $branch_hours[0]['#week'] += [
+          'title_holidays' => [
+            '#type' => 'html_tag',
+            '#tag' => 'h5',
+            '#value' => $this->t('Holiday Hours'),
+          ],
+          'table_holidays' => $holiday_hours[0],
+        ];
+      }
+    }
+
+    if (isset($branch_hours)) {
       $render_array['#branch_hours'] = $this->renderer->render($branch_hours);
     }
 

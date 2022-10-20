@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_branch_holiday_hours
+    - node.type.branch
+  module:
+    - datalayer
+    - openy_field_holiday_hours
+third_party_settings:
+  datalayer:
+    expose: 1
+    label: field_branch_holiday_hours
+id: node.branch.field_branch_holiday_hours
+field_name: field_branch_holiday_hours
+entity_type: node
+bundle: branch
+label: 'Branch Holiday Hours'
+description: 'Fill in Branch Holiday Hours. If upcoming Holiday date is less then 2 week ahead of current date, it will appear on the site.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: openy_holiday_hours
