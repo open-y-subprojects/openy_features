@@ -15,10 +15,18 @@ field_name: field_location_directions
 entity_type: node
 bundle: camp
 label: Directions
-description: ''
+description: 'Directions link is auto generated from the Address field, however you can put your own link here. For no link, enter: <nolink>.'
 required: false
 translatable: true
-default_value: {  }
+default_value:
+  -
+    attributes: {  }
+    uri: 'route:<nolink>'
+    title: Directions
+    options:
+      attributes:
+        class:
+          - ''
 default_value_callback: ''
 settings:
   link_type: 17

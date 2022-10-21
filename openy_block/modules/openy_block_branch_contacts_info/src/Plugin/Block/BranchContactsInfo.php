@@ -114,8 +114,9 @@ class BranchContactsInfo extends BlockBase implements ContainerFactoryPluginInte
 
     $render_array['#fax'] = $node->field_location_fax->value;
     $render_array['#email'] = $node->field_location_email->value;
-    $render_array['#directions_field_title'] = $node->field_location_directions->title;
+    $render_array['#directions_field_title'] = $node->field_location_directions->title ?? $this->t('Directions');
     $render_array['#directions_field_url'] = $node->field_location_directions->url;
+    $render_array['#directions_url'] = $node->field_location_directions->url ?? $render_array['#directions_url'];
 
     $render_array['#branch_title'] = $node->getTitle();
     $branch_selector = openy_branch_selector_get_link($node->id());
