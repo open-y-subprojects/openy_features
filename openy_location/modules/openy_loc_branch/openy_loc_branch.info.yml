@@ -16,6 +16,7 @@ dependencies:
   - metatag:metatag
   - drupal:node
   - link_attributes:link_attributes
+  - openy_field_holiday_hours:openy_field_holiday_hours
   - openy_field_custom_hours:openy_field_custom_hours
   - openy_hours_formatter:openy_hours_formatter
   - openy_location:openy_location
