@@ -1,0 +1,12 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_field_widget_form_alter().
+ */
+function openy_prgf_pgm_reg_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if (isset($element['#paragraph_type']) && $element['#paragraph_type'] === 'program_registration') {
+    $element['subform']['#attached']['library'][] = 'openy_prgf_pgm_reg/openy_prgf_pgm_reg';
+  }
+}
