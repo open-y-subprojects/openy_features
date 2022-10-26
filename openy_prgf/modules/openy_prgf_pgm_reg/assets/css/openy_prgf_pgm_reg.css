@@ -1,0 +1,4 @@
+.field--name-field-prgf-reg-block .plugin-selector-plugin-select-list-selector,
+.field--name-field-prgf-reg-block .plugin-selector-plugin-select-list-plugin-form > div {
+  display: none;
+}

@@ -1,0 +1,5 @@
+openy_prgf_pgm_reg:
+  version: 1.x
+  css:
+    theme:
+      assets/css/openy_prgf_pgm_reg.css: { preprocess: true }
