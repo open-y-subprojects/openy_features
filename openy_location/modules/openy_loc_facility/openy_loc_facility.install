@@ -317,6 +317,9 @@ function openy_loc_facility_update_8016() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_facility') . '/config/install/';
   // Update multiple configurations.
   $configs = [
+    'core.entity_form_display.node.facility.default' =>[
+      'content.field_location_directions.settings',
+    ],
     'field.field.node.facility.field_location_directions' =>[
       'description',
       'default_value'

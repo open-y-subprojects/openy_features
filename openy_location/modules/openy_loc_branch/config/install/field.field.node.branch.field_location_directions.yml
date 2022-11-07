@@ -16,18 +16,10 @@ field_name: field_location_directions
 entity_type: node
 bundle: branch
 label: Directions
-description: 'Directions link is auto generated from the Address field, however you can put your own link here. For no link, enter: <nolink>.'
+description: 'Directions link is auto generated from the Address field, however you can put your own link here.'
 required: false
 translatable: true
-default_value:
-  -
-    attributes: {  }
-    uri: 'route:<nolink>'
-    title: Directions
-    options:
-      attributes:
-        class:
-          - ''
+default_value: {  }
 default_value_callback: ''
 settings:
   title: 1

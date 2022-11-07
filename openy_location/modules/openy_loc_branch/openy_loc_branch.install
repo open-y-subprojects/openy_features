@@ -530,6 +530,9 @@ function openy_loc_branch_update_8026() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
   // Update multiple configurations.
   $configs = [
+    'core.entity_form_display.node.branch.default' =>[
+      'content.field_location_directions.settings',
+    ],
     'field.field.node.branch.field_location_directions' =>[
       'description',
       'default_value'

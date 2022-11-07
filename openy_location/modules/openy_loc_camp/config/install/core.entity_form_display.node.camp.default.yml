@@ -181,8 +181,8 @@ content:
   field_location_directions:
     weight: 14
     settings:
-      placeholder_url: /location_directions_uri
-      placeholder_title: 'Location directions title'
+      placeholder_url: /link-to-directions
+      placeholder_title: 'Directions'
       enabled_attributes:
         target: true
         rel: true
