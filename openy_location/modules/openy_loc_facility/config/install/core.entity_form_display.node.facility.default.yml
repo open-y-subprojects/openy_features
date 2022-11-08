@@ -159,8 +159,8 @@ content:
   field_location_directions:
     weight: 14
     settings:
-      placeholder_url: ''
-      placeholder_title: ''
+      placeholder_url: /link-to-directions
+      placeholder_title: 'Directions'
       enabled_attributes:
         target: true
         rel: true
