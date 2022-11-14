@@ -40,6 +40,11 @@ class BlogSimplePaginator {
    */
   private function buildQuery($direction = 'prev') {
     $currentNode = $this->routeMatch->getParameter('node');
+    
+    if (!$currentNode) {
+      return NULL;
+    }
+    
     $query = $this->nodeStorage->getQuery();
 
     $compare = '>';
