@@ -207,3 +207,14 @@ function openy_prgf_teaser_update_8011() {
   ]);
 }
 
+/**
+ * Update Open Y paragraph teaser - field image is required
+ */
+function openy_prgf_teaser_update_8012() {
+  $path = \Drupal::service('extension.list.module')->getPath('openy_prgf_teaser') . '/config/install';
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'field.field.paragraph.teaser.field_prgf_image'
+  ]);
+}

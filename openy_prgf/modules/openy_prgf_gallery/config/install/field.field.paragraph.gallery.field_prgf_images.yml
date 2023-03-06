@@ -11,7 +11,7 @@ entity_type: paragraph
 bundle: gallery
 label: Images
 description: 'Link field that should store internal and external links.'
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
