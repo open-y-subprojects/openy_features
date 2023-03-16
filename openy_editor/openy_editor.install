@@ -44,3 +44,21 @@ function openy_editor_update_8003() {
   \Drupal::service('module_installer')->install(['ckeditor_font'], TRUE);
   openy_editor_update_8002();
 }
+
+/**
+ * Update editor settings to remove Font Style and Font Size buttons.
+ */
+function openy_editor_update_8004() {
+  $openy_editor_config_path = \Drupal::service('extension.list.module')->getPath('openy_editor') . '/config/install';
+  $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
+  $config_importer->update(
+    $openy_editor_config_path . '/editor.editor.full_html.yml',
+    'editor.editor.full_html',
+    'settings.toolbar.rows'
+  );
+  $config_importer->update(
+    $openy_editor_config_path . '/filter.format.full_html.yml',
+    'filter.format.full_html',
+    'filters'
+  );
+}
