@@ -46,19 +46,23 @@ function openy_editor_update_8003() {
 }
 
 /**
- * Update editor settings to remove Font Style and Font Size buttons.
+ * Update editor settings to remove Font and Font Size buttons.
  */
 function openy_editor_update_8004() {
-  $openy_editor_config_path = \Drupal::service('extension.list.module')->getPath('openy_editor') . '/config/install';
-  $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config_importer->update(
-    $openy_editor_config_path . '/editor.editor.full_html.yml',
-    'editor.editor.full_html',
-    'settings.toolbar.rows'
-  );
-  $config_importer->update(
-    $openy_editor_config_path . '/filter.format.full_html.yml',
-    'filter.format.full_html',
-    'filters'
-  );
+  $active_config = \Drupal::configFactory()->getEditable('editor.editor.full_html');
+  $settings = $active_config->get('settings');
+  if (empty($settings['toolbar']['rows'][0])) {
+    return;
+  }
+  $button_to_remove = ['Font', 'FontSize'];
+  foreach ($settings['toolbar']['rows'][0] as $id => $row) {
+    if ($row['name'] === 'Formatting' && !empty($row['items'])) {
+      $settings['toolbar']['rows'][0][$id]['items'] = array_values(
+        array_diff($row['items'], $button_to_remove)
+      );
+    }
+  }
+  $active_config->set('settings', $settings);
+  $active_config->set('settings.plugins', $active_config->get('settings.plugins'));
+  $active_config->save(TRUE);
 }
