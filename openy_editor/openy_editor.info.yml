@@ -3,7 +3,7 @@ description: Stores an editor and text filters configuration.
 type: module
 core_version_requirement: ^8 || ^9
 package: Open Y
-version: 8.x-1.0
+version: 8.x-1.1
 dependencies:
   - colorbutton:colorbutton
   - ckeditor_bootstrap_buttons:ckeditor_bootstrap_buttons

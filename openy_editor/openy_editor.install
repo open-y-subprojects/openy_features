@@ -44,3 +44,25 @@ function openy_editor_update_8003() {
   \Drupal::service('module_installer')->install(['ckeditor_font'], TRUE);
   openy_editor_update_8002();
 }
+
+/**
+ * Update editor settings to remove Font and Font Size buttons.
+ */
+function openy_editor_update_8004() {
+  $active_config = \Drupal::configFactory()->getEditable('editor.editor.full_html');
+  $settings = $active_config->get('settings');
+  if (empty($settings['toolbar']['rows'][0])) {
+    return;
+  }
+  $button_to_remove = ['Font', 'FontSize'];
+  foreach ($settings['toolbar']['rows'][0] as $id => $row) {
+    if ($row['name'] === 'Formatting' && !empty($row['items'])) {
+      $settings['toolbar']['rows'][0][$id]['items'] = array_values(
+        array_diff($row['items'], $button_to_remove)
+      );
+    }
+  }
+  $active_config->set('settings', $settings);
+  $active_config->set('settings.plugins', $active_config->get('settings.plugins'));
+  $active_config->save(TRUE);
+}
