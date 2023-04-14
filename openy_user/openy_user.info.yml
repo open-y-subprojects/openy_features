@@ -7,3 +7,4 @@ package: Open Y
 dependencies:
   - drupal:user
   - openy_popups
+  - openy_node_alert
