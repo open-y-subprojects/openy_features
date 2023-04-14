@@ -9,7 +9,7 @@ type: 'canonical_entities:node'
 pattern: '/facility/[node:title]'
 selection_criteria:
   a7b18220-6e2c-46e8-8da3-ee25e100754a:
-    id: node_type
+    id: entity_bundle:node
     bundles:
       facility: facility
     negate: false

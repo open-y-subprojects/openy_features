@@ -9,7 +9,7 @@ type: 'canonical_entities:node'
 pattern: '/blog/[node:title]'
 selection_criteria:
   f515c0b2-1272-4973-917e-eab232271e35:
-    id: node_type
+    id: entity_bundle:node
     bundles:
       blog: blog
     negate: false

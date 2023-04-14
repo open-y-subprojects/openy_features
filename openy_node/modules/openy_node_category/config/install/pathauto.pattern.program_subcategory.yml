@@ -9,7 +9,7 @@ type: 'canonical_entities:node'
 pattern: '/programs/[node:field_category_program:entity:title]/[node:title]'
 selection_criteria:
   e22a2fa0-9b66-40a7-a2a1-e21a0702170c:
-    id: node_type
+    id: entity_bundle:node
     bundles:
       program_subcategory: program_subcategory
     negate: false
