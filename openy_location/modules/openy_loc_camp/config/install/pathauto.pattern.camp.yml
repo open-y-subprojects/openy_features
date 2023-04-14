@@ -9,7 +9,7 @@ type: 'canonical_entities:node'
 pattern: '/camps/[node:title]'
 selection_criteria:
   5ee1b266-aa6e-4a02-9c06-61ca1389255d:
-    id: node_type
+    id: entity_bundle:node
     bundles:
       camp: camp
     negate: false

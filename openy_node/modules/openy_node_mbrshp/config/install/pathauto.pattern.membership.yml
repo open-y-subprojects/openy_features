@@ -9,7 +9,7 @@ type: 'canonical_entities:node'
 pattern: '/membership/[node:title]'
 selection_criteria:
   8ce7587d-84e9-4a1c-8625-8361c9f7d1d8:
-    id: node_type
+    id: entity_bundle:node
     bundles:
       membership: membership
     negate: false

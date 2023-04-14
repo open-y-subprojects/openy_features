@@ -9,7 +9,7 @@ type: 'canonical_entities:node'
 pattern: '/events/[node:title]'
 selection_criteria:
   d409b0b9-cfe7-4d48-ab2f-f21a0075c90a:
-    id: node_type
+    id: entity_bundle:node
     bundles:
       event: event
     negate: false
