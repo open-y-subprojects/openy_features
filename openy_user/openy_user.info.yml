@@ -6,3 +6,5 @@ version: 8.x-1.0
 package: Open Y
 dependencies:
   - drupal:user
+  - openy_popups
+  - openy_node_alert
