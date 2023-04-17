@@ -9,7 +9,8 @@
     "ynorth-projects/openy_node_session": "^0.9 || ^1.1.0",
     "drupal/core": "^9.5 || ^10",
     "drupal/rabbit_hole": "^1.0@beta || ^1.0",
-    "drupal/ctools": ">=3.13"
+    "drupal/ctools": ">=3.13",
+    "drupal/google_analytics": "^4.0.2"
   },
   "license": "GPL-2.0+",
   "minimum-stability": "dev"
