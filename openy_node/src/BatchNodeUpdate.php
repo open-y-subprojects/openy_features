@@ -34,6 +34,7 @@ class BatchNodeUpdate {
     $batch_ids = array_slice($ids, $context['sandbox']['progress'], $items_per_iteration);
     $nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($batch_ids);
 
+    $context['results']['ids'] = [];
     foreach ($nodes as $node) {
       if ($status && !$node->isPublished()) {
         // Publish all Activity nodes.
