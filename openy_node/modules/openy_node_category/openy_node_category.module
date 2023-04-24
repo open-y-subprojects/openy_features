@@ -36,6 +36,9 @@ function openy_node_category_node_update(Drupal\Core\Entity\EntityInterface $ent
   }
 
   $category_ids = _openy_node_category_getcategorynodes($entity);
+  if (!$category_ids) {
+    return;
+  }
   $batch = [
     'title' => t('Updating @type...', ['@type' => 'categories']),
     'operations' => [
