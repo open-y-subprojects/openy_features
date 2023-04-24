@@ -5,7 +5,7 @@
   "require": {
     "ycloudyusa/yusaopeny": "*",
     "open-y-subprojects/openy_node_alert": "^2.0",
-    "open-y-subprojects/openy_demo_content": "^1.0",
+    "open-y-subprojects/openy_demo_content": "^1.12",
     "ynorth-projects/openy_node_session": "^2.0",
     "drupal/core": "^9.5 || ^10",
     "drupal/rabbit_hole": "^1.0@beta || ^1.0",
