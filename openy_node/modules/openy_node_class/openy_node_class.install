@@ -210,6 +210,7 @@ function openy_node_class_update_8008() {
 
   // Update URL aliases for Class nodes.
   $result = \Drupal::entityQuery('node')
+    ->accessCheck(FALSE)
     ->condition('type', 'class')
     ->execute();
   $entity_storage = \Drupal::entityTypeManager()->getStorage('node');

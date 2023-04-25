@@ -46,7 +46,7 @@ class ClassLocationService implements ClassLocationServiceInterface {
   public function getLocationNode($location_id) {
     $location = NULL;
 
-    $query = \Drupal::entityQuery('node');
+    $query = \Drupal::entityQuery('node')->accessCheck(FALSE);
     $group = $query->orConditionGroup()
       ->condition('type', 'branch')
       ->condition('type', 'camp');
