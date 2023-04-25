@@ -42,7 +42,7 @@ function openy_prgf_classes_listing_form_views_exposed_form_alter(&$form, FormSt
         $filter_ids = array_keys($form[$selectField]['#options']);
         foreach ($filter_ids as $id) {
           if (is_numeric($id)) {
-            $query = \Drupal::entityQuery('node');
+            $query = \Drupal::entityQuery('node')->accessCheck(FALSE);
             $query->condition('status', 1);
             $query->condition('nid', $id);
             if (!$result = $query->execute()) {
@@ -76,7 +76,7 @@ function openy_prgf_classes_listing_get_location_options() {
       'camp' => 'camps',
     ];
 
-    $query =  \Drupal::entityQuery('node')
+    $query =  \Drupal::entityQuery('node')->accessCheck(FALSE)
       ->condition('status', 1)
       ->condition('type', ['branch', 'camp'], 'IN');
     $entity_ids = $query->execute();

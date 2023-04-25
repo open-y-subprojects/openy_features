@@ -209,7 +209,7 @@ class BetterTaxonomyIndexTid extends ManyToOne {
       }
       else {
         $options = [];
-        $query = \Drupal::entityQuery('taxonomy_term')
+        $query = \Drupal::entityQuery('taxonomy_term')->accessCheck(FALSE)
           // @todo Sorting on vocabulary properties -
           //   https://www.drupal.org/node/1821274.
           ->condition('status', TRUE)

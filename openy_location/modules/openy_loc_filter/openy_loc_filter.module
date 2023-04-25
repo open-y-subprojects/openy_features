@@ -112,6 +112,7 @@ function openy_loc_filter_query_data_wrapper_locations_alter(AlterableInterface 
   // If no one locations are selected we decide that all locations are selected.
   if (empty($allowed_locations)) {
     $allowed_locations = \Drupal::entityQuery('node')
+      ->accessCheck(FALSE)
       ->condition('type', ['branch', 'camp'], 'IN')
       ->condition('status', NodeInterface::PUBLISHED)
       ->execute();

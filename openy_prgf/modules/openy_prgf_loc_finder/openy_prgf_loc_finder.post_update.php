@@ -12,13 +12,13 @@ function openy_prgf_loc_finder_post_update_set_tags_style_default_value(&$sandbo
   if (!isset($sandbox['progress'])) {
     $sandbox['progress'] = 0;
     $sandbox['current'] = 0;
-    $sandbox['max'] = \Drupal::entityQuery('paragraph')
+    $sandbox['max'] = \Drupal::entityQuery('paragraph')->accessCheck(FALSE)
       ->condition('type', 'prgf_location_finder_filters')
       ->count()
       ->execute();
   }
 
-  $paragraph_ids = \Drupal::entityQuery('paragraph')
+  $paragraph_ids = \Drupal::entityQuery('paragraph')->accessCheck(FALSE)
     ->condition('type', 'prgf_location_finder_filters')
     ->condition('id', $sandbox['current'], '>')
     ->range(0, 20)

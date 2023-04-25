@@ -131,7 +131,7 @@ class CampService {
       $is_front = ($front == $system_path) ? TRUE : $is_front;
 
       // Query 1 Camp nodes that link to this landing page.
-      $query = \Drupal::entityQuery('node');
+      $query = \Drupal::entityQuery('node')->accessCheck(FALSE);
       $group = $query->orConditionGroup()
         ->condition('field_camp_menu_links', 'entity:node/' . $node->id())
         ->condition('field_camp_menu_links', 'internal:' . $system_path);

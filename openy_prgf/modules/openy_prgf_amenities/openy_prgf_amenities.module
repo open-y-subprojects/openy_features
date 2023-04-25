@@ -14,6 +14,7 @@ function openy_prgf_amenities_form_views_exposed_form_alter(&$form, FormStateInt
   if (($form['#id'] == 'views-exposed-form-branches-default') ||
      ($form['#id'] == 'views-exposed-form-location-by-amenities-block-1')) {
     $query = Drupal::entityQuery('taxonomy_term')
+      ->accessCheck(FALSE)
       ->condition('vid', 'amenities')
       ->sort('name');
     $results = $query->execute();

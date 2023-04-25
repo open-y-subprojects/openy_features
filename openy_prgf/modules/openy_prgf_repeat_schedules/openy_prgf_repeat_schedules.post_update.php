@@ -12,13 +12,13 @@ function openy_prgf_repeat_schedules_post_update_populate_filter_field(&$sandbox
   if (!isset($sandbox['progress'])) {
     $sandbox['progress'] = 0;
     $sandbox['current'] = 0;
-    $sandbox['max'] = \Drupal::entityQuery('paragraph')
+    $sandbox['max'] = \Drupal::entityQuery('paragraph')->accessCheck(FALSE)
       ->condition('type', 'repeat_schedules')
       ->count()
       ->execute();
   }
 
-  $paragraph_ids = \Drupal::entityQuery('paragraph')
+  $paragraph_ids = \Drupal::entityQuery('paragraph')->accessCheck(FALSE)
     ->condition('type', 'repeat_schedules')
     ->condition('id', $sandbox['current'], '>')
     ->range(0, 5)
