@@ -5,6 +5,7 @@ namespace Drupal\openy_block_date\StackMiddleware;
 use Drupal\Core\Cache\CacheableResponseInterface;
 use Drupal\Core\Cache\CacheTagsInvalidatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 /**
@@ -16,6 +17,11 @@ class BlockDateCacheInvalidator implements HttpKernelInterface {
    * Date block tag.
    */
   const TAG = 'block_date';
+
+  /**
+   * Provide BC compatibility for Drupal 9 / Symfony 4.x.
+   */
+  const MAIN_REQUEST = 1;
 
   /**
    * The wrapped HTTP kernel.
@@ -47,8 +53,8 @@ class BlockDateCacheInvalidator implements HttpKernelInterface {
   /**
    * {@inheritdoc}
    */
-  public function handle(Request $request, $type = self::MASTER_REQUEST, $catch = TRUE) {
-    if ($type === static::MASTER_REQUEST) {
+  public function handle(Request $request, $type = self::MAIN_REQUEST, $catch = TRUE): Response {
+    if ($type === static::MAIN_REQUEST) {
       $response = $this->httpKernel->handle($request, $type, $catch);
     }
     else {
