@@ -1,6 +1,8 @@
 <?php
+
 /**
- * @file Open Y Node Branch module file.
+ * @file
+ * Open Y Node Branch module file.
  */
 
 use Drupal\Core\Entity\EntityInterface;

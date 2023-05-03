@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @file
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\field\Entity\FieldStorageConfig;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\Entity\Paragraph;
@@ -65,7 +71,7 @@ function openy_egym_iwatch_theme_suggestions_paragraph_alter(&$suggestions, arra
  * @param array $paragraph_bundles
  *   List of paragraph bundles.
  * @param string $node_field_id
- *  Field where to search.
+ *   Field where to search.
  *
  * @return array
  *   Found paragraph.
@@ -115,10 +121,10 @@ function openy_egym_iwatch_search_node_paragraphs(NodeInterface $node, array $pa
 /**
  * Implements hook_system_breadcrumb_alter().
  */
-function openy_egym_iwatch_system_breadcrumb_alter(\Drupal\Core\Breadcrumb\Breadcrumb &$breadcrumb, \Drupal\Core\Routing\RouteMatchInterface $route_match, array $context) {
+function openy_egym_iwatch_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context) {
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
     if (count(openy_egym_iwatch_search_node_paragraphs($node, ['banner_fixed']))) {
-      $new = new Drupal\Core\Breadcrumb\Breadcrumb();
+      $new = new Breadcrumb();
       $new->addCacheableDependency($breadcrumb);
       $breadcrumb = $new;
     }

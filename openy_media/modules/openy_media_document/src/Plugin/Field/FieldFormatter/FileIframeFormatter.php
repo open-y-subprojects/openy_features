@@ -23,7 +23,7 @@ class FileIframeFormatter extends FileFormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $elements = array();
+    $elements = [];
 
     foreach ($this->getEntitiesToView($items, $langcode) as $delta => $file) {
       $image_uri = $file->getFileUri();
@@ -34,9 +34,9 @@ class FileIframeFormatter extends FileFormatterBase {
         '#context' => [
           'url' => $url,
         ],
-        '#cache' => array(
+        '#cache' => [
           'tags' => $file->getCacheTags(),
-        ),
+        ],
       ];
     }
 

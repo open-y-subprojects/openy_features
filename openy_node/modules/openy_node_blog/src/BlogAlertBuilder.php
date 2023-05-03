@@ -21,7 +21,7 @@ class BlogAlertBuilder implements AlertBuilderInterface {
   /**
    * Constructs the BlogAlertBuilder.
    *
-   * @param EntityTypeManagerInterface $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager) {
     $this->nodeStorage = $entity_type_manager->getStorage('node');

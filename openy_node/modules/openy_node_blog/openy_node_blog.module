@@ -19,7 +19,7 @@ function openy_node_blog_form_alter(&$form, FormStateInterface $form_state, $for
         ],
       ],
     ];
-    $form['field_blog_color']['widget']['#states'] = $visible;     
+    $form['field_blog_color']['widget']['#states'] = $visible;
     $form['field_blog_text_color']['widget']['#states'] = $visible;
   }
 }

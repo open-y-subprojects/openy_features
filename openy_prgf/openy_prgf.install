@@ -12,7 +12,7 @@ function openy_prgf_update_dependencies() {
   $dependencies['openy_prgf'] = [
     8007 => [
       'openy' => 8062,
-    ]
+    ],
   ];
 
   return $dependencies;

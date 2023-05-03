@@ -28,7 +28,7 @@ function openy_prgf_banner_update_8001() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_banner') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.paragraph.banner.default' =>[
+    'core.entity_form_display.paragraph.banner.default' => [
       'dependencies.config',
     ],
     'core.entity_view_display.paragraph.banner.default' => [
@@ -44,6 +44,7 @@ function openy_prgf_banner_update_8001() {
     }
   }
 }
+
 /**
  * Update description for fields.
  */
@@ -85,7 +86,7 @@ function openy_prgf_banner_update_8003() {
  * Update entity reference for field image.
  */
 function openy_prgf_banner_update_8004() {
- // This is outdated update and exist in next hooks, no need to import config twice.
+  // This is outdated update and exist in next hooks, no need to import config twice.
 }
 
 /**
@@ -173,7 +174,7 @@ function openy_prgf_banner_update_8009() {
     'paragraphs.paragraphs_type.banner',
     'core.entity_form_display.paragraph.banner.default',
     'image.style.prgf_banner',
-    'crop.type.crop_960_600'
+    'crop.type.crop_960_600',
   ]);
 }
 
@@ -184,7 +185,7 @@ function openy_prgf_banner_update_8010() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_banner') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.paragraph.banner.default' =>[
+    'core.entity_form_display.paragraph.banner.default' => [
       'content.field_prgf_link.settings.enabled_attributes',
       'content.field_prgf_link.type',
     ],
@@ -208,7 +209,7 @@ function openy_prgf_banner_update_8011() {
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
-    'image.style.carnation_banner_1920_700'
+    'image.style.carnation_banner_1920_700',
   ]);
 }
 
@@ -221,6 +222,6 @@ function openy_prgf_banner_update_8013() {
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
     'image.style.carnation_banner_1920_700',
-    'image.style.prgf_banner'
+    'image.style.prgf_banner',
   ]);
 }

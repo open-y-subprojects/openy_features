@@ -197,7 +197,7 @@ class BetterTaxonomyIndexTid extends ManyToOne {
 
         if ($tree) {
           foreach ($tree as $term) {
-            
+
             if (!$term->isPublished() && !$this->currentUser->hasPermission('administer taxonomy')) {
               continue;
             }

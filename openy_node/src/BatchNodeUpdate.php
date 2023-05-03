@@ -1,12 +1,10 @@
 <?php
 
-/**
- * @file
- * OpenY Node batch update class.
- */
-
 namespace Drupal\openy_node;
 
+/**
+ *
+ */
 class BatchNodeUpdate {
 
   /**
@@ -40,7 +38,8 @@ class BatchNodeUpdate {
         // Publish all Activity nodes.
         $node->setPublished();
         $node->save();
-      } elseif (!$status && $node->isPublished()) {
+      }
+      elseif (!$status && $node->isPublished()) {
         // Unpublish all Category nodes.
         $node->setUnPublished();
         $node->save();
@@ -76,7 +75,8 @@ class BatchNodeUpdate {
     if ($success) {
       if ($results['status']) {
         $status = 'published';
-      } else {
+      }
+      else {
         $status = 'unpublished';
       }
       $message = \Drupal::translation()->formatPlural(
@@ -88,9 +88,11 @@ class BatchNodeUpdate {
           '@status' => $status,
         ]
       );
-    } else {
+    }
+    else {
       $message = t('There was an error updating @type.', ['@type' => $results['type']]);
     }
     $messenger->addMessage($message);
   }
+
 }

@@ -65,7 +65,7 @@ function openy_loc_branch_update_8001() {
  */
 function openy_loc_branch_update_8002() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -74,7 +74,7 @@ function openy_loc_branch_update_8002() {
 
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.node.branch.default' =>[
+    'core.entity_form_display.node.branch.default' => [
       'third_party_settings.field_group.group_header_area',
       'third_party_settings.field_group.group_content_area',
       'third_party_settings.field_group.group_bottom_area',
@@ -96,7 +96,7 @@ function openy_loc_branch_update_8002() {
 function openy_loc_branch_update_8003() {
   $module = 'openy_loc_branch';
   $bundle = 'branch';
-  // Field definitions
+  // Field definitions.
   $config_dir = \Drupal::service('extension.list.module')->getPath($module) . '/config/install';
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -104,11 +104,11 @@ function openy_loc_branch_update_8003() {
     'field.field.node.' . $bundle . '.field_meta_tags',
     'simple_sitemap.bundle_settings.' . $bundle . '.landing_page',
   ]);
-  // Dependencies
+  // Dependencies.
   $config = \Drupal::service('extension.list.module')->getPath($module) . $module . '.info.yml';
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
   $config_importer->update($config, $module . '.info', 'dependencies');
-  // Entity view display
+  // Entity view display.
   $config = \Drupal::service('extension.list.module')->getPath($module) . '/config/install/core.entity_view_display.node.' . $bundle . '.default.yml';
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
   $config_importer->update($config, 'core.entity_view_display.node.' . $bundle . '.default', 'dependencies.module');
@@ -119,7 +119,7 @@ function openy_loc_branch_update_8003() {
  */
 function openy_loc_branch_update_8004() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -151,7 +151,7 @@ function openy_loc_branch_update_8004() {
  */
 function openy_loc_branch_update_8005() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -164,7 +164,7 @@ function openy_loc_branch_update_8005() {
  */
 function openy_loc_branch_update_8006() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -238,7 +238,7 @@ function openy_loc_branch_update_8010() {
  */
 function openy_loc_branch_update_8011() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -259,7 +259,7 @@ function openy_loc_branch_update_8012() {
  */
 function openy_loc_branch_update_8013() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -307,7 +307,7 @@ function openy_loc_branch_update_8014() {
       'hidden',
     ],
     'field.storage.node.field_location_amenities' => [
-      'dependencies.module'
+      'dependencies.module',
     ],
   ];
 
@@ -363,7 +363,7 @@ function openy_loc_branch_update_8017() {
 
   // Update multiple configurations.
   $configs = [
-    'core.entity_view_display.node.branch.full' =>[
+    'core.entity_view_display.node.branch.full' => [
       'content',
       'hidden',
     ],
@@ -424,7 +424,7 @@ function openy_loc_branch_update_8020() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.node.branch.default' =>[
+    'core.entity_form_display.node.branch.default' => [
       'content.field_location_temp_url.settings.enabled_attributes',
       'content.field_location_temp_url.type',
       'content.field_location_directions.settings.enabled_attributes',
@@ -460,7 +460,7 @@ function openy_loc_branch_update_8023() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'field.field.node.branch.field_location_coordinates' =>[
+    'field.field.node.branch.field_location_coordinates' => [
       'required',
     ],
   ];
@@ -511,8 +511,8 @@ function openy_loc_branch_update_8025() {
       'content',
     ],
     'core.entity_view_display.node.branch.default' => [
-      'content'
-    ]
+      'content',
+    ],
   ];
 
   $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
@@ -531,12 +531,12 @@ function openy_loc_branch_update_8026() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.node.branch.default' =>[
+    'core.entity_form_display.node.branch.default' => [
       'content.field_location_directions.settings',
     ],
-    'field.field.node.branch.field_location_directions' =>[
+    'field.field.node.branch.field_location_directions' => [
       'description',
-      'default_value'
+      'default_value',
     ],
   ];
 

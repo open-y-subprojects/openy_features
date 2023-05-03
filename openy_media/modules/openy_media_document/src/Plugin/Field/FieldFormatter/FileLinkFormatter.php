@@ -23,7 +23,7 @@ class FileLinkFormatter extends FileFormatterBase {
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $elements = array();
+    $elements = [];
     $title = $items->getEntity()->get('name')->value;
 
     foreach ($this->getEntitiesToView($items, $langcode) as $delta => $file) {
@@ -34,9 +34,9 @@ class FileLinkFormatter extends FileFormatterBase {
         '#type' => 'link',
         '#url' => $url,
         '#attributes' => ['target' => '_blank'],
-        '#cache' => array(
+        '#cache' => [
           'tags' => $file->getCacheTags(),
-        ),
+        ],
       ];
     }
 

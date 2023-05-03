@@ -31,7 +31,7 @@ function openy_menu_update_8003() {
 }
 
 /**
-* Update Menu management Tour.
+ * Update Menu management Tour.
  */
 function openy_menu_update_8004() {
   $updates = [

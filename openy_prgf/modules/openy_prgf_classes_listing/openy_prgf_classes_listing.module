@@ -1,9 +1,12 @@
 <?php
+
 /**
- * @file Open Y Paragraph classes listing module file.
+ * @file
+ * Open Y Paragraph classes listing module file.
  */
 
-use \Drupal\Core\Form\FormStateInterface;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -60,6 +63,7 @@ function openy_prgf_classes_listing_form_views_exposed_form_alter(&$form, FormSt
 
 /**
  * Predefine options for locations.
+ *
  * @return array
  */
 function openy_prgf_classes_listing_get_location_options() {
@@ -76,12 +80,12 @@ function openy_prgf_classes_listing_get_location_options() {
       'camp' => 'camps',
     ];
 
-    $query =  \Drupal::entityQuery('node')->accessCheck(FALSE)
+    $query = \Drupal::entityQuery('node')->accessCheck(FALSE)
       ->condition('status', 1)
       ->condition('type', ['branch', 'camp'], 'IN');
     $entity_ids = $query->execute();
 
-    $nodes = \Drupal\node\Entity\Node::loadMultiple($entity_ids);
+    $nodes = Node::loadMultiple($entity_ids);
 
     foreach ($nodes as $id => $node) {
       $options[$map[$node->bundle()]][$id] = $node->getTitle();

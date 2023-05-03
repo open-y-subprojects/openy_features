@@ -34,6 +34,7 @@ function openy_prgf_2c_update_8002() {
 
 /**
  * Change view mode for columns fields to full.
+ *
  * @see https://github.com/ymcatwincities/openy/issues/824
  */
 function openy_prgf_2c_update_8003() {

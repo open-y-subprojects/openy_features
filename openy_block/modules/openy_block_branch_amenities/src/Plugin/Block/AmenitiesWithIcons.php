@@ -20,17 +20,17 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class AmenitiesWithIcons extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
-   * RouteMatch service instance
+   * RouteMatch service instance.
    */
   protected $routeMatch;
 
   /**
    * @param array $configuration
-   *   Plugin config
+   *   Plugin config.
    * @param string $plugin_id
-   *   Plugin id
+   *   Plugin id.
    * @param mixed $plugin_definition
-   *   Plugin definition
+   *   Plugin definition.
    * @param $routeMatch
    *   RouteMatch service instance
    */
@@ -67,8 +67,8 @@ class AmenitiesWithIcons extends BlockBase implements ContainerFactoryPluginInte
       return $node->get('field_location_amenities')->view([
         'type' => 'entity_reference_entity_view',
         'settings' => [
-          'view_mode' => 'icon'
-        ]
+          'view_mode' => 'icon',
+        ],
       ]);
     }
 
@@ -80,11 +80,11 @@ class AmenitiesWithIcons extends BlockBase implements ContainerFactoryPluginInte
    */
   public function getCacheTags() {
     if ($node = $this->routeMatch->getParameter('node')) {
-      //if there is node add its cachetag
+      // If there is node add its cachetag.
       return Cache::mergeTags(parent::getCacheTags(), ['node:' . $node->id()]);
     }
     else {
-      //Return default tags instead.
+      // Return default tags instead.
       return parent::getCacheTags();
     }
   }
@@ -93,7 +93,7 @@ class AmenitiesWithIcons extends BlockBase implements ContainerFactoryPluginInte
    * {@inheritdoc}
    */
   public function getCacheContexts() {
-    return Cache::mergeContexts(parent::getCacheContexts(), array('route'));
+    return Cache::mergeContexts(parent::getCacheContexts(), ['route']);
   }
 
 }

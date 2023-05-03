@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ */
+
 use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
@@ -11,6 +15,9 @@ use Drupal\Core\File\FileSystemInterface;
  * Open Y eGym iWatch install file.
  */
 
+/**
+ *
+ */
 function openy_egym_iwatch_install() {
   module_set_weight('openy_egym_iwatch', 30);
 
@@ -18,15 +25,15 @@ function openy_egym_iwatch_install() {
 
   $images = [];
   foreach ([
-             'clock' => 'clock.png',
-             'hero' => 'HERO.png',
-             '1' => '1.png',
-             '2' => '2.png',
-             '3' => '3.png',
-             '4' => '4.png',
-             '5' => '5.png',
-             '6' => '6.png',
-           ] as $key => $image_file_name) {
+    'clock' => 'clock.png',
+    'hero' => 'HERO.png',
+    '1' => '1.png',
+    '2' => '2.png',
+    '3' => '3.png',
+    '4' => '4.png',
+    '5' => '5.png',
+    '6' => '6.png',
+  ] as $key => $image_file_name) {
     $file_path = dirname(__FILE__) . '/demo_images/' . $image_file_name;
     if (file_exists($file_path)) {
       $file = file_get_contents($file_path);
@@ -55,7 +62,7 @@ function openy_egym_iwatch_install() {
 <p><b>The YMCA app for Apple Watch</b></p>
 <p>With the new YMCA app for Apple Watch, members can enjoy extra workout features with a tap on the wrist. The YMCA app for Apple Watch can help you amp up activity—and it’s free to download.</p>
 ',
-      'format' => 'full_html'
+      'format' => 'full_html',
     ]);
   $prgf_sc->isNew();
   $prgf_sc->save();
@@ -146,7 +153,7 @@ For any training plan created on iPhone, follow along on your Apple Watch. Infor
     ->setValue('DOWNLOAD THE APP');
   $prgf_grid_column7->get('field_prgf_grid_clm_description')->setValue([
     'value' => '<p><a class="btn btn-default" href="https://appstore.com" target="_blank"><span class="text">Appstore</span></a></p>',
-    'format' => 'full_html'
+    'format' => 'full_html',
   ]);
 
   $prgf_grid_column7->isNew();
@@ -157,7 +164,7 @@ For any training plan created on iPhone, follow along on your Apple Watch. Infor
     ->setValue('No Apple Watch?');
   $prgf_grid_column8->get('field_prgf_grid_clm_description')->setValue([
     'value' => '<p>Check your local YMCA for more info on buying an Apple Watch.</p>',
-    'format' => 'full_html'
+    'format' => 'full_html',
   ]);
 
   $prgf_grid_column8->isNew();

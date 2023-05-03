@@ -50,7 +50,7 @@ function openy_loc_facility_update_8001() {
 function openy_loc_facility_update_8002() {
   $module = 'openy_loc_facility';
   $bundle = 'facility';
-  // Field definitions
+  // Field definitions.
   $config_dir = \Drupal::service('extension.list.module')->getPath($module) . '/config/install';
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -254,7 +254,6 @@ function openy_loc_facility_update_8011() {
   }
 }
 
-
 /**
  * Update Open Y Facility feature to use link attributes widget.
  */
@@ -262,7 +261,7 @@ function openy_loc_facility_update_8012() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_facility') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.node.facility.default' =>[
+    'core.entity_form_display.node.facility.default' => [
       'content.field_location_directions.settings.enabled_attributes',
       'content.field_location_directions.type',
     ],
@@ -296,7 +295,7 @@ function openy_loc_facility_update_8015() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_facility') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'field.field.node.facility.field_location_coordinates' =>[
+    'field.field.node.facility.field_location_coordinates' => [
       'required',
     ],
   ];
@@ -317,12 +316,12 @@ function openy_loc_facility_update_8016() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_facility') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.node.facility.default' =>[
+    'core.entity_form_display.node.facility.default' => [
       'content.field_location_directions.settings',
     ],
-    'field.field.node.facility.field_location_directions' =>[
+    'field.field.node.facility.field_location_directions' => [
       'description',
-      'default_value'
+      'default_value',
     ],
   ];
 

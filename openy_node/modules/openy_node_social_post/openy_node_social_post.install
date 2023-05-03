@@ -5,6 +5,9 @@
  * Open Y Node Social Post install file.
  */
 
+/**
+ *
+ */
 function openy_node_social_post_install() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_social_post') . '/config/install/';
   // Import configurations using upgrade tool to avoid Upgrade tool conflicts.
@@ -47,7 +50,7 @@ function openy_node_social_post_update_8002() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_social_post') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.node.social_post.default' =>[
+    'core.entity_form_display.node.social_post.default' => [
       'content.field_link.settings.enabled_attributes',
       'content.field_link.type',
     ],
@@ -70,6 +73,6 @@ function openy_node_social_post_update_8004() {
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
-    'image.style.social_post_preview'
+    'image.style.social_post_preview',
   ]);
 }

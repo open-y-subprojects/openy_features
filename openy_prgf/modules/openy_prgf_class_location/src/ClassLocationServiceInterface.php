@@ -12,7 +12,7 @@ interface ClassLocationServiceInterface {
   /**
    * Retrieves location node for the location parameter value.
    *
-   * @param $location_id string
+   * @param string $location_id
    *   Location id.
    *
    * @return \Drupal\node\NodeInterface|null

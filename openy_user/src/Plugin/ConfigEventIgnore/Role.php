@@ -22,7 +22,7 @@ class Role extends ConfigEventIgnoreBase {
   public function fullIgnore() {
     // No need to track roles config customizations, on each website
     // they can be different.
-    // TODO: We need to improve this part, for now we have one reason to track
+    // @todo We need to improve this part, for now we have one reason to track
     // roles customization - in case of Open Y in the future will add a new
     // hook_update in the openy_user module all customization
     // can be overridden, so let's leave default logic for now.

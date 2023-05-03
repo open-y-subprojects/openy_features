@@ -6,7 +6,6 @@ use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\node\NodeInterface;
 use Drupal\openy_prgf_class_location\ClassLocationServiceInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Entity\EntityTypeManager;
@@ -52,9 +51,9 @@ class ClassLocation extends BlockBase implements ContainerFactoryPluginInterface
    *   The plugin ID for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
-   * @param ClassLocationServiceInterface $class_location_service
+   * @param \Drupal\openy_prgf_class_location\ClassLocationServiceInterface $class_location_service
    *   The Class Location service.
-   * @param RouteMatchInterface $route_match
+   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The Route match service.
    * @param \Drupal\Core\Entity\EntityTypeManager $entityTypeManager
    *   EntityTypeManager.
@@ -105,7 +104,7 @@ class ClassLocation extends BlockBase implements ContainerFactoryPluginInterface
       $location_id = NULL;
     }
 
-    /* @var NodeInterface $location */
+    /** @var NodeInterface $location */
     if (is_a($location = $this->classLocationService->getLocationNode($location_id), 'Drupal\node\Entity\Node')) {
       $viewBuilder = $this->entityTypeManager->getViewBuilder('node');
       $location_renderable = $viewBuilder->view($location, 'class_location');

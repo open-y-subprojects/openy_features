@@ -5,19 +5,18 @@
  * Open Y Node install file.
  */
 
- /**
+/**
  * Implement hook_install().
  */
 function openy_node_install() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/override/';
-    // Import new configuration
-    $config_importer = \Drupal::service('openy_upgrade_tool.importer');
-    $config_importer->setDirectory($config_dir);
-    $config_importer->importConfigs([
-      'metatag.metatag_defaults.node',
-    ]);
+  // Import new configuration.
+  $config_importer = \Drupal::service('openy_upgrade_tool.importer');
+  $config_importer->setDirectory($config_dir);
+  $config_importer->importConfigs([
+    'metatag.metatag_defaults.node',
+  ]);
 }
-
 
 /**
  * Implements hook_update_dependencies().
@@ -26,7 +25,7 @@ function openy_node_update_dependencies() {
   $dependencies['openy_node'] = [
     8003 => [
       'openy' => 8012,
-    ]
+    ],
   ];
 
   return $dependencies;
@@ -37,7 +36,7 @@ function openy_node_update_dependencies() {
  */
 function openy_node_update_8001() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/install/';
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -60,7 +59,7 @@ function openy_node_update_8002() {
  * Enable Metatag, Redirect and Simple Sitemap modules.
  */
 function openy_node_update_8003() {
-  // Image Style & OG Meta tags defaults
+  // Image Style & OG Meta tags defaults.
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/install';
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -73,9 +72,8 @@ function openy_node_update_8003() {
 
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
-    'metatag.metatag_defaults.node'
+    'metatag.metatag_defaults.node',
   ]);
-
 
   $config = \Drupal::service('extension.list.module')->getPath('openy_node') . 'openy_node.info.yml';
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
@@ -87,7 +85,7 @@ function openy_node_update_8003() {
  */
 function openy_node_update_8004() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/install/';
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -147,6 +145,6 @@ function openy_node_update_8009() {
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
-    'image.style.facebook'
+    'image.style.facebook',
   ]);
 }

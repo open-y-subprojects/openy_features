@@ -12,7 +12,7 @@ function openy_prgf_lto_update_8001() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_lto') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.paragraph.lto.default' =>[
+    'core.entity_form_display.paragraph.lto.default' => [
       'content.field_link.settings.enabled_attributes',
       'content.field_link.type',
       'content.field_lto_link.settings.enabled_attributes',

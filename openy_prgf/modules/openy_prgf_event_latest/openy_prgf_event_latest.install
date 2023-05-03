@@ -13,7 +13,7 @@ function openy_prgf_event_latest_update_8001() {
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
-    'views.view.latest_event_posts'
+    'views.view.latest_event_posts',
   ]);
 }
 
@@ -25,6 +25,6 @@ function openy_prgf_event_latest_update_8002() {
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
-    'views.view.latest_event_posts'
+    'views.view.latest_event_posts',
   ]);
 }
