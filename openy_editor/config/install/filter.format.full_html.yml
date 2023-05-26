@@ -1,36 +1,6 @@
 langcode: en
 status: true
 dependencies:
-  config:
-    - core.entity_view_mode.media.article_image
-    - core.entity_view_mode.media.calc_preview
-    - core.entity_view_mode.media.calc_summary
-    - core.entity_view_mode.media.embedded_full
-    - core.entity_view_mode.media.embedded_half
-    - core.entity_view_mode.media.embedded_link
-    - core.entity_view_mode.media.event_image
-    - core.entity_view_mode.media.featured
-    - core.entity_view_mode.media.full
-    - core.entity_view_mode.media.full_without_blazy
-    - core.entity_view_mode.media.half_without_blazy
-    - core.entity_view_mode.media.icon
-    - core.entity_view_mode.media.media_library
-    - core.entity_view_mode.media.node_blog
-    - core.entity_view_mode.media.node_blog_teaser
-    - core.entity_view_mode.media.node_news
-    - core.entity_view_mode.media.node_news_teaser
-    - core.entity_view_mode.media.node_program_header
-    - core.entity_view_mode.media.node_program_subcategory_teaser
-    - core.entity_view_mode.media.prgf_banner
-    - core.entity_view_mode.media.prgf_gallery
-    - core.entity_view_mode.media.prgf_small_banner
-    - core.entity_view_mode.media.prgf_teaser
-    - core.entity_view_mode.media.related_content
-    - core.entity_view_mode.media.slick
-    - core.entity_view_mode.media.teaser
-    - core.entity_view_mode.media.teaser_image
-    - core.entity_view_mode.media.thumbnail_for_preview
-    - core.entity_view_mode.media.token
   module:
     - blazy
     - editor
@@ -72,7 +42,7 @@ filters:
     status: false
     weight: -44
     settings:
-      allowed_html: ''
+      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <u> <s> <img src alt data-entity-type data-entity-uuid data-align data-caption> <drupal-entity data-entity-type data-entity-uuid data-entity-embed-display data-entity-embed-display-settings data-align data-caption data-embed-button> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <span lang dir>'
       filter_html_help: true
       filter_html_nofollow: false
   entity_embed:
