@@ -10,7 +10,15 @@
     "drupal/core": "^9.5 || ^10",
     "drupal/rabbit_hole": "^1.0@beta || ^1.0",
     "drupal/ctools": ">=3.13",
+    "drupal/ckeditor5_font": "^1.1@beta",
     "drupal/google_analytics": "^4.0.2"
+  },
+  "extra": {
+    "patches": {
+      "drupal/ckeditor5_font": {
+        "Issue #3350333: TypeError: array_filter(): Argument #1 ($array) must be of type array.": "https://www.drupal.org/files/issues/2023-04-21/3350333-5.patch"
+      }
+    }
   },
   "license": "GPL-2.0+",
   "minimum-stability": "dev"

@@ -8,6 +8,7 @@ dependencies:
   - colorbutton:colorbutton
   - ckeditor_bootstrap_buttons:ckeditor_bootstrap_buttons
   - drupal:ckeditor5
+  - drupal:ckeditor5_font
   - drupal:editor
   - ckeditor_font:ckeditor_font
   - drupal:filter
