@@ -6,9 +6,6 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Routing\RouteMatchInterface;
 
-/**
- *
- */
 class BlogSimplePaginator {
 
   /**
