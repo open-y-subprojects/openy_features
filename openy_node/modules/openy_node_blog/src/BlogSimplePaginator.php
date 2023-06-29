@@ -64,6 +64,7 @@ class BlogSimplePaginator {
       ->condition('langcode', $currentNode->language()->getId())
       ->sort('created', $sort)
       ->range(0, 1)
+      ->accessCheck(FALSE)
       ->execute();
 
     if (!empty($result) && is_array($result)) {
