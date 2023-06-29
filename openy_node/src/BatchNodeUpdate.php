@@ -2,9 +2,6 @@
 
 namespace Drupal\openy_node;
 
-/**
- *
- */
 class BatchNodeUpdate {
 
   /**
