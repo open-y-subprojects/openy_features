@@ -105,7 +105,7 @@ function openy_prgf_teaser_update_8005() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_teaser') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'image.style.prgf_teaser' =>[
+    'image.style.prgf_teaser' => [
       'dependencies',
       'effects',
     ],
@@ -143,7 +143,7 @@ function openy_prgf_teaser_update_8007() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_teaser') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.paragraph.teaser.default' =>[
+    'core.entity_form_display.paragraph.teaser.default' => [
       'content.field_prgf_link.settings.enabled_attributes',
       'content.field_prgf_link.type',
     ],
@@ -203,18 +203,18 @@ function openy_prgf_teaser_update_8011() {
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
     'image.style.paragraph_teaser_520_440',
-    'image.style.prgf_teaser'
+    'image.style.prgf_teaser',
   ]);
 }
 
 /**
- * Update Open Y paragraph teaser - field image is required
+ * Update Open Y paragraph teaser - field image is required.
  */
 function openy_prgf_teaser_update_8012() {
   $path = \Drupal::service('extension.list.module')->getPath('openy_prgf_teaser') . '/config/install';
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
-    'field.field.paragraph.teaser.field_prgf_image'
+    'field.field.paragraph.teaser.field_prgf_image',
   ]);
 }

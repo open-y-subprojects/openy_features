@@ -5,10 +5,12 @@
  * OpenY Paragraph News Listing module file.
  */
 
+use Drupal\Core\Form\FormStateInterface;
+
 /**
  * Implements hook_form_alter().
  */
-function openy_prgf_news_listing_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function openy_prgf_news_listing_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if ($form['#id'] == 'views-exposed-form-listing-news-posts-block') {
     $form['combine']['#attributes']['placeholder'] = t('Search the news...');
   }

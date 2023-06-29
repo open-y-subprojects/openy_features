@@ -3,7 +3,6 @@
 namespace Drupal\openy_prgf_class_sessions;
 
 use Drupal\node\NodeInterface;
-use Drupal\openy_session_instance\Entity\SessionInstance;
 
 /**
  * Class ClassSessionsService.
@@ -32,7 +31,7 @@ interface ClassSessionsServiceInterface {
    * @param array $session_instances
    *   Array of \Drupal\openy_session_instance\Entity\SessionInstance.
    *
-   * @param $tags string[]
+   * @param string[] $tags
    *   Cache tags array.
    *
    * @return array
@@ -43,7 +42,7 @@ interface ClassSessionsServiceInterface {
   /**
    * Build render array of registation link.
    *
-   * @param $session \Drupal\node\Entity\Node
+   * @param \Drupal\node\Entity\Node $session
    *
    * @return null|Link
    */
@@ -52,7 +51,7 @@ interface ClassSessionsServiceInterface {
   /**
    * Get session online value.
    *
-   * @param $session \Drupal\node\Entity\Node
+   * @param \Drupal\node\Entity\Node $session
    *
    * @return bool
    */
@@ -61,7 +60,7 @@ interface ClassSessionsServiceInterface {
   /**
    * Get session ticket value.
    *
-   * @param $session \Drupal\node\Entity\Node
+   * @param \Drupal\node\Entity\Node $session
    *
    * @return bool
    */
@@ -70,7 +69,7 @@ interface ClassSessionsServiceInterface {
   /**
    * Get in membership value.
    *
-   * @param $session \Drupal\node\Entity\Node
+   * @param \Drupal\node\Entity\Node $session
    *
    * @return bool
    */

@@ -241,7 +241,7 @@ function openy_node_landing_update_8010() {
 }
 
 /**
- * New column-left layout
+ * New column-left layout.
  */
 function openy_node_landing_update_8011() {
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
@@ -308,8 +308,8 @@ function openy_node_landing_update_8014() {
   // Update multiple configurations.
   $configs = [
     'field.field.node.landing_page.field_lp_location' => [
-      'settings'
-    ]
+      'settings',
+    ],
   ];
   $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
   foreach ($configs as $config_name => $params) {

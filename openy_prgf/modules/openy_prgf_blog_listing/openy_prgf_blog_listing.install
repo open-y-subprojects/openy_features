@@ -29,7 +29,7 @@ function openy_prgf_blog_listing_update_8002() {
 
   // Update multiple configurations.
   $configs = [
-    'core.entity_view_display.paragraph.blog_posts_listing.default' =>[
+    'core.entity_view_display.paragraph.blog_posts_listing.default' => [
       'content.field_prgf_block.region',
     ],
   ];
@@ -50,7 +50,7 @@ function openy_prgf_blog_listing_update_8003() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_blog_listing');
   $config_dir .= '/config/install/';
 
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([

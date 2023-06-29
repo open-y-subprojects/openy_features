@@ -89,6 +89,6 @@ function openy_prgf_mbrshp_calc_update_8006() {
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
     'image.style.node_mbrshp_calc_preview',
-    'image.style.node_mbrshp_calc_summary'
+    'image.style.node_mbrshp_calc_summary',
   ]);
 }

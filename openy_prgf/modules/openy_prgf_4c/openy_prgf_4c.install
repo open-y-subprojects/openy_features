@@ -36,6 +36,7 @@ function openy_prgf_4c_update_8003() {
 
 /**
  * Change view mode for columns fields to full.
+ *
  * @see https://github.com/ymcatwincities/openy/issues/824
  */
 function openy_prgf_4c_update_8004() {
@@ -73,7 +74,7 @@ function openy_prgf_4c_update_8006() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_4c') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.paragraph.4c.default' =>[
+    'core.entity_form_display.paragraph.4c.default' => [
       'content.field_prgf_4c_button.settings.enabled_attributes',
       'content.field_prgf_4c_button.type',
     ],

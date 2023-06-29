@@ -1,6 +1,8 @@
 <?php
+
 /**
- * @file Openy Location install file.
+ * @file
+ * Openy Location install file.
  */
 
 /**
@@ -8,7 +10,7 @@
  */
 function openy_location_update_8001() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_location') . '/config/install/';
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([

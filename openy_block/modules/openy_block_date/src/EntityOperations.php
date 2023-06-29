@@ -2,6 +2,7 @@
 
 namespace Drupal\openy_block_date;
 
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\Component\Datetime\TimeInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
@@ -77,7 +78,7 @@ class EntityOperations implements ContainerInjectionInterface {
     $fields_date = ['field_start_date', 'field_end_date'];
     foreach ($fields_date as $field) {
       // Set tags with timestamps of future block changes.
-      $dateTime = DrupalDateTime::createFromFormat(\Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $entity->$field->value, 'UTC');
+      $dateTime = DrupalDateTime::createFromFormat(DateTimeItemInterface::DATETIME_STORAGE_FORMAT, $entity->$field->value, 'UTC');
       $timestamp = $dateTime->getTimestamp();
       if ($timestamp > $requestTime) {
         $build['#cache']['tags'][] = self::TAG . ":$timestamp";

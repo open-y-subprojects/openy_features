@@ -6,7 +6,6 @@ use Drupal\node\NodeInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\openy_session_instance\SessionInstanceManagerInterface;
-use Drupal\openy_session_instance\Entity\SessionInstance;
 use Drupal\Core\Cache\Cache;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
@@ -66,7 +65,7 @@ class ClassSessionsService implements ClassSessionsServiceInterface {
   public function getSessionInstancesRows($session_instances, &$tags) {
     $session_instances_rows = [];
     foreach ($session_instances as $session_instance) {
-      /* @var $session_instance \Drupal\openy_session_instance\Entity\SessionInstance */
+      /** @var \Drupal\openy_session_instance\Entity\SessionInstance $session_instance */
 
       // If location empty skip session instance.
       if (!is_a($location = $session_instance->getLocation(), 'Drupal\node\Entity\Node')) {
@@ -82,7 +81,7 @@ class ClassSessionsService implements ClassSessionsServiceInterface {
       $tags_location = $location->getCacheTags();
       $tags = Cache::mergeTags($tags, $tags_location);
 
-      // Add session cache tags
+      // Add session cache tags.
       $tags_session = $session->getCacheTags();
       $tags = Cache::mergeTags($tags, $tags_session);
 
@@ -111,12 +110,12 @@ class ClassSessionsService implements ClassSessionsServiceInterface {
         'in_membership' => $this->getSessionInMembership($session),
       ];
 
-      //  Min Age
+      // Min Age.
       if (!empty($session_instance->get('min_age')->value)) {
         $row['age_min'] = $session_instance->get('min_age')->value;
       }
 
-      //  Max Age
+      // Max Age.
       if (!empty($session_instance->get('max_age')->value)) {
         $row['age_max'] = $session_instance->get('max_age')->value;
       }

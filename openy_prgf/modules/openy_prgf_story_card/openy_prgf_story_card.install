@@ -12,7 +12,7 @@ function openy_prgf_story_card_update_8001() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_story_card') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.paragraph.story_card.default' =>[
+    'core.entity_form_display.paragraph.story_card.default' => [
       'content.field_prgf_link.settings.enabled_attributes',
       'content.field_prgf_link.type',
     ],

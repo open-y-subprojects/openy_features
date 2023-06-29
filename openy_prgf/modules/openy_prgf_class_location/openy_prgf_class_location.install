@@ -1,7 +1,8 @@
 <?php
 
 /**
- * @file Open Y class location paragraph.
+ * @file
+ * Open Y class location paragraph.
  */
 
 /**
@@ -19,7 +20,7 @@ function openy_prgf_class_location_uninstall() {
  */
 function openy_prgf_class_location_update_8001() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_class_location') . '/config/install/';
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([

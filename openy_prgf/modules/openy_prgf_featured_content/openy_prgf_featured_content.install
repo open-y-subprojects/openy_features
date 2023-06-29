@@ -12,7 +12,7 @@ function openy_prgf_featured_content_update_8001() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_featured_content') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.paragraph.featured_content.default' =>[
+    'core.entity_form_display.paragraph.featured_content.default' => [
       'content.field_prgf_headline.settings.placeholder',
       'content.field_prgf_link.settings.placeholder_url',
       'content.field_prgf_link.settings.placeholder_title',
@@ -50,7 +50,7 @@ function openy_prgf_featured_content_update_8002() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_featured_content') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.paragraph.featured_content.default' =>[
+    'core.entity_form_display.paragraph.featured_content.default' => [
       'content.field_prgf_link.settings.enabled_attributes',
       'content.field_prgf_link.type',
     ],

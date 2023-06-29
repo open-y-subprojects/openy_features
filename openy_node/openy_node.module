@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @file
+ */
+
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -45,8 +49,7 @@ function openy_node_modules_installed($modules) {
 /**
  * Implements hook_form_BASE_ID_alter().
  */
-function openy_node_form_system_site_information_settings_alter(&$form, FormStateInterface $form_state, $form_id)
-{
+function openy_node_form_system_site_information_settings_alter(&$form, FormStateInterface $form_state, $form_id) {
   /** @var Drupal\views\Entity\View $view */
   $view = \Drupal::entityTypeManager()->getStorage('view')->load('frontpage');
 

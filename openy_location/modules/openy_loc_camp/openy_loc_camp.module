@@ -12,7 +12,6 @@ use Drupal\node\NodeInterface;
  */
 function openy_loc_camp_theme_suggestions_page_alter(array &$suggestions, array $variables) {
   // Add content type suggestion for Landing pages related to a camp.
-
   // Exit if not a node page, or if the 'openy_loc_camp.camp_service' is not available.
   if (!($node = \Drupal::request()->attributes->get('node')) || !($camp_service = \Drupal::service('openy_loc_camp.camp_service'))) {
     return;

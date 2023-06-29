@@ -25,7 +25,7 @@ class BlogSimplePaginator {
   /**
    * Constructs the BlogSimplePaginator.
    *
-   * @param EntityTypeManagerInterface $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager, RouteMatchInterface $current_route_match) {
     $this->nodeStorage = $entity_type_manager->getStorage('node');
@@ -40,28 +40,29 @@ class BlogSimplePaginator {
    */
   private function buildQuery($direction = 'prev') {
     $currentNode = $this->routeMatch->getParameter('node');
-    
+
     if (!$currentNode) {
       return NULL;
     }
-    
+
     $query = $this->nodeStorage->getQuery();
 
     $compare = '>';
     $sort = 'ASC';
-    
+
     if ($direction == 'prev') {
       $compare = '<';
       $sort = 'DESC';
     }
 
     $result = $query->condition('created', $currentNode->getCreatedTime(), $compare)
-                 ->condition('type', $currentNode->bundle())
-                 ->condition('status', 1)
-                 ->condition('langcode', $currentNode->language()->getId())
-                 ->sort('created', $sort)
-                 ->range(0, 1)
-                 ->execute();
+      ->condition('type', $currentNode->bundle())
+      ->condition('status', 1)
+      ->condition('langcode', $currentNode->language()->getId())
+      ->sort('created', $sort)
+      ->range(0, 1)
+      ->accessCheck(FALSE)
+      ->execute();
 
     if (!empty($result) && is_array($result)) {
       $nid = array_shift($result);

@@ -35,7 +35,7 @@ function openy_prgf_embedded_groupexpro_schedule_update_8001() {
  * Enable openy_gxp if not enabled.
  */
 function openy_prgf_embedded_groupexpro_schedule_update_8002() {
-  $module_handler = \Drupal::moduleHandler();;
+  $module_handler = \Drupal::moduleHandler();
   if ($module_handler->moduleExists('openy_gxp')) {
     return;
   }

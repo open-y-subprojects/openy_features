@@ -53,7 +53,7 @@ function openy_node_blog_update_8001() {
 function openy_node_blog_update_8002() {
   $module = 'openy_node_blog';
   $bundle = 'blog';
-  // Field definitions
+  // Field definitions.
   $config_dir = \Drupal::service('extension.list.module')->getPath($module) . '/config/install';
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
@@ -61,15 +61,15 @@ function openy_node_blog_update_8002() {
     'field.field.node.' . $bundle . '.field_meta_tags',
     'simple_sitemap.bundle_settings.' . $bundle . '.landing_page',
   ]);
-  // Dependencies
+  // Dependencies.
   $config = \Drupal::service('extension.list.module')->getPath($module) . $module . '.info.yml';
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
   $config_importer->update($config, $module . '.info', 'dependencies');
-  // Entity form
+  // Entity form.
   $config = \Drupal::service('extension.list.module')->getPath($module) . '/config/install/core.entity_form_display.node.' . $bundle . '.default.yml';
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
   $config_importer->update($config, 'core.entity_form_display.node.' . $bundle . '.default', 'dependencies.config');
-  // Entity view display
+  // Entity view display.
   $config = \Drupal::service('extension.list.module')->getPath($module) . '/config/install/core.entity_view_display.node.' . $bundle . '.default.yml';
   $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
   $config_importer->update($config, 'core.entity_view_display.node.' . $bundle . '.default', 'dependencies.config');
@@ -115,7 +115,7 @@ function openy_node_blog_update_8004() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_blog') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'field.field.node.blog.field_blog_category' =>[
+    'field.field.node.blog.field_blog_category' => [
       'description',
     ],
     'field.field.node.blog.field_blog_description' => [
@@ -263,7 +263,7 @@ function openy_node_blog_update_8010() {
 }
 
 /**
-* Update feature configs for Drupal Core upgrade.
+ * Update feature configs for Drupal Core upgrade.
  */
 function openy_node_blog_update_8011() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_blog') . '/config/install/';
@@ -295,12 +295,12 @@ function openy_node_blog_update_8012() {
     'field.field.node.blog.field_blog_location' => [
       'settings',
       'dependencies',
-      'third_party_settings'
+      'third_party_settings',
     ],
     'field.field.node.blog.field_blog_related' => [
       'dependencies',
       'description',
-      'settings.auto_create_bundle'
+      'settings.auto_create_bundle',
     ],
   ];
 
@@ -341,6 +341,6 @@ function openy_node_blog_update_8015() {
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
     'image.style.node_blog',
-    'image.style.node_blog_teaser'
+    'image.style.node_blog_teaser',
   ]);
 }

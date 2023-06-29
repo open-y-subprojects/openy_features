@@ -41,7 +41,7 @@ function openy_node_category_update_8001() {
  */
 function openy_node_category_update_8002() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_category') . '/config/install/';
-  // Import new configuration
+  // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
   $config_importer->setDirectory($config_dir);
   $config_importer->importConfigs([
@@ -50,7 +50,7 @@ function openy_node_category_update_8002() {
 
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.node.program_subcategory.default' =>[
+    'core.entity_form_display.node.program_subcategory.default' => [
       'dependencies.config',
       'third_party_settings.field_group.group_bottom_area',
     ],
@@ -342,6 +342,6 @@ function openy_node_category_update_8017() {
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
-    'image.style.node_program_subcategory_teaser'
+    'image.style.node_program_subcategory_teaser',
   ]);
 }

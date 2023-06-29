@@ -75,7 +75,7 @@ function openy_prgf_gallery_update_8004() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_gallery') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'image.style.prgf_gallery' =>[
+    'image.style.prgf_gallery' => [
       'dependencies',
       'effects',
     ],
@@ -102,7 +102,7 @@ function openy_prgf_gallery_update_8005() {
     'paragraphs.paragraphs_type.gallery',
     'core.entity_form_display.paragraph.gallery.default',
     'image.style.prgf_gallery',
-    'crop.type.crop_1920_700'
+    'crop.type.crop_1920_700',
   ]);
 }
 
@@ -113,7 +113,7 @@ function openy_prgf_gallery_update_8006() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_gallery') . '/config/install/';
   // Update multiple configurations.
   $configs = [
-    'core.entity_form_display.paragraph.gallery.default' =>[
+    'core.entity_form_display.paragraph.gallery.default' => [
       'content.field_prgf_link.settings.enabled_attributes',
       'content.field_prgf_link.type',
     ],
@@ -169,7 +169,7 @@ function openy_prgf_gallery_update_8010() {
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
-    'image.style.gallery_thumbnail'
+    'image.style.gallery_thumbnail',
   ]);
 }
 
@@ -181,18 +181,18 @@ function openy_prgf_gallery_update_8012() {
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
-    'image.style.prgf_gallery'
+    'image.style.prgf_gallery',
   ]);
 }
 
 /**
- * Update Open Y paragraph Gallery - field image is required
+ * Update Open Y paragraph Gallery - field image is required.
  */
 function openy_prgf_gallery_update_8013() {
   $path = \Drupal::service('extension.list.module')->getPath('openy_prgf_gallery') . '/config/install';
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
-    'field.field.paragraph.gallery.field_prgf_images'
+    'field.field.paragraph.gallery.field_prgf_images',
   ]);
 }

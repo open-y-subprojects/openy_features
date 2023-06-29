@@ -33,9 +33,9 @@ class BranchAmenitiesFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
 
     $elements = [[
-        '#type' => 'markup',
-        '#markup' => check_markup('[openy:list-branch-amenities]', 'full_html'),
-      ],
+      '#type' => 'markup',
+      '#markup' => check_markup('[openy:list-branch-amenities]', 'full_html'),
+    ],
     ];
 
     return $elements;

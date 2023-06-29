@@ -21,7 +21,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class BranchContactsInfo extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
-   * RouteMatch service instance
+   * RouteMatch service instance.
    */
   protected $routeMatch;
 
@@ -36,14 +36,14 @@ class BranchContactsInfo extends BlockBase implements ContainerFactoryPluginInte
   protected $alias_cleaner;
 
   /**
-   *   Plugin config
+   * Plugin config.
    *
    * @param array $configuration
-   *   Plugin id
+   *   Plugin id.
    * @param string $plugin_id
-   *   Plugin definition
+   *   Plugin definition.
    * @param mixed $plugin_definition
-   *   RouteMatch service instance
+   *   RouteMatch service instance.
    * @param $routeMatch
    *   Renderer service instance
    * @param $renderer

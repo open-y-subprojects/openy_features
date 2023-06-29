@@ -43,9 +43,9 @@ class ClassSessions extends BlockBase implements ContainerFactoryPluginInterface
    *   The plugin ID for the plugin instance.
    * @param mixed $plugin_definition
    *   The plugin implementation definition.
-   * @param ClassSessionsServiceInterface $class_sessions_service
+   * @param \Drupal\openy_prgf_class_sessions\ClassSessionsServiceInterface $class_sessions_service
    *   The Class Sessions service.
-   * @param RouteMatchInterface $route_match
+   * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The Route match service.
    */
   public function __construct(array $configuration, $plugin_id, $plugin_definition, ClassSessionsServiceInterface $class_sessions_service, RouteMatchInterface $route_match) {

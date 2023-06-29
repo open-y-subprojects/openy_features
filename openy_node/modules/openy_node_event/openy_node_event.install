@@ -36,6 +36,6 @@ function openy_node_event_update_8003() {
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
   $config_importer->importConfigs([
-    'image.style.event_teaser'
+    'image.style.event_teaser',
   ]);
 }

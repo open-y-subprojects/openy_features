@@ -140,7 +140,7 @@ class CampService {
       // aliases are linked also.
       if ($aliases = $this->lookupPathAliases($system_path, $langcode)) {
         foreach ($aliases as $alias) {
-          if(empty($alias->alias->value)) {
+          if (empty($alias->alias->value)) {
             continue;
           }
           $group->condition('field_camp_menu_links', 'internal:' . $alias->alias->value);
@@ -194,7 +194,8 @@ class CampService {
     try {
       return $this->entityTypeManager->getStorage('path_alias')
         ->loadByProperties(['path' => $path, 'langcode' => $langcode_list]);
-    } catch (\Exception $e) {
+    }
+    catch (\Exception $e) {
       return FALSE;
     }
   }

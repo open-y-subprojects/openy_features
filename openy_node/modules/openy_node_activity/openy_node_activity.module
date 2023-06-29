@@ -5,12 +5,14 @@
  * OpenY Node Activity module file.
  */
 
+use Drupal\Core\Entity\EntityInterface;
+
 /**
  * Implements hook_ENTITY_TYPE_update().
  *
  * This will publish/unpublish Activity nodes when a Category is updated.
  */
-function openy_node_activity_node_update(Drupal\Core\Entity\EntityInterface $entity) {
+function openy_node_activity_node_update(EntityInterface $entity) {
   // Only do this for Category nodes.
   if ($entity->getType() != 'program_subcategory') {
     return;
@@ -26,11 +28,13 @@ function openy_node_activity_node_update(Drupal\Core\Entity\EntityInterface $ent
 
   if ($original_status && !$current_status) {
     // Going from published to unpublished.
-    $status = false;
-  } elseif (!$original_status && $current_status) {
+    $status = FALSE;
+  }
+  elseif (!$original_status && $current_status) {
     // Going from unpublished to published.
-    $status = true;
-  } else {
+    $status = TRUE;
+  }
+  else {
     // Status was unchanged.
     return;
   }
@@ -64,7 +68,7 @@ function openy_node_activity_node_update(Drupal\Core\Entity\EntityInterface $ent
  * @param \Drupal\Core\Entity\EntityInterface $entity
  *   The Category node who's Activity nodes will be retrieved.
  *
- * @return array $activity_ids
+ * @return array
  *   Array of Activity node ids.
  */
 function _openy_node_activity_getactivitynodes(&$entity) {

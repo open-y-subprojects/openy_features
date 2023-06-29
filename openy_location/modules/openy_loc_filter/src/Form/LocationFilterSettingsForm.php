@@ -7,7 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Database\Connection;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use \Drupal\Core\Cache\Cache;
+use Drupal\Core\Cache\Cache;
 
 /**
  * Location Filter settings form.
@@ -70,7 +70,7 @@ class LocationFilterSettingsForm extends ConfigFormBase {
     }
 
     $form['description'] = [
-      '#type'=>'markup',
+      '#type' => 'markup',
       '#markup' => $this->t('On this page, you can limit the list of branches and camps,
         which displayed in popups and filters on the programs and schedules page. This form will affect
         only the filters which are related to the scheduling, classes, and sessions. By default, all branches

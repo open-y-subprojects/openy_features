@@ -5,7 +5,6 @@
  * OpenY Paragraph FAQ install file.
  */
 
-
 /**
  * Update config for OpenY FAQ paragraph after decoupling.
  */
@@ -27,7 +26,7 @@ function openy_prgf_faq_update_8001() {
     ],
     'field.storage.paragraph.field_qa' => [
       'dependencies.module',
-      'module'
+      'module',
     ],
   ];
 

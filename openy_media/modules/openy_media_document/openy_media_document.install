@@ -18,9 +18,9 @@ function openy_media_document_install() {
  * Implements hook_update_dependencies().
  */
 function openy_media_document_update_dependencies() {
-  $dependencies['dropzonejs_eb_widget'][8101] = array(
+  $dependencies['dropzonejs_eb_widget'][8101] = [
     'openy_media_document' => 8005,
-  );
+  ];
 
   return $dependencies;
 }
@@ -106,7 +106,7 @@ function openy_media_document_update_8003() {
     'core.entity_view_display.media.document.default' => [
       'dependencies',
       'content',
-      'hidden'
+      'hidden',
     ],
   ];
 

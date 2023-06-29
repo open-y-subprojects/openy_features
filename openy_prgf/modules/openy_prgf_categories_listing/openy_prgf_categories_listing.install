@@ -14,7 +14,7 @@ function openy_prgf_categories_listing_update_8001() {
 
   // Update multiple configurations.
   $configs = [
-    'core.entity_view_display.paragraph.categories_listing.default' =>[
+    'core.entity_view_display.paragraph.categories_listing.default' => [
       'content.field_prgf_block.region',
     ],
   ];
