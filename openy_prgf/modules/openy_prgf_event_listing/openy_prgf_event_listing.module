@@ -13,6 +13,6 @@ function openy_prgf_event_listing_form_views_exposed_form_alter(&$form, \Drupal\
 
   // Add placeholder to views exposed form
   if ($view->id() == 'listing_event_posts' && $view->current_display == 'events_listing_block') {
-    $form['combine']['#attributes']['placeholder'] = t('Search the events...');
+    $form['combine']['#title'] = t('Search the events:');
   }
 }
