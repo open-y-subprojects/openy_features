@@ -119,9 +119,6 @@ class ClassSessions extends BlockBase implements ContainerFactoryPluginInterface
     return $class_sessions;
   }
 
-  /**
-   *
-   */
   private function getQueryParamInt($param) {
     // Get request object for query param.
     $request = \Drupal::request();
