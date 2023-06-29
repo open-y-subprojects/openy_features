@@ -15,9 +15,6 @@ use Drupal\Core\File\FileSystemInterface;
  * Open Y eGym iWatch install file.
  */
 
-/**
- *
- */
 function openy_egym_iwatch_install() {
   module_set_weight('openy_egym_iwatch', 30);
 
