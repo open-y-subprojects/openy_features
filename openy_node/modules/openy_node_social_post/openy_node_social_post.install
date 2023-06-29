@@ -5,9 +5,6 @@
  * Open Y Node Social Post install file.
  */
 
-/**
- *
- */
 function openy_node_social_post_install() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_social_post') . '/config/install/';
   // Import configurations using upgrade tool to avoid Upgrade tool conflicts.
