@@ -35,7 +35,6 @@ function openy_prgf_group_schedules_update_8001() {
  */
 function openy_prgf_group_schedules_update_8002() {
   $module_handler = \Drupal::moduleHandler();
-  ;
   if ($module_handler->moduleExists('openy_gxp')) {
     return;
   }
