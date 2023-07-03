@@ -28,7 +28,7 @@ class FileLinkFormatter extends FileFormatterBase {
 
     foreach ($this->getEntitiesToView($items, $langcode) as $delta => $file) {
       $image_uri = $file->getFileUri();
-      $url = Url::fromUri(file_create_url($image_uri));
+      $url = \Drupal::service('file_url_generator')->generate($image_uri);
       $elements[$delta] = [
         '#title' => $title,
         '#type' => 'link',

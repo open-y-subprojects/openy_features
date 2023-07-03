@@ -35,7 +35,7 @@ function openy_egym_iwatch_install() {
     if (file_exists($file_path)) {
       $file = file_get_contents($file_path);
 
-      $file = file_save_data($file, 'public://egym/' . $image_file_name, FileSystemInterface::EXISTS_REPLACE);
+      $file = \Drupal::service('file.repository')->writeData($file, 'public://egym/' . $image_file_name, FileSystemInterface::EXISTS_REPLACE);
       $media = Media::create([
         'bundle' => 'image',
         'uid' => \Drupal::currentUser()->id(),

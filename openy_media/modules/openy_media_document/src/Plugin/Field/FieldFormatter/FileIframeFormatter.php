@@ -27,7 +27,7 @@ class FileIframeFormatter extends FileFormatterBase {
 
     foreach ($this->getEntitiesToView($items, $langcode) as $delta => $file) {
       $image_uri = $file->getFileUri();
-      $url = Url::fromUri(file_create_url($image_uri));
+      $url = \Drupal::service('file_url_generator')->generate($image_uri);
       $elements[$delta] = [
         '#type' => 'inline_template',
         '#template' => '<iframe src="{{ url }}" frameborder="0"></iframe>',
