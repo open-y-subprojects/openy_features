@@ -5,7 +5,8 @@
 (function ($) {
   Drupal.behaviors.openyFaqParagraph = {
     attach: function( context ) {
-      $( context ).find( '.paragraph--type--faq-item' ).once( 'paragraphFaq' ).each( function () {
+      $(once('paragraphFaq', '.paragraph--type--faq-item', context))
+        .each(function () {
         // Q/A wrapper.
         var wrapper = $( this );
         // Question click event.
