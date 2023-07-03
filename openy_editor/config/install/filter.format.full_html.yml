@@ -2,8 +2,11 @@ langcode: en
 status: true
 dependencies:
   module:
+    - blazy
     - editor
     - entity_embed
+    - media
+    - slick
     - token_filter
 name: 'Full HTML'
 format: full_html
@@ -78,4 +81,94 @@ filters:
     provider: token_filter
     status: true
     weight: -47
-    settings: {  }
+    settings:
+      replace_empty: '0'
+  blazy_filter:
+    id: blazy_filter
+    provider: blazy
+    status: false
+    weight: 3
+    settings:
+      media_switch: ''
+      hybrid_style: ''
+      box_style: ''
+      box_caption: ''
+      filter_tags:
+        img: img
+        iframe: iframe
+      use_data_uri: '0'
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: 100
+    settings:
+      default_view_mode: default
+      allowed_view_modes:
+        default: default
+        article_image: article_image
+        calc_preview: calc_preview
+        calc_summary: calc_summary
+        embedded_full: embedded_full
+        embedded_half: embedded_half
+        embedded_link: embedded_link
+        event_image: event_image
+        featured: featured
+        full: full
+        full_without_blazy: full_without_blazy
+        half_without_blazy: half_without_blazy
+        icon: icon
+        media_library: media_library
+        node_blog: node_blog
+        node_blog_teaser: node_blog_teaser
+        node_news: node_news
+        node_news_teaser: node_news_teaser
+        node_program_header: node_program_header
+        node_program_subcategory_teaser: node_program_subcategory_teaser
+        prgf_banner: prgf_banner
+        prgf_gallery: prgf_gallery
+        prgf_small_banner: prgf_small_banner
+        prgf_teaser: prgf_teaser
+        related_content: related_content
+        slick: slick
+        teaser: teaser
+        teaser_image: teaser_image
+        thumbnail_for_preview: thumbnail_for_preview
+        token: token
+      allowed_media_types:
+        document: document
+        image: image
+        video: video
+        video_local: video_local
+  slick_filter:
+    id: slick_filter
+    provider: slick
+    status: false
+    weight: 4
+    settings:
+      optionset: default
+      layout: ''
+      skin: ''
+      background: false
+      loading: ''
+      preload: false
+      responsive_image_style: ''
+      image_style: ''
+      media_switch: ''
+      ratio: ''
+      thumbnail_style: ''
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      optionset_thumbnail: ''
+      skin_thumbnail: ''
+      thumbnail_caption: ''
+      thumbnail_effect: ''
+      thumbnail_position: ''
+      override: false
