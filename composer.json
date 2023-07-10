@@ -3,15 +3,16 @@
   "description": "Features from Open Y Distrubution.",
   "type": "drupal-module",
   "require": {
-    "ycloudyusa/yusaopeny": "*",
-    "open-y-subprojects/openy_node_alert": "^2.0",
-    "open-y-subprojects/openy_demo_content": "^1.12",
-    "ynorth-projects/openy_node_session": "^2.0",
-    "drupal/core": "^9.5 || ^10",
-    "drupal/rabbit_hole": "^1.0@beta || ^1.0",
-    "drupal/ctools": ">=3.13",
     "drupal/ckeditor5_font": "^1.1@beta",
-    "drupal/google_analytics": "^4.0.2"
+    "drupal/core": "^9.5 || ^10",
+    "drupal/ctools": ">=3.13",
+    "drupal/google_analytics": "^4.0.2",
+    "drupal/rabbit_hole": "^1.0@beta || ^1.0",
+    "open-y-subprojects/openy_custom": ">=2.1.0",
+    "open-y-subprojects/openy_demo_content": "^1.12",
+    "open-y-subprojects/openy_node_alert": "^2.0",
+    "ycloudyusa/yusaopeny": "*",
+    "ynorth-projects/openy_node_session": "^2.0"
   },
   "extra": {
     "patches": {
