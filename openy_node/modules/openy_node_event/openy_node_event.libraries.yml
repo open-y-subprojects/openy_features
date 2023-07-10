@@ -1,11 +1,3 @@
-atc_base:
-  version: 1.5
-  css:
-    component:
-      '//addtocalendar.com/atc/1.5/atc-base.css': {type: external}
-  js:
-    '//addtocalendar.com/atc/1.5/atc.min.js': { type: external, minified: true }
-
 atc_glow_orange:
   version: 1.5
   css:

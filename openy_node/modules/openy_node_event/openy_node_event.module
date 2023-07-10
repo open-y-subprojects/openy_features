@@ -140,7 +140,7 @@ function openy_node_event_preprocess_field__node__field_event_location__event(&$
     ];
   }
 
-  $variables['#attached']['library'][] = 'openy_node_event/atc_base';
+  $variables['#attached']['library'][] = 'openy_system/atc_base';
   $variables['#attached']['library'][] = 'openy_node_event/event_custom';
 }
 
