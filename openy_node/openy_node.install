@@ -148,3 +148,15 @@ function openy_node_update_8009() {
     'image.style.facebook',
   ]);
 }
+
+/**
+ * Update to 2023 recommended image size.
+ */
+function openy_node_update_8010() {
+  $path = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/install';
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'image.style.facebook',
+  ]);
+}
