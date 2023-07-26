@@ -120,14 +120,15 @@ function openy_node_event_preprocess_field__node__field_event_location__event(&$
       '#info' => $datesInfo,
       '#atc' => $datesAtc,
     ];
+    $email = $node->field_contact_email->value ?? $location->field_location_email->value;
     $renderContact = [
       '#theme' => 'event_contact_info',
       '#info' => [
-        'phone' => $location->field_location_phone->value,
+        'phone' =>  $node->field_contact_phone->value ?? $location->field_location_phone->value,
         'fax' => $location->field_location_fax->value,
-        'email' => !empty($location->field_location_email->value) ? Link::fromTextAndUrl(
-          $location->field_location_email->value,
-          Url::fromUri('mailto:' . $location->field_location_email->value,
+        'email' => !empty($email) ? Link::fromTextAndUrl(
+          $email,
+          Url::fromUri('mailto:' . $email,
             ['attributes' => ['target' => '_blank']])
         ) : '',
       ],
