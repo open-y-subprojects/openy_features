@@ -39,3 +39,30 @@ function openy_node_event_update_8003() {
     'image.style.event_teaser',
   ]);
 }
+
+/**
+ * Apply Webp to all image styles.
+ */
+function openy_node_event_update_9001() {
+  $path = \Drupal::service('extension.list.module')->getPath('openy_node_event') . '/config/optional';
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'field.field.node.event.field_contact_email',
+    'field.field.node.event.field_contact_name',
+    'field.field.node.event.field_contact_phone',
+    'field.storage.node.field_contact_email',
+    'field.storage.node.field_contact_name',
+    'field.storage.node.field_contact_phone',
+  ]);
+
+  $path = \Drupal::service('extension.list.module')->getPath('openy_node_event') . '/config/install';
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'core.entity_form_display.node.event.default',
+    'core.entity_view_display.node.event.default',
+    'core.entity_view_display.node.event.full',
+    'core.entity_view_display.node.event.teaser',
+  ]);
+
+}
