@@ -1,6 +1,6 @@
 {
   "name": "open-y-subprojects/openy_features",
-  "description": "Features from Open Y Distrubution.",
+  "description": "Features from Open Y Distribution.",
   "type": "drupal-module",
   "require": {
     "drupal/ckeditor5_font": "^1.1@beta",
@@ -8,6 +8,8 @@
     "drupal/ctools": ">=3.13",
     "drupal/google_analytics": "^4.0.2",
     "drupal/rabbit_hole": "^1.0@beta || ^1.0",
+    "drupal/metatag": "*",
+    "drupal/schema_metatag": "^3.0",
     "open-y-subprojects/openy_custom": ">=2.1.0",
     "open-y-subprojects/openy_demo_content": "^1.12",
     "open-y-subprojects/openy_node_alert": "^2.0",

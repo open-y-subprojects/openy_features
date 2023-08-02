@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies: {  }
+id: node__branch
+label: 'Content: Branch'
+tags:
+  schema_organization_address: 'a:6:{s:5:"@type";s:13:"PostalAddress";s:13:"streetAddress";s:43:"[node:field_location_address:address_line1]";s:15:"addressLocality";s:38:"[node:field_location_address:locality]";s:13:"addressRegion";s:49:"[node:field_location_address:administrative_area]";s:10:"postalCode";s:41:"[node:field_location_address:postal_code]";s:14:"addressCountry";s:42:"[node:field_location_address:country_name]";}'
+  schema_organization_description: '[current-page:metatag:description]'
+  schema_organization_geo: 'a:3:{s:5:"@type";s:14:"GeoCoordinates";s:8:"latitude";s:37:"[node:field_location_coordinates:lat]";s:9:"longitude";s:37:"[node:field_location_coordinates:lng]";}'
+  schema_organization_id: '[current-page:url]'
+  schema_organization_logo: 'a:3:{s:5:"@type";s:11:"ImageObject";s:20:"representativeOfPage";s:5:"False";s:3:"url";s:49:"[site:url]themes/contrib/openy_carnation/logo.svg";}'
+  schema_organization_name: '[current-page:title]'
+  schema_organization_opening_hours_specification: 'a:5:{s:5:"@type";s:25:"OpeningHoursSpecification";s:5:"pivot";s:1:"1";s:9:"dayOfWeek";s:25:"[openy_hours:day_of_week]";s:5:"opens";s:19:"[openy_hours:opens]";s:6:"closes";s:20:"[openy_hours:closes]";}'
+  schema_organization_telephone: '[node:field_location_phone]'
+  schema_organization_type: LocalBusiness
+  schema_organization_url: '[current-page:url]'
