@@ -569,3 +569,18 @@ function openy_loc_branch_update_8027(&$sandbox) {
     }
   }
 }
+
+/**
+ * Add metatag and schema:LocalBusiness configuration.
+ */
+function openy_loc_branch_update_8028(&$sandbox) {
+  \Drupal::service('module_installer')->install(['schema_organization']);
+
+  $path = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/optional';
+  /** @var \Drupal\config_import\ConfigImporterService $config_importer */
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'metatag.metatag_defaults.node__branch',
+  ]);
+}
