@@ -22,6 +22,8 @@ dependencies:
   - drupal:path
   - pathauto:pathauto
   # - rabbit_hole:rabbit_hole
+  - drupal:schema_metatag
+  - drupal:schema_organization
   - drupal:taxonomy
   - drupal:telephone
   - drupal:user

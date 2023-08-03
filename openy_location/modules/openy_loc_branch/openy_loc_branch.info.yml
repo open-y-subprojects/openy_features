@@ -15,6 +15,8 @@ dependencies:
   - drupal:menu_ui
   - metatag:metatag
   - drupal:node
+  - drupal:schema_metatag
+  - drupal:schema_organization
   - link_attributes:link_attributes
   - openy_field_holiday_hours:openy_field_holiday_hours
   - openy_field_custom_hours:openy_field_custom_hours
