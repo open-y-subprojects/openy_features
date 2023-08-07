@@ -576,7 +576,7 @@ function openy_loc_branch_update_8027(&$sandbox) {
 function openy_loc_branch_update_8028(&$sandbox) {
   \Drupal::service('module_installer')->install(['schema_organization']);
 
-  $path = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/optional';
+  $path = \Drupal::service('extension.list.module')->getPath('openy_loc_branch') . '/config/install';
   /** @var \Drupal\config_import\ConfigImporterService $config_importer */
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);

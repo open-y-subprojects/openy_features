@@ -383,7 +383,7 @@ function openy_loc_camp_update_8016(&$sandbox) {
 function openy_loc_camp_update_8017(&$sandbox) {
   \Drupal::service('module_installer')->install(['schema_organization']);
 
-  $path = \Drupal::service('extension.list.module')->getPath('openy_loc_camp') . '/config/optional';
+  $path = \Drupal::service('extension.list.module')->getPath('openy_loc_camp') . '/config/install';
   /** @var \Drupal\config_import\ConfigImporterService $config_importer */
   $config_importer = \Drupal::service('config_import.importer');
   $config_importer->setDirectory($path);
