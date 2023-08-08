@@ -1,6 +1,10 @@
 langcode: en
 status: true
 dependencies:
+  config:
+    - core.entity_view_mode.media.embedded_full
+    - core.entity_view_mode.media.embedded_half
+    - core.entity_view_mode.media.thumbnail_for_preview
   module:
     - blazy
     - editor
@@ -103,7 +107,7 @@ filters:
     status: true
     weight: 100
     settings:
-      default_view_mode: default
+      default_view_mode: embedded_full
       allowed_view_modes:
         default: default
         article_image: article_image
@@ -111,30 +115,7 @@ filters:
         calc_summary: calc_summary
         embedded_full: embedded_full
         embedded_half: embedded_half
-        embedded_link: embedded_link
-        event_image: event_image
-        featured: featured
-        full: full
-        full_without_blazy: full_without_blazy
-        half_without_blazy: half_without_blazy
-        icon: icon
-        media_library: media_library
-        node_blog: node_blog
-        node_blog_teaser: node_blog_teaser
-        node_news: node_news
-        node_news_teaser: node_news_teaser
-        node_program_header: node_program_header
-        node_program_subcategory_teaser: node_program_subcategory_teaser
-        prgf_banner: prgf_banner
-        prgf_gallery: prgf_gallery
-        prgf_small_banner: prgf_small_banner
-        prgf_teaser: prgf_teaser
-        related_content: related_content
-        slick: slick
-        teaser: teaser
-        teaser_image: teaser_image
         thumbnail_for_preview: thumbnail_for_preview
-        token: token
       allowed_media_types:
         document: document
         image: image

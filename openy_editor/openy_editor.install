@@ -82,3 +82,18 @@ function openy_editor_update_8005() {
     $active_config->set('settings.plugins', $active_config->get('settings.plugins'));
     $active_config->save(TRUE);
 }
+
+/**
+ * Allow override view mode for media.
+ */
+function openy_editor_update_9001() {
+  $path = \Drupal::service('extension.list.module')->getPath('openy_editor') . '/config/install';
+  /** @var \Drupal\config_import\ConfigImporterService $config_importer */
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'editor.editor.full_html',
+    'filter.format.full_html',
+  ]);
+}
+
