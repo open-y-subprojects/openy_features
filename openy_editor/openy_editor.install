@@ -70,17 +70,7 @@ function openy_editor_update_8004() {
  * Add the fontColor and the fontBackgroundColor buttons for CKEditor 5.
  */
 function openy_editor_update_8005() {
-    $active_config = \Drupal::configFactory()->getEditable('editor.editor.full_html');
-    $settings = $active_config->get('settings');
-    if (empty($settings['toolbar']['rows'])) {
-        return;
-    }
-    // Place these buttons in a specific place.
-    array_splice($settings['toolbar']['items'], 3, 0, 'fontColor');
-    array_splice($settings['toolbar']['items'], 4, 0, 'fontBackgroundColor');
-    $active_config->set('settings', $settings);
-    $active_config->set('settings.plugins', $active_config->get('settings.plugins'));
-    $active_config->save(TRUE);
+  // These buttons are in the config file 'editor.editor.full_html.yml' already.
 }
 
 /**
