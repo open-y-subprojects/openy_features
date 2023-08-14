@@ -12,7 +12,7 @@
     "drupal/schema_metatag": "^3.0",
     "open-y-subprojects/openy_custom": ">=2.1.0",
     "open-y-subprojects/openy_demo_content": "^1.12",
-    "open-y-subprojects/openy_node_alert": "^2.0",
+    "open-y-subprojects/openy_node_alert": "^2.1.0",
     "ycloudyusa/yusaopeny": "*",
     "ynorth-projects/openy_node_session": "^2.0"
   },
