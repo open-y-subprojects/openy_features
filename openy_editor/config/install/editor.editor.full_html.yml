@@ -5,6 +5,7 @@ dependencies:
     - filter.format.full_html
   module:
     - ckeditor5
+    - ckeditor5_font
 format: full_html
 editor: ckeditor5
 settings:
@@ -29,17 +30,12 @@ settings:
       - blockQuote
       - drupalMedia
       - '|'
+      - removeFormat
       - insertTable
       - sourceEditing
       - specialCharacters
       - textPartLanguage
   plugins:
-    ckeditor5_alignment:
-      enabled_alignments:
-        - center
-        - justify
-        - left
-        - right
     ckeditor5_heading:
       enabled_headings:
         - heading2
@@ -47,13 +43,23 @@ settings:
         - heading4
         - heading5
         - heading6
-    ckeditor5_language:
-      language_list: un
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
     ckeditor5_list:
       reversed: true
       startIndex: true
-    ckeditor5_sourceEditing:
-      allowed_tags: {  }
+    ckeditor5_alignment:
+      enabled_alignments:
+        - left
+        - center
+        - right
+        - justify
+    ckeditor5_language:
+      language_list: un
+    media_media:
+      allow_view_mode_override: true
+    ckeditor5_font_colors:
+      colors: '[]'
     editor_advanced_link_link:
       enabled_attributes:
         - aria-label
