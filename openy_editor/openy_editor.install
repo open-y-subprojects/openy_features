@@ -87,3 +87,17 @@ function openy_editor_update_9001() {
   ]);
 }
 
+/**
+ * Update Ckeditor5 toolbar and ensure dependencies are installed.
+ */
+function openy_editor_update_9002() {
+  \Drupal::service('module_installer')->install(['ckeditor5_font']);
+
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_editor') . '/config/install';
+  $config_importer = \Drupal::service('openy_upgrade_tool.importer');
+  $config_importer->setDirectory($config_dir);
+  $config_importer->importConfigs([
+    'editor.editor.full_html',
+  ]);
+}
+
