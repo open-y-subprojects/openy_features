@@ -360,7 +360,7 @@ function openy_loc_camp_update_8015() {
  * Change Address field - add Canada as available country.
  */
 function openy_loc_camp_update_8016(&$sandbox) {
-  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_camp') . '/config/install';
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_loc_camp') . '/config/install/';
   // Update multiple configurations.
   $configs = [
     'field.field.node.camp.field_location_address' =>[
