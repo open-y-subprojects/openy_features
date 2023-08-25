@@ -160,3 +160,12 @@ function openy_node_update_8010() {
     'image.style.facebook',
   ]);
 }
+
+/**
+ * Enable diff module for better node revision interface.
+ */
+function openy_node_update_8011()
+{
+  \Drupal::service('module_installer')->install(['diff']);
+  // We are using the default config so no config import is necessary.
+}
