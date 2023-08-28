@@ -6,15 +6,16 @@ package: Open Y
 version: 8.x-1.0
 configure: system.site_information_settings
 dependencies:
-  - entity_reference_revisions
-  - field
-  - image
-  - metatag
-  - node
-  - views
-  - paragraphs
-  - path
-  - taxonomy
-  - text
+  - drupal:diff
+  - drupal:entity_reference_revisions
+  - drupal:field
+  - drupal:image
+  - drupal:metatag
+  - drupal:node
+  - drupal:paragraphs
+  - drupal:path
+  - drupal:taxonomy
+  - drupal:text
+  - drupal:views
   - openy_upgrade_tool:openy_upgrade_tool
   - simple_sitemap:simple_sitemap
