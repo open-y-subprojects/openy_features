@@ -1,12 +1,11 @@
 name: Open Y Node Package
 description: Bundle of custom content type modules for Open Y, and their common configuration.
 type: module
-core_version_requirement: ^8.8 || ^9 || ^10
-package: Open Y
-version: 8.x-1.0
+core_version_requirement: ^9 || ^10
+package: YMCA Website Services
+version: 1.0.1
 configure: system.site_information_settings
 dependencies:
-  - drupal:diff
   - drupal:entity_reference_revisions
   - drupal:field
   - drupal:image
@@ -19,3 +18,4 @@ dependencies:
   - drupal:views
   - openy_upgrade_tool:openy_upgrade_tool
   - simple_sitemap:simple_sitemap
+  - drupal:diff
