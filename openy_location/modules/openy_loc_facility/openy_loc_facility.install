@@ -369,3 +369,26 @@ function openy_loc_facility_update_8018(&$sandbox) {
     'metatag.metatag_defaults.node__facility',
   ]);
 }
+
+/**
+ * Add fields Facility Hours And Facility Holidays Hours
+ */
+function openy_loc_facility_update_8019(&$sandbox) {
+  $path = \Drupal::service('extension.list.module')->getPath('openy_loc_facility') . '/config/install';
+  /** @var \Drupal\config_import\ConfigImporterService $config_importer */
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'field.storage.node.field_branch_holiday_hours',
+    'field.storage.node.field_branch_hours',
+    'field.field.node.facility.field_branch_hours',
+    'field.field.node.facility.field_branch_holiday_hours',
+  ]);
+
+  $config_importer_param = \Drupal::service('openy_upgrade_tool.param_updater');
+  $config = 'core.entity_view_display.node.facility.full';
+  $config_importer_param->update($path . '/' . $config . '.yml', $config, 'content');
+  $config = 'core.entity_form_display.node.facility.default';
+  $config_importer_param->update($path . '/' . $config . '.yml', $config, 'third_party_settings.field_group.group_contact_info');
+  $config_importer_param->update($path . '/' . $config . '.yml', $config, 'content');
+}
