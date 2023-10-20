@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ */
+
+
+/**
+ * Remove 'field_branch_hours' from related branch for "facility" node viewing
+ */
+function openy_loc_facility_preprocess_node__facility__full(&$variables) {
+  if ($node = $variables["content"]["field_facility_loc"][0]["#node"]) {
+    $node->set("field_branch_hours", null);
+  }
+}

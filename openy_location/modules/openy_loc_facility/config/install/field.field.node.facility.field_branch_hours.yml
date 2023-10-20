@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_branch_hours
+    - node.type.facility
+  module:
+    - openy_field_custom_hours
+id: node.facility.field_branch_hours
+field_name: field_branch_hours
+entity_type: node
+bundle: facility
+label: 'Facility Hours'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    hours_label: 'Facility Hours'
+default_value_callback: ''
+settings: {  }
+field_type: openy_custom_hours
