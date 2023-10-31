@@ -27,3 +27,4 @@ dependencies:
   - drupal:taxonomy
   - drupal:telephone
   - drupal:user
+  - openy_block_branch_amenities
