@@ -11,7 +11,7 @@ use Drupal\openy_media\EmbedButtonIconHelper;
  * Implements hook_install().
  */
 function openy_media_document_install() {
-  EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_document', 'document.png', 'embed_document');
+  EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_document', 'document.svg', 'embed_document');
 }
 
 /**
@@ -182,4 +182,11 @@ function openy_media_document_update_8006() {
       $config_updater->update($config, $config_name, $param);
     }
   }
+}
+
+/**
+ * Change a format of the icon to svg.
+ */
+function openy_media_document_update_9001() {
+  EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_document', 'document.svg', 'embed_document');
 }

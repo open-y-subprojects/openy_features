@@ -11,7 +11,7 @@ use Drupal\openy_media\EmbedButtonIconHelper;
  * Implements hook_install().
  */
 function openy_media_local_video_install() {
-  EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_local_video', 'local_video.png', 'embed_local_video');
+  EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_local_video', 'local_video.svg', 'embed_local_video');
 }
 
 /**
@@ -33,4 +33,11 @@ function openy_media_local_video_update_8001() {
       $config_updater->update($config, $config_name, $param);
     }
   }
+}
+
+/**
+ * Change a format of the icon to svg.
+ */
+function openy_media_local_video_update_9001() {
+  EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_local_video', 'local_video.svg', 'embed_local_video');
 }
