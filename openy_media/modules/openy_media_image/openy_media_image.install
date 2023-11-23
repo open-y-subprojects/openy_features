@@ -11,7 +11,7 @@ use Drupal\openy_media\EmbedButtonIconHelper;
  * Implements hook_install().
  */
 function openy_media_image_install() {
-  EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_image', 'image.png', 'embed_image');
+  EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_image', 'image.svg', 'embed_image');
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_media_image') . '/config/override/';
   // Import new configuration.
   $config_importer = \Drupal::service('openy_upgrade_tool.importer');
@@ -380,4 +380,11 @@ function openy_media_image_update_8016() {
   $config_importer->importConfigs([
     'image.style.browser_thumbnail',
   ]);
+}
+
+/**
+ * Change a format of the icon to svg.
+ */
+  function openy_media_image_update_9001() {
+    EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_image', 'image.svg', 'embed_image');
 }
