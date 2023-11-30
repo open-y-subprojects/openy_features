@@ -169,3 +169,10 @@ function openy_node_update_8011()
   \Drupal::service('module_installer')->install(['diff']);
   // We are using the default config so no config import is necessary.
 }
+
+/**
+ * Remove convert to Webp format for Facebook image style.
+ */
+function openy_node_update_91001() {
+  openy_node_update_8010();
+}
