@@ -101,3 +101,9 @@ function openy_editor_update_9002() {
   ]);
 }
 
+/**
+ * Add WS colors to Ckeditor5 font and background color plugins.
+ */
+function openy_editor_update_9003() {
+  openy_editor_update_9002();
+}
