@@ -65,7 +65,7 @@ function openy_node_event_preprocess_field__node__field_event_location__event(&$
     'date_start' => $startDt,
     'date_end' => $endDt,
   ];
-  $description = strip_tags($node->field_event_description->value);
+  $description = strip_tags($node->field_event_description->value ?? '');
   $description = substr($description, 0, 300);
   $description = substr($description, 0, strrpos($description, ' ')) . " ...";
   $datesAtc = [
