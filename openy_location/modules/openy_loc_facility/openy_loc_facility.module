@@ -2,14 +2,19 @@
 
 /**
  * @file
+ * Provide OpenY loc facility module functionality.
  */
-
 
 /**
- * Remove 'field_branch_hours' from related branch for "facility" node viewing
+ * Remove branch_hours from the related branch for "facility" node viewing.
  */
 function openy_loc_facility_preprocess_node__facility__full(&$variables) {
-  if ($node = $variables["content"]["field_facility_loc"][0]["#node"]) {
-    $node->set("field_branch_hours", null);
+  // Check if the facility node has the branch hours data that doesn't show
+  // the data from the related branch node.
+  $field_branch_hours = $variables['node']->get('field_branch_hours');
+  if (($node = $variables["content"]["field_facility_loc"][0]["#node"])
+    && !$field_branch_hours->isEmpty()
+  ) {
+    $node->set("field_branch_hours", NULL);
   }
 }
