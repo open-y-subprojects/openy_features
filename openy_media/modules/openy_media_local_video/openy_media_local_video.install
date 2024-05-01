@@ -41,3 +41,25 @@ function openy_media_local_video_update_8001() {
 function openy_media_local_video_update_9001() {
   EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_local_video', 'local_video.svg', 'embed_local_video');
 }
+
+/**
+ * Add local video file extensions.
+ */
+function openy_media_local_video_update_9002()
+{
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_media_local_video') . '/config/install/';
+  // Update multiple configurations.
+  $configs = [
+    'field.field.media.video_local.field_media_local_video' => [
+      'settings.file_extensions',
+    ],
+  ];
+
+  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
+  foreach ($configs as $config_name => $params) {
+    $config = $config_dir . $config_name . '.yml';
+    foreach ($params as $param) {
+      $config_updater->update($config, $config_name, $param);
+    }
+  }
+}
