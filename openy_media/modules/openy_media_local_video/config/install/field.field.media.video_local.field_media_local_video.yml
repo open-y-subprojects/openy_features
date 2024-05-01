@@ -17,7 +17,7 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  file_extensions: 'mp4 webm ogv'
+  file_extensions: 'mp4 webm ogv avi'
   file_directory: 'videos/[date:custom:Y]-[date:custom:m]'
   max_filesize: ''
   handler: 'default:file'
