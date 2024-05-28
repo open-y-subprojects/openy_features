@@ -24,3 +24,25 @@ function openy_txnm_amenities_update_8001() {
     }
   }
 }
+
+/**
+ * Set amenities icon as not required.
+ */
+function openy_txnm_amenities_update_9001()
+{
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_txnm_amenities') . '/config/install/';
+  // Update multiple configurations.
+  $configs = [
+    'field.field.taxonomy_term.amenities.field_amenities_icon' => [
+      'required',
+    ],
+  ];
+
+  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
+  foreach ($configs as $config_name => $params) {
+    $config = $config_dir . $config_name . '.yml';
+    foreach ($params as $param) {
+      $config_updater->update($config, $config_name, $param);
+    }
+  }
+}
