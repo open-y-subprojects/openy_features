@@ -107,3 +107,24 @@ function openy_editor_update_9002() {
 function openy_editor_update_9003() {
   openy_editor_update_9002();
 }
+
+/**
+ * Update editor settings to add Ckeditor5 paste filter.
+ */
+function openy_editor_update_91001() {
+  if (!\Drupal::moduleHandler()->moduleExists('ckeditor5_paste_filter')) {
+    \Drupal::service('module_installer')->install(['ckeditor5_paste_filter']);
+  }
+
+  $active_config = \Drupal::configFactory()->getEditable('editor.editor.full_html');
+  $plugin_manager = \Drupal::service('plugin.manager.ckeditor5.plugin');
+  $default_plugin_settings = $plugin_manager
+    ->getPlugin('ckeditor5_paste_filter_pasteFilter', NULL)
+    ->defaultConfiguration();
+  // Enable the filter.
+  $default_plugin_settings['enabled'] = TRUE;
+  $enabled_plugins = $active_config->get('settings.plugins');
+  $enabled_plugins['ckeditor5_paste_filter_pasteFilter'] = $default_plugin_settings;
+  $active_config->set('settings.plugins', $enabled_plugins);
+  $active_config->save(TRUE);
+}

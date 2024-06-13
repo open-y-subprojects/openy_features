@@ -9,6 +9,7 @@ dependencies:
   - ckeditor_bootstrap_buttons:ckeditor_bootstrap_buttons
   - drupal:ckeditor5
   - drupal:ckeditor5_font
+  - drupal:ckeditor5_paste_filter
   - drupal:editor
   - ckeditor_font:ckeditor_font
   - drupal:filter
