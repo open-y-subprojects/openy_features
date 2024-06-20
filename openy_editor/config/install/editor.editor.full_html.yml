@@ -60,6 +60,79 @@ settings:
       allow_view_mode_override: true
     ckeditor5_font_colors:
       colors: '[{"color":"#0060af","label":"Blue A"},{"color":"#5c2e91","label":"Purple A"},{"color":"#006b6b","label":"Green A"},{"color":"#a92b31","label":"Red A"},{"color":"#4d4d4d","label":"Dim Grey"},{"color":"#999999","label":"Grey"},{"color":"#e6e6e6","label":"Light grey"},{"color":"#ffffff","label":"White"},{"color":"#e64c4c","label":"Red"},{"color":"#e6994c","label":"Orange"},{"color":"#e6e64c","label":"Yellow"},{"color":"#99e64c","label":"Light green"},{"color":"#4ce64c","label":"Green"},{"color":"#2ea09c","label":"Dark cyan"},{"color":"#4ce699","label":"Aquamarine"},{"color":"#4ce6e6","label":"Tirquuise"},{"color":"#4c99e6","label":"Light blue"},{"color":"#4c4ce6","label":"Blue"},{"color":"#994ce6","label":"Purple"}]'
+    ckeditor5_paste_filter_pasteFilter:
+      enabled: true
+      filters:
+        -
+          enabled: true
+          weight: -10
+          search: '<o:p><\/o:p>'
+          replace: ''
+        -
+          enabled: true
+          weight: -9
+          search: '(<[^>]*) (style="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -8
+          search: '(<[^>]*) (face="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -7
+          search: '(<[^>]*) (class="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -6
+          search: '(<[^>]*) (valign="[^"]*")'
+          replace: $1
+        -
+          enabled: true
+          weight: -5
+          search: '<font[^>]*>'
+          replace: ''
+        -
+          enabled: true
+          weight: -4
+          search: '<\/font>'
+          replace: ''
+        -
+          enabled: true
+          weight: -3
+          search: '<span[^>]*>'
+          replace: ''
+        -
+          enabled: true
+          weight: -2
+          search: '<\/span>'
+          replace: ''
+        -
+          enabled: true
+          weight: -1
+          search: '<p>&nbsp;<\/p>'
+          replace: ''
+        -
+          enabled: true
+          weight: 0
+          search: '<p><\/p>'
+          replace: ''
+        -
+          enabled: true
+          weight: 1
+          search: '<b><\/b>'
+          replace: ''
+        -
+          enabled: true
+          weight: 2
+          search: '<i><\/i>'
+          replace: ''
+        -
+          enabled: true
+          weight: 3
+          search: '<a name="OLE_LINK[^"]*">(.*?)<\/a>'
+          replace: $1
     editor_advanced_link_link:
       enabled_attributes:
         - aria-label
