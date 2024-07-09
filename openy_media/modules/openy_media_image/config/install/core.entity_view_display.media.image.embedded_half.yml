@@ -22,7 +22,6 @@ content:
       image_style: media_half
       thumbnail_style: ''
       media_switch: ''
-      ratio: enforced
       sizes: ''
       breakpoints:
         xs:
