@@ -4,11 +4,14 @@ dependencies:
   config:
     - core.entity_view_mode.node.calc_summary
     - field.field.node.branch.field_bottom_content
+    - field.field.node.branch.field_branch_holiday_hours
     - field.field.node.branch.field_branch_hours
+    - field.field.node.branch.field_branch_menu_links
     - field.field.node.branch.field_content
     - field.field.node.branch.field_header_content
     - field.field.node.branch.field_location_address
     - field.field.node.branch.field_location_amenities
+    - field.field.node.branch.field_location_amenities_closed
     - field.field.node.branch.field_location_area
     - field.field.node.branch.field_location_coordinates
     - field.field.node.branch.field_location_directions

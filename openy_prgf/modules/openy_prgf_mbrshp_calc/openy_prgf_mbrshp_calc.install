@@ -92,3 +92,18 @@ function openy_prgf_mbrshp_calc_update_8006() {
     'image.style.node_mbrshp_calc_summary',
   ]);
 }
+
+/**
+ * Update membership calc feature configs after redesign.
+ */
+function openy_prgf_mbrshp_calc_update_10101() {
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_mbrshp_calc') . '/config/install/';
+  // Import configuration.
+  $config_importer = \Drupal::service('openy_upgrade_tool.importer');
+  $config_importer->setDirectory($config_dir);
+  $config_importer->importConfigs([
+    'core.entity_view_display.media.image.calc_preview',
+    'core.entity_view_display.node.branch.calc_summary',
+    'core.entity_view_display.node.membership.calc_summary',
+  ]);
+}
