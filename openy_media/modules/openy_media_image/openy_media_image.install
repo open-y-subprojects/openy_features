@@ -392,7 +392,7 @@ function openy_media_image_update_8016() {
 /**
  * Update hook for media full and half settings.
  */
-function openy_media_update_10001() {
+function openy_media_image_update_10001() {
  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_media_image') . '/config/install/';
   
   // List of configurations to update.
