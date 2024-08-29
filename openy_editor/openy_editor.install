@@ -128,3 +128,34 @@ function openy_editor_update_91001() {
   $active_config->set('settings.plugins', $enabled_plugins);
   $active_config->save(TRUE);
 }
+
+/**
+ * Update editor settings to add Style button with a 'highlighted' style.
+ */
+function openy_editor_update_91002() {
+  $active_config = \Drupal::configFactory()->getEditable('editor.editor.full_html');
+  $settings = $active_config->get('settings');
+  if (empty($settings['toolbar']['items'])) {
+    return;
+  }
+  // Put the Style button to the toolbar.
+  foreach ($settings['toolbar']['items'] as $id => $plugin_name) {
+    if ($plugin_name === 'heading') {
+      $position = $id + 1;
+      array_splice( $settings['toolbar']['items'] , $position, 0, 'style');
+    }
+  }
+  // Add the "Highlighted" style.
+  $default_plugin_settings = [
+    'styles' => [
+      [
+        'label' => 'Highlighted',
+        'element' => '<span class="highlighted">',
+      ]
+    ],
+  ];
+
+  $settings['plugins']['ckeditor5_style'] = $default_plugin_settings;
+  $active_config->set('settings', $settings);
+  $active_config->save(TRUE);
+}
