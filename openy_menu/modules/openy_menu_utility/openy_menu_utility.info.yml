@@ -3,7 +3,7 @@ description: Stores utility menu configuration.
 type: module
 core_version_requirement: ^10
 version: 1.0.0
-package: Open Y
+package: YMCA Website Services
 dependencies:
   - drupal:system
   - openy_menu:openy_menu
