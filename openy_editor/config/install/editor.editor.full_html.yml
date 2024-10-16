@@ -49,42 +49,6 @@ settings:
         -
           label: Highlighted
           element: '<span class="highlighted">'
-        -
-          label: 'Plain Table'
-          element: '<table class="table">'
-        -
-          label: 'Dark Plain Table'
-          element: '<table class="table table-dark">'
-        -
-          label: 'Striped Table'
-          element: '<table class="table table-striped">'
-        -
-          label: 'Dark Striped Table'
-          element: '<table class="table table-striped table-dark">'
-        -
-          label: 'Bordered Table'
-          element: '<table class="table table-bordered">'
-        -
-          label: 'Dark Bordered Table'
-          element: '<table class="table table-bordered table-dark">'
-        -
-          label: 'Borderless Table'
-          element: '<table class="table table-borderless">'
-        -
-          label: 'Dark Borderless Table'
-          element: '<table class="table table-borderless table-dark">'
-        -
-          label: 'Hover Table'
-          element: '<table class="table table-hover">'
-        -
-          label: 'Dark Hover Table'
-          element: '<table class="table table-hover table-dark">'
-        -
-          label: 'Small Table'
-          element: '<table class="table table-sm">'
-        -
-          label: 'Dark Small Table'
-          element: '<table class="table table-sm table-dark">'
     ckeditor5_sourceEditing:
       allowed_tags: {  }
     ckeditor5_list:
