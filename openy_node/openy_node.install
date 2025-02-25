@@ -6,19 +6,6 @@
  */
 
 /**
- * Implement hook_install().
- */
-function openy_node_install() {
-  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node') . '/config/override/';
-  // Import new configuration.
-  $config_importer = \Drupal::service('openy_upgrade_tool.importer');
-  $config_importer->setDirectory($config_dir);
-  $config_importer->importConfigs([
-    'metatag.metatag_defaults.node',
-  ]);
-}
-
-/**
  * Implements hook_update_dependencies().
  */
 function openy_node_update_dependencies() {

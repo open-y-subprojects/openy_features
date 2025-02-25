@@ -8,20 +8,6 @@
 use Drupal\openy_media\EmbedButtonIconHelper;
 
 /**
- * Implements hook_install().
- */
-function openy_media_image_install() {
-  EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_image', 'image.svg', 'embed_image');
-  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_media_image') . '/config/override/';
-  // Import new configuration.
-  $config_importer = \Drupal::service('openy_upgrade_tool.importer');
-  $config_importer->setDirectory($config_dir);
-  $config_importer->importConfigs([
-    'image.style.browser_thumbnail',
-  ]);
-}
-
-/**
  * Implements hook_update_dependencies().
  */
 function openy_media_image_update_dependencies() {
