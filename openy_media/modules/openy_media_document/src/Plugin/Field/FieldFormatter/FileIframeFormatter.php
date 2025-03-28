@@ -55,7 +55,7 @@ class FileIframeFormatter extends FileFormatterBase {
       }
 
       $file_uri = $file->getFileUri();
-      $url = \Drupal::service('file_url_generator')->generateString($file_uri);
+      $url = file_create_url($file_uri);
       $mime_type = $file->getMimeType();
       $filename = $file->getFilename();
 
