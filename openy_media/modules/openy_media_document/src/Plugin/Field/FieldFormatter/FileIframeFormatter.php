@@ -76,7 +76,10 @@ class FileIframeFormatter extends FileFormatterBase {
       }
       else {
         $elements[$delta] = [
-          '#markup' => $this->t("<p>File download: <a href='$url'>$filename</a></p>"),
+          '#markup' => $this->t('File download: <a href="@url">@filename</a>', [
+            '@url' => $url,
+            '@filename' => $filename,
+          ]),
           '#cache' => [
             'tags' => $file->getCacheTags(),
           ],
