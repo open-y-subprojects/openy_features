@@ -24,34 +24,33 @@ class FileIframeFormatter extends FileFormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
 
+    $allowed_iframe_types = [
+      'application/pdf',
+      'text/html',
+      'text/plain',
+      'application/vnd.oasis.opendocument.text',  // .odt
+      'application/vnd.oasis.opendocument.spreadsheet',  // .ods
+      'application/vnd.oasis.opendocument.presentation',  // .odp
+    ];
+
+    $blocked_iframe_types = [
+      'text/csv',
+      'application/msword',  // .doc
+      'application/vnd.openxmlformats-officedocument.wordprocessingml.document',  // .docx
+      'application/vnd.oasis.opendocument.text-template',  // .ott
+      'application/vnd.oasis.opendocument.spreadsheet-template',  // .ots
+      'application/vnd.oasis.opendocument.presentation-template',  // .otp
+      'application/rtf',  // .rtf
+      'application/vnd.ms-excel',  // .xls
+      'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',  // .xlsx
+      'application/vnd.ms-powerpoint',  // .ppt
+      'application/vnd.openxmlformats-officedocument.presentationml.presentation',  // .pptx
+    ];
     foreach ($this->getEntitiesToView($items, $langcode) as $delta => $file) {
       $file_uri = $file->getFileUri();
       $url = \Drupal::service('file_url_generator')->generateAbsoluteString($file_uri);
       $mime_type = $file->getMimeType();
       $filename = $file->getFilename();
-
-      $allowed_iframe_types = [
-        'application/pdf',
-        'text/html',
-        'text/plain',
-        'application/vnd.oasis.opendocument.text',  // .odt
-        'application/vnd.oasis.opendocument.spreadsheet',  // .ods
-        'application/vnd.oasis.opendocument.presentation',  // .odp
-      ];
-
-      $blocked_iframe_types = [
-        'text/csv',
-        'application/msword',  // .doc
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',  // .docx
-        'application/vnd.oasis.opendocument.text-template',  // .ott
-        'application/vnd.oasis.opendocument.spreadsheet-template',  // .ots
-        'application/vnd.oasis.opendocument.presentation-template',  // .otp
-        'application/rtf',  // .rtf
-        'application/vnd.ms-excel',  // .xls
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',  // .xlsx
-        'application/vnd.ms-powerpoint',  // .ppt
-        'application/vnd.openxmlformats-officedocument.presentationml.presentation',  // .pptx
-      ];
 
       if (in_array($mime_type, $allowed_iframe_types)) {
         $elements[$delta] = [
