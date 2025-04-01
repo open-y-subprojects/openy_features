@@ -4,7 +4,6 @@ namespace Drupal\openy_media_document\Plugin\Field\FieldFormatter;
 
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Url;
-use Drupal\file\FileInterface;
 use Drupal\file\Plugin\Field\FieldFormatter\FileFormatterBase;
 
 /**
@@ -19,7 +18,6 @@ use Drupal\file\Plugin\Field\FieldFormatter\FileFormatterBase;
  * )
  */
 class FileIframeFormatter extends FileFormatterBase {
-
   /**
    * {@inheritdoc}
    */
@@ -48,14 +46,9 @@ class FileIframeFormatter extends FileFormatterBase {
       'application/vnd.ms-powerpoint',  // .ppt
       'application/vnd.openxmlformats-officedocument.presentationml.presentation',  // .pptx
     ];
-
     foreach ($this->getEntitiesToView($items, $langcode) as $delta => $file) {
-      if (!$file instanceof FileInterface) {
-        continue;
-      }
-
       $file_uri = $file->getFileUri();
-      $url = \Drupal::service('file_url_generator')->generateString($file_uri);
+      $url = \Drupal::service('file_url_generator')->generateAbsoluteString($file_uri);
       $mime_type = $file->getMimeType();
       $filename = $file->getFilename();
 
@@ -83,7 +76,7 @@ class FileIframeFormatter extends FileFormatterBase {
       }
       else {
         $elements[$delta] = [
-          '#markup' => $this->t('File: <a href="@url" download>@filename</a>', [
+          '#markup' => $this->t('File download: <a href="@url">@filename</a>', [
             '@url' => $url,
             '@filename' => $filename,
           ]),
