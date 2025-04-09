@@ -119,3 +119,15 @@ function openy_node_news_update_8007() {
     'image.style.node_news_teaser',
   ]);
 }
+
+/**
+ * Update display settings for image field for news node type.
+ */
+function openy_node_news_update_8008() {
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_news') . '/config/optional';
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($config_dir);
+  $config_importer->importConfigs([
+    'core.entity_form_display.node.news.default',
+  ]);
+}
