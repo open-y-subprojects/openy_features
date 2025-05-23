@@ -1,7 +1,7 @@
 name: Open Y Editor
 description: Stores an editor and text filters configuration.
 type: module
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^10 || ^11
 package: Open Y
 version: 2.0.0
 dependencies:
