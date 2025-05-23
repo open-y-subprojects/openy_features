@@ -1,8 +1,7 @@
 name: Open Y Menu Utility
 description: Stores utility menu configuration.
 type: module
-core_version_requirement: ^10
-version: 1.0.0
+core_version_requirement: ^10 || ^11
 package: YMCA Website Services
 dependencies:
   - drupal:system
