@@ -14,8 +14,6 @@ permissions:
   - 'access media overview'
   - 'access site in maintenance mode'
   - 'access toolbar'
-  - 'access videos_library entity browser pages'
-  - 'access videos_library_embed entity browser pages'
   - 'create alert content'
   - 'create landing_page content'
   - 'create media'
