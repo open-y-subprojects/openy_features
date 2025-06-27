@@ -4,7 +4,7 @@
   "type": "drupal-module",
   "require": {
     "drupal/ckeditor5_font": "^1.1@beta",
-    "drupal/core": "^9.5 || ^10 || ^11",
+    "drupal/core": "^10 || ^11",
     "drupal/ctools": ">=3.13",
     "drupal/diff": "*",
     "drupal/google_analytics": "^4.0.2",
