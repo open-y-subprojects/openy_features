@@ -12,9 +12,10 @@ function openy_loc_facility_preprocess_node__facility__full(&$variables) {
   // Check if the facility node has the branch hours data that doesn't show
   // the data from the related branch node.
   $field_branch_hours = $variables['node']->get('field_branch_hours');
-  if (($node = $variables["content"]["field_facility_loc"][0]["#node"])
-    && !$field_branch_hours->isEmpty()
-  ) {
-    $node->set("field_branch_hours", NULL);
+  $facility_location = $variables['content']['field_facility_loc'] ?? [];
+  $location_node = !empty($facility_location[0]['#node']) ? $facility_location[0]['#node'] : NULL;
+
+  if ($location_node && !$field_branch_hours->isEmpty()) {
+    $location_node->set('field_branch_hours', NULL);
   }
 }
