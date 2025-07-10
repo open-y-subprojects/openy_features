@@ -9,7 +9,6 @@ dependencies:
   - drupal:ckeditor5_font
   - drupal:ckeditor5_paste_filter
   - drupal:editor
-  - ckeditor_font:ckeditor_font
   - drupal:filter
   - entity_embed:entity_embed
   - token_filter:token_filter
