@@ -15,10 +15,10 @@ settings:
       - underline
       - strikethrough
       - alignment
-      - fontColor
-      - fontBackgroundColor
       - outdent
       - indent
+      - fontColor
+      - fontBackgroundColor
       - heading
       - style
       - '|'
@@ -36,6 +36,12 @@ settings:
       - specialCharacters
       - textPartLanguage
   plugins:
+    ckeditor5_alignment:
+      enabled_alignments:
+        - center
+        - justify
+        - left
+        - right
     ckeditor5_heading:
       enabled_headings:
         - heading2
@@ -43,26 +49,13 @@ settings:
         - heading4
         - heading5
         - heading6
-    ckeditor5_style:
-      styles:
-        -
-          label: Highlighted
-          element: '<span class="highlighted">'
-    ckeditor5_sourceEditing:
-      allowed_tags: {  }
-    ckeditor5_list:
-      reversed: true
-      startIndex: true
-    ckeditor5_alignment:
-      enabled_alignments:
-        - left
-        - center
-        - right
-        - justify
     ckeditor5_language:
       language_list: un
-    media_media:
-      allow_view_mode_override: true
+    ckeditor5_list:
+      properties:
+        reversed: true
+        startIndex: true
+      multiBlock: true
     ckeditor5_paste_filter_pasteFilter:
       enabled: true
       filters:
@@ -136,6 +129,21 @@ settings:
           weight: 3
           search: '<a name="OLE_LINK[^"]*">(.*?)<\/a>'
           replace: $1
+    ckeditor5_plugin_pack_font__font_color:
+      colors: {  }
+      use_default_colors: true
+      use_colorpicker: true
+      font_color_columns: 5
+      font_color_document_colors: 10
+      bg_color_columns: 5
+      bg_color_document_colors: 10
+    ckeditor5_sourceEditing:
+      allowed_tags: {  }
+    ckeditor5_style:
+      styles:
+        -
+          label: Highlighted
+          element: '<span class="highlighted">'
     editor_advanced_link_link:
       enabled_attributes:
         - aria-label
@@ -144,11 +152,7 @@ settings:
         - rel
         - target
         - title
+    media_media:
+      allow_view_mode_override: true
 image_upload:
   status: false
-  scheme: public
-  directory: inline-images
-  max_size: ''
-  max_dimensions:
-    width: null
-    height: null
