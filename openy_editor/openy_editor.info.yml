@@ -6,6 +6,7 @@ package: Open Y
 version: 2.0.0
 dependencies:
   - drupal:ckeditor5
+  - drupal:ckeditor5_plugin_pack_font
   - drupal:ckeditor5_paste_filter
   - drupal:editor
   - drupal:filter

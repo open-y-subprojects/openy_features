@@ -4,6 +4,7 @@
   "type": "drupal-module",
   "require": {
     "drupal/core": "^10 || ^11",
+    "drupal/ckeditor5_plugin_pack": "^1.4",
     "drupal/ctools": ">=3.13",
     "drupal/diff": "*",
     "drupal/google_analytics": "^4.0.2",
