@@ -1,5 +1,8 @@
 paragraph:
   version: 1.x
+  css:
+    theme:
+      css/faq.css: {}
   js:
     js/paragraph.js: {}
   dependencies:
