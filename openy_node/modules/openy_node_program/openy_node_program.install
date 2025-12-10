@@ -324,3 +324,25 @@ function openy_node_program_update_8015() {
     'image.style.node_program_header',
   ]);
 }
+
+/**
+ * Replace entity_browser with media_library widget for image fields.
+ */
+function openy_node_program_update_8016() {
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_program') . '/config/install/';
+  $configs = [
+    'core.entity_form_display.node.program.default' => [
+      'dependencies.module',
+      'content.field_program_icon',
+      'content.field_program_image',
+    ],
+  ];
+
+  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
+  foreach ($configs as $config_name => $params) {
+    $config = $config_dir . $config_name . '.yml';
+    foreach ($params as $param) {
+      $config_updater->update($config, $config_name, $param);
+    }
+  }
+}

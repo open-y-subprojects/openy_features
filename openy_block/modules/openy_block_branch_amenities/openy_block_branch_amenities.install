@@ -87,3 +87,24 @@ function openy_block_branch_amenities_update_8004() {
     }
   }
 }
+
+/**
+ * Replace entity_browser with media_library widget for image fields.
+ */
+function openy_block_branch_amenities_update_8005() {
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_branch_amenities') . '/config/install/';
+  $configs = [
+    'core.entity_form_display.paragraph.branch_amenities.default' => [
+      'dependencies.module',
+      'content.paragraph_background_image',
+    ],
+  ];
+
+  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
+  foreach ($configs as $config_name => $params) {
+    $config = $config_dir . $config_name . '.yml';
+    foreach ($params as $param) {
+      $config_updater->update($config, $config_name, $param);
+    }
+  }
+}

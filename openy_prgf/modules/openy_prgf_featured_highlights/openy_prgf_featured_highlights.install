@@ -41,3 +41,23 @@ function openy_prgf_featured_highlights_update_8002() {
     'core.entity_view_display.block_content.featured_highlights_block.default',
   ]);
 }
+
+/**
+ * Update form display to remove content_moderation dependency.
+ */
+function openy_prgf_featured_highlights_update_8003() {
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_prgf_featured_highlights') . '/config/install/';
+  $configs = [
+    'core.entity_form_display.paragraph.featured_highlights.default' => [
+      'dependencies.module',
+    ],
+  ];
+
+  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
+  foreach ($configs as $config_name => $params) {
+    $config = $config_dir . $config_name . '.yml';
+    foreach ($params as $param) {
+      $config_updater->update($config, $config_name, $param);
+    }
+  }
+}

@@ -201,3 +201,41 @@ For any training plan created on iPhone, follow along on your Apple Watch. Infor
       ->translate("eGym iWatch Demo page created. <a href='{$node_url}'>Check it out {$node_url}</a>.")
   );
 }
+
+/**
+ * Migrate field_prgf_image from entity_browser to media_library widget.
+ */
+function openy_egym_iwatch_update_10001() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_form_display.paragraph.banner_fixed.default');
+
+  if ($config->isNew()) {
+    return;
+  }
+
+  $content = $config->get('content');
+
+  if (isset($content['field_prgf_image']) && in_array($content['field_prgf_image']['type'], ['entity_browser_entity_reference', 'openy_focal_point_entity_browser_entity_reference', 'entity_reference_autocomplete'])) {
+    $content['field_prgf_image'] = [
+      'type' => 'media_library_widget',
+      'weight' => $content['field_prgf_image']['weight'] ?? 0,
+      'region' => 'content',
+      'settings' => [
+        'media_types' => ['image'],
+      ],
+      'third_party_settings' => [],
+    ];
+    $config->set('content', $content);
+  }
+
+  $dependencies = $config->get('dependencies');
+  if (isset($dependencies['module'])) {
+    $dependencies['module'] = array_values(array_diff($dependencies['module'], ['entity_browser', 'openy_focal_point']));
+    if (!in_array('media_library', $dependencies['module'])) {
+      $dependencies['module'][] = 'media_library';
+    }
+    $config->set('dependencies', $dependencies);
+  }
+
+  $config->save();
+}

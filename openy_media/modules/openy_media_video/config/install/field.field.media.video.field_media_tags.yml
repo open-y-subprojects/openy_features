@@ -22,6 +22,6 @@ settings:
       media_tags: media_tags
     sort:
       field: _none
-    auto_create: false
-    auto_create_bundle: ''
+    auto_create: true
+    auto_create_bundle: media_tags
 field_type: entity_reference

@@ -85,3 +85,133 @@ function openy_media_update_8005() {
     'taxonomy.vocabulary.media_folders',
   ]);
 }
+
+/**
+ * Moved to openy_post_update_deprecate_entity_browser_media_directories().
+ */
+function openy_media_update_10001() {
+  // Intentionally empty - uninstall logic moved to yusaopeny profile
+  // post_update to ensure proper module uninstall order.
+}
+
+/**
+ * Placeholder for Media Tags filter - now implemented dynamically.
+ *
+ * The Media Tags filter for Media Library is now added dynamically via
+ * hook_form_views_exposed_form_alter() and hook_views_query_alter() in
+ * openy_media.module. This avoids modifying Drupal core's media_library
+ * view config directly.
+ */
+function openy_media_update_10002() {
+  // Filter is now added dynamically - no config changes needed.
+  return t('Media Tags filter is now added dynamically via hooks.');
+}
+
+/**
+ * Enable auto_create for field_media_tags and add media_library form displays.
+ */
+function openy_media_update_10003() {
+  $config_factory = \Drupal::configFactory();
+  $entity_type_manager = \Drupal::entityTypeManager();
+
+  // Media types with field_media_tags.
+  $media_types = ['image', 'document', 'video', 'video_local'];
+
+  foreach ($media_types as $bundle) {
+    // Enable auto_create for field_media_tags.
+    $field_config_name = "field.field.media.{$bundle}.field_media_tags";
+    $field_config = $config_factory->getEditable($field_config_name);
+
+    if (!$field_config->isNew()) {
+      $settings = $field_config->get('settings');
+      if (isset($settings['handler_settings'])) {
+        $settings['handler_settings']['auto_create'] = TRUE;
+        $settings['handler_settings']['auto_create_bundle'] = 'media_tags';
+        $field_config->set('settings', $settings)->save();
+      }
+    }
+
+    // Create media_library form display if it doesn't exist.
+    $form_display_storage = $entity_type_manager->getStorage('entity_form_display');
+    $media_library_display = $form_display_storage->load("media.{$bundle}.media_library");
+
+    if (!$media_library_display) {
+      // Load default display and create media_library from it.
+      $default_display = $form_display_storage->load("media.{$bundle}.default");
+      if ($default_display) {
+        $media_library_display = $default_display->createCopy('media_library');
+        $media_library_display->save();
+      }
+    }
+
+    // Ensure field_media_tags is visible with autocomplete_tags widget.
+    if ($media_library_display) {
+      $component = $media_library_display->getComponent('field_media_tags');
+      if (!$component || $component['type'] !== 'entity_reference_autocomplete_tags') {
+        $media_library_display->setComponent('field_media_tags', [
+          'type' => 'entity_reference_autocomplete_tags',
+          'weight' => 10,
+          'region' => 'content',
+          'settings' => [
+            'match_operator' => 'CONTAINS',
+            'match_limit' => 10,
+            'size' => 60,
+            'placeholder' => '',
+          ],
+        ]);
+        $media_library_display->save();
+      }
+    }
+  }
+
+  return t('Enabled auto_create for field_media_tags and added media_library form displays.');
+}
+
+/**
+ * Switch Media Tags field to Hybrid Autocomplete widget.
+ */
+function openy_media_update_10004() {
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $form_display_storage = $entity_type_manager->getStorage('entity_form_display');
+
+  // Media types with field_media_tags (same as 10003).
+  $media_types = ['image', 'document', 'video', 'video_local'];
+
+  foreach ($media_types as $bundle) {
+    // Update media_library form display.
+    $media_library_display = $form_display_storage->load("media.{$bundle}.media_library");
+    if ($media_library_display && $media_library_display->getComponent('field_media_tags')) {
+      $media_library_display->setComponent('field_media_tags', [
+        'type' => 'entity_reference_hybrid_autocomplete',
+        'weight' => 10,
+        'region' => 'content',
+        'settings' => [
+          'match_operator' => 'CONTAINS',
+          'match_limit' => 0,
+          'size' => 60,
+          'placeholder' => '',
+        ],
+      ]);
+      $media_library_display->save();
+    }
+
+    // Also update default form display.
+    $default_display = $form_display_storage->load("media.{$bundle}.default");
+    if ($default_display && $default_display->getComponent('field_media_tags')) {
+      $default_display->setComponent('field_media_tags', [
+        'type' => 'entity_reference_hybrid_autocomplete',
+        'weight' => 10,
+        'region' => 'content',
+        'settings' => [
+          'match_operator' => 'CONTAINS',
+          'match_limit' => 0,
+          'size' => 60,
+          'placeholder' => '',
+        ],
+      ]);
+      $default_display->save();
+    }
+  }
+
+  return t('Switched field_media_tags to Hybrid Autocomplete widget.');
+}

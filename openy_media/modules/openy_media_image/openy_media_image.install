@@ -380,7 +380,7 @@ function openy_media_image_update_8016() {
  */
 function openy_media_image_update_10001() {
  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_media_image') . '/config/install/';
-  
+
   // List of configurations to update.
   $configs = [
     'core.entity_view_display.media.image.embedded_full',
@@ -395,5 +395,35 @@ function openy_media_image_update_10001() {
         ->save();
     }
   }
+}
+
+/**
+ * Deprecate entity_browser in favor of media_library.
+ *
+ * Delete entity_browser configs and enable media_library module.
+ */
+function openy_media_image_update_10002() {
+  // Enable media_library module if not already enabled.
+  $module_handler = \Drupal::service('module_handler');
+  if (!$module_handler->moduleExists('media_library')) {
+    \Drupal::service('module_installer')->install(['media_library']);
+  }
+
+  // Delete entity_browser configs.
+  $configs_to_delete = [
+    'entity_browser.browser.images_library',
+    'entity_browser.browser.images_library_embed',
+  ];
+
+  $config_factory = \Drupal::configFactory();
+  foreach ($configs_to_delete as $config_name) {
+    $config = $config_factory->getEditable($config_name);
+    if (!$config->isNew()) {
+      $config->delete();
+    }
+  }
+
+  $message = "Entity Browser 'images_library' and 'images_library_embed' have been deprecated. Media fields now use Drupal core Media Library.";
+  \Drupal::messenger()->addWarning($message);
 }
 

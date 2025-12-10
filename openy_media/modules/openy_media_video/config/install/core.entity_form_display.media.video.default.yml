@@ -35,9 +35,9 @@ content:
       match_operator: CONTAINS
       size: 60
       placeholder: ''
-      match_limit: 10
+      match_limit: 0
     third_party_settings: {  }
-    type: entity_reference_autocomplete_tags
+    type: entity_reference_hybrid_autocomplete
     region: content
   field_media_video_embed_field:
     type: video_embed_field_textfield

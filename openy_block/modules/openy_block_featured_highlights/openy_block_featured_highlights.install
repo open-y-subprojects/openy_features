@@ -26,3 +26,24 @@ function openy_block_featured_highlights_update_8001() {
     }
   }
 }
+
+/**
+ * Replace entity_browser with media_library widget for image fields.
+ */
+function openy_block_featured_highlights_update_8002() {
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_featured_highlights') . '/config/install/';
+  $configs = [
+    'core.entity_form_display.block_content.featured_highlights_block.default' => [
+      'dependencies.module',
+      'content.field_featured_hl_block_image',
+    ],
+  ];
+
+  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
+  foreach ($configs as $config_name => $params) {
+    $config = $config_dir . $config_name . '.yml';
+    foreach ($params as $param) {
+      $config_updater->update($config, $config_name, $param);
+    }
+  }
+}

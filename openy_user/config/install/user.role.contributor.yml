@@ -7,10 +7,6 @@ weight: 3
 is_admin: null
 permissions:
   - 'access content overview'
-  - 'access documents_library entity browser pages'
-  - 'access documents_library_embed entity browser pages'
-  - 'access images_library entity browser pages'
-  - 'access images_library_embed entity browser pages'
   - 'access media overview'
   - 'access site in maintenance mode'
   - 'access toolbar'
@@ -19,7 +15,6 @@ permissions:
   - 'create media'
   - 'delete own alert content'
   - 'delete own landing_page content'
-  - 'dropzone upload files'
   - 'edit any alert content'
   - 'edit any landing_page content'
   - 'edit own alert content'
