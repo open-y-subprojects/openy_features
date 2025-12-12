@@ -249,7 +249,7 @@ function openy_node_mbrshp_update_8012() {
 }
 
 /**
- * Remove entity_browser_entity_form third_party_settings from inline_entity_form.
+ * Migrate field_mbrshp_image from entity_browser to media_library widget.
  */
 function openy_node_mbrshp_update_10001() {
   $config_factory = \Drupal::configFactory();
@@ -260,8 +260,21 @@ function openy_node_mbrshp_update_10001() {
   }
 
   $content = $config->get('content');
-  $changed = FALSE;
 
+  // Migrate field_mbrshp_image to media_library widget.
+  if (isset($content['field_mbrshp_image']) && in_array($content['field_mbrshp_image']['type'], ['entity_browser_entity_reference', 'openy_focal_point_entity_browser_entity_reference', 'entity_reference_autocomplete'])) {
+    $content['field_mbrshp_image'] = [
+      'type' => 'media_library_widget',
+      'weight' => $content['field_mbrshp_image']['weight'] ?? 0,
+      'region' => 'content',
+      'settings' => [
+        'media_types' => ['image'],
+      ],
+      'third_party_settings' => [],
+    ];
+  }
+
+  // Remove entity_browser_entity_form third_party_settings from inline_entity_form.
   foreach ($content as $field_name => &$field_config) {
     if (isset($field_config['type']) && $field_config['type'] === 'inline_entity_form_complex') {
       if (isset($field_config['third_party_settings']['entity_browser_entity_form'])) {
@@ -269,20 +282,24 @@ function openy_node_mbrshp_update_10001() {
         if (empty($field_config['third_party_settings'])) {
           $field_config['third_party_settings'] = new \stdClass();
         }
-        $changed = TRUE;
       }
     }
   }
-
-  if ($changed) {
-    $config->set('content', $content);
-  }
+  $config->set('content', $content);
 
   $dependencies = $config->get('dependencies');
-  if (isset($dependencies['module'])) {
-    $dependencies['module'] = array_values(array_diff($dependencies['module'], ['entity_browser_entity_form']));
-    $config->set('dependencies', $dependencies);
+  if (isset($dependencies['config'])) {
+    $dependencies['config'] = array_values(array_filter($dependencies['config'], function ($item) {
+      return strpos($item, 'entity_browser.browser.') !== 0;
+    }));
   }
+  if (isset($dependencies['module'])) {
+    $dependencies['module'] = array_values(array_diff($dependencies['module'], ['entity_browser', 'entity_browser_entity_form', 'openy_focal_point']));
+    if (!in_array('media_library', $dependencies['module'])) {
+      $dependencies['module'][] = 'media_library';
+    }
+  }
+  $config->set('dependencies', $dependencies);
 
   $config->save();
 }

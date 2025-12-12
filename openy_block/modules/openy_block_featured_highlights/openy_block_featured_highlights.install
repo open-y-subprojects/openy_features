@@ -34,6 +34,7 @@ function openy_block_featured_highlights_update_8002() {
   $config_dir = \Drupal::service('extension.list.module')->getPath('openy_block_featured_highlights') . '/config/install/';
   $configs = [
     'core.entity_form_display.block_content.featured_highlights_block.default' => [
+      'dependencies.config',
       'dependencies.module',
       'content.field_featured_hl_block_image',
     ],

@@ -409,10 +409,11 @@ function openy_media_image_update_10002() {
     \Drupal::service('module_installer')->install(['media_library']);
   }
 
-  // Delete entity_browser configs.
+  // Delete entity_browser and views configs.
   $configs_to_delete = [
     'entity_browser.browser.images_library',
     'entity_browser.browser.images_library_embed',
+    'views.view.images_library',
   ];
 
   $config_factory = \Drupal::configFactory();
@@ -420,6 +421,35 @@ function openy_media_image_update_10002() {
     $config = $config_factory->getEditable($config_name);
     if (!$config->isNew()) {
       $config->delete();
+    }
+  }
+
+  // Import new media_library form display config.
+  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_media_image') . '/config/install/';
+  $config_importer = \Drupal::service('openy_upgrade_tool.importer');
+  $config_importer->setDirectory($config_dir);
+  $config_importer->importConfigs([
+    'core.entity_form_display.media.image.media_library',
+  ]);
+
+  // Update changed configs.
+  $configs = [
+    'core.entity_form_display.media.image.default' => [
+      'content.field_media_tags',
+    ],
+    'embed.button.embed_image' => [
+      'type_settings',
+    ],
+    'field.field.media.image.field_media_tags' => [
+      'settings.handler_settings',
+    ],
+  ];
+
+  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
+  foreach ($configs as $config_name => $params) {
+    $config = $config_dir . $config_name . '.yml';
+    foreach ($params as $param) {
+      $config_updater->update($config, $config_name, $param);
     }
   }
 

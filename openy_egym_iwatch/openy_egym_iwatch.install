@@ -229,13 +229,18 @@ function openy_egym_iwatch_update_10001() {
   }
 
   $dependencies = $config->get('dependencies');
+  if (isset($dependencies['config'])) {
+    $dependencies['config'] = array_values(array_filter($dependencies['config'], function ($item) {
+      return strpos($item, 'entity_browser.browser.') !== 0;
+    }));
+  }
   if (isset($dependencies['module'])) {
     $dependencies['module'] = array_values(array_diff($dependencies['module'], ['entity_browser', 'openy_focal_point']));
     if (!in_array('media_library', $dependencies['module'])) {
       $dependencies['module'][] = 'media_library';
     }
-    $config->set('dependencies', $dependencies);
   }
+  $config->set('dependencies', $dependencies);
 
   $config->save();
 }
