@@ -88,3 +88,35 @@ function openy_prgf_4c_update_8006() {
     }
   }
 }
+
+/**
+ * Remove entity_browser_entity_form third_party_settings from inline_entity_form.
+ */
+function openy_prgf_4c_update_10001() {
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('paragraph.4c.default');
+
+  if (!$display) {
+    return;
+  }
+
+  $changed = FALSE;
+  foreach ($display->getComponents() as $field_name => $component) {
+    if (isset($component['type']) && $component['type'] === 'inline_entity_form_complex') {
+      if (isset($component['third_party_settings']['entity_browser_entity_form'])) {
+        unset($component['third_party_settings']['entity_browser_entity_form']);
+        if (empty($component['third_party_settings'])) {
+          $component['third_party_settings'] = [];
+        }
+        $display->setComponent($field_name, $component);
+        $changed = TRUE;
+      }
+    }
+  }
+
+  if ($changed) {
+    $display->calculateDependencies();
+    $display->save();
+  }
+}

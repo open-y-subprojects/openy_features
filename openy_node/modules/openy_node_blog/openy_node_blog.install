@@ -344,3 +344,31 @@ function openy_node_blog_update_8015() {
     'image.style.node_blog_teaser',
   ]);
 }
+
+/**
+ * Migrate field_blog_image from entity_browser to media_library widget.
+ */
+function openy_node_blog_update_10001() {
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('node.blog.default');
+
+  if (!$display) {
+    return;
+  }
+
+  $component = $display->getComponent('field_blog_image');
+  if ($component && in_array($component['type'], ['entity_browser_entity_reference', 'openy_focal_point_entity_browser_entity_reference', 'entity_reference_autocomplete'])) {
+    $display->setComponent('field_blog_image', [
+      'type' => 'media_library_widget',
+      'weight' => $component['weight'] ?? 0,
+      'region' => 'content',
+      'settings' => [
+        'media_types' => ['image'],
+      ],
+      'third_party_settings' => [],
+    ]);
+    $display->calculateDependencies();
+    $display->save();
+  }
+}

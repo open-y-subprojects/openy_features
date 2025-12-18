@@ -7,7 +7,6 @@ dependencies:
     - field.field.paragraph.2c.field_prgf_2c_right
     - paragraphs.paragraphs_type.2c
   module:
-    - entity_browser_entity_form
     - inline_entity_form
 id: paragraph.2c.default
 targetEntityType: paragraph
@@ -31,9 +30,7 @@ content:
       allow_existing: true
       match_operator: CONTAINS
       override_labels: false
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
+    third_party_settings: {  }
     type: inline_entity_form_complex
     region: content
   field_prgf_2c_right:
@@ -46,9 +43,7 @@ content:
       allow_existing: true
       match_operator: CONTAINS
       override_labels: false
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
+    third_party_settings: {  }
     type: inline_entity_form_complex
     region: content
 hidden:

@@ -87,3 +87,31 @@ function openy_block_branch_amenities_update_8004() {
     }
   }
 }
+
+/**
+ * Replace entity_browser with media_library widget for image fields.
+ */
+function openy_block_branch_amenities_update_8005() {
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('paragraph.branch_amenities.default');
+
+  if (!$display) {
+    return;
+  }
+
+  $component = $display->getComponent('paragraph_background_image');
+  if ($component && in_array($component['type'], ['entity_browser_entity_reference', 'openy_focal_point_entity_browser_entity_reference', 'entity_reference_autocomplete'])) {
+    $display->setComponent('paragraph_background_image', [
+      'type' => 'media_library_widget',
+      'weight' => $component['weight'] ?? 0,
+      'region' => 'content',
+      'settings' => [
+        'media_types' => ['image'],
+      ],
+      'third_party_settings' => [],
+    ]);
+    $display->calculateDependencies();
+    $display->save();
+  }
+}

@@ -26,3 +26,31 @@ function openy_block_featured_highlights_update_8001() {
     }
   }
 }
+
+/**
+ * Replace entity_browser with media_library widget for image fields.
+ */
+function openy_block_featured_highlights_update_8002() {
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('block_content.featured_highlights_block.default');
+
+  if (!$display) {
+    return;
+  }
+
+  $component = $display->getComponent('field_featured_hl_block_image');
+  if ($component && in_array($component['type'], ['entity_browser_entity_reference', 'openy_focal_point_entity_browser_entity_reference', 'entity_reference_autocomplete'])) {
+    $display->setComponent('field_featured_hl_block_image', [
+      'type' => 'media_library_widget',
+      'weight' => $component['weight'] ?? 0,
+      'region' => 'content',
+      'settings' => [
+        'media_types' => ['image'],
+      ],
+      'third_party_settings' => [],
+    ]);
+    $display->calculateDependencies();
+    $display->save();
+  }
+}

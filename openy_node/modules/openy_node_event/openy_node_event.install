@@ -66,3 +66,31 @@ function openy_node_event_update_9001() {
   ]);
 
 }
+
+/**
+ * Migrate field_event_image from entity_browser to media_library widget.
+ */
+function openy_node_event_update_10001() {
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('node.event.default');
+
+  if (!$display) {
+    return;
+  }
+
+  $component = $display->getComponent('field_event_image');
+  if ($component && in_array($component['type'], ['entity_browser_entity_reference', 'openy_focal_point_entity_browser_entity_reference', 'entity_reference_autocomplete'])) {
+    $display->setComponent('field_event_image', [
+      'type' => 'media_library_widget',
+      'weight' => $component['weight'] ?? 0,
+      'region' => 'content',
+      'settings' => [
+        'media_types' => ['image'],
+      ],
+      'third_party_settings' => [],
+    ]);
+    $display->calculateDependencies();
+    $display->save();
+  }
+}

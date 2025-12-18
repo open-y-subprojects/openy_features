@@ -8,7 +8,7 @@ dependencies:
   - content_moderation:content_moderation
   - datalayer:datalayer
   - drupal:datetime_range
-  - entity_browser:entity_browser
+  - drupal:media_library
   - entity_reference_revisions:entity_reference_revisions
   - drupal:field
   - field_group:field_group

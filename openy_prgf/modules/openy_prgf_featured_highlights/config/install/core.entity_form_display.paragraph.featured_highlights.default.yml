@@ -8,7 +8,6 @@ dependencies:
     - paragraphs.paragraphs_type.featured_highlights
   module:
     - content_moderation
-    - entity_browser_entity_form
     - inline_entity_form
 id: paragraph.featured_highlights.default
 targetEntityType: paragraph
@@ -27,9 +26,7 @@ content:
       allow_existing: true
       match_operator: CONTAINS
       override_labels: false
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
+    third_party_settings: {  }
   field_prgf_grid_style:
     weight: 1
     settings: {  }

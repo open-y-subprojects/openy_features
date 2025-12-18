@@ -196,3 +196,31 @@ function openy_prgf_gallery_update_8013() {
     'field.field.paragraph.gallery.field_prgf_images',
   ]);
 }
+
+/**
+ * Migrate field_prgf_images from entity_browser to media_library widget.
+ */
+function openy_prgf_gallery_update_10001() {
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('paragraph.gallery.default');
+
+  if (!$display) {
+    return;
+  }
+
+  $component = $display->getComponent('field_prgf_images');
+  if ($component && in_array($component['type'], ['entity_browser_entity_reference', 'openy_focal_point_entity_browser_entity_reference', 'entity_reference_autocomplete'])) {
+    $display->setComponent('field_prgf_images', [
+      'type' => 'media_library_widget',
+      'weight' => $component['weight'] ?? 0,
+      'region' => 'content',
+      'settings' => [
+        'media_types' => ['image'],
+      ],
+      'third_party_settings' => [],
+    ]);
+    $display->calculateDependencies();
+    $display->save();
+  }
+}

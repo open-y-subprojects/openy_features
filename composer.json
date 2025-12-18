@@ -15,7 +15,7 @@
     "open-y-subprojects/openy_demo_content": "^2.0",
     "open-y-subprojects/openy_node_alert": "^2.3.1",
     "ycloudyusa/yusaopeny": "*",
-    "ycloudyusa/y_lb": ">=3.8.2 || ~4.0.0",
+    "ycloudyusa/y_lb": "^5.0.0",
     "ynorth-projects/openy_node_session": "^2.0"
   },
   "extra": {

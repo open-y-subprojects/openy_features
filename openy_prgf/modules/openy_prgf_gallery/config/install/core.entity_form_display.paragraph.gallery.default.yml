@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.images_library
     - field.field.paragraph.gallery.field_prgf_description
     - field.field.paragraph.gallery.field_prgf_headline
     - field.field.paragraph.gallery.field_prgf_images
@@ -10,7 +9,7 @@ dependencies:
     - paragraphs.paragraphs_type.gallery
   module:
     - link_attributes
-    - openy_focal_point
+    - media_library
     - text
 id: paragraph.gallery.default
 targetEntityType: paragraph
@@ -36,17 +35,10 @@ content:
   field_prgf_images:
     weight: 3
     settings:
-      entity_browser: images_library
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: thumbnail_for_preview
-      open: false
-      field_widget_replace: false
+      media_types:
+        - image
     third_party_settings: {  }
-    type: openy_focal_point_entity_browser_entity_reference
+    type: media_library_widget
     region: content
   field_prgf_link:
     weight: 2

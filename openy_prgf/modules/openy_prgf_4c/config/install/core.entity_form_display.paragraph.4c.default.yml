@@ -12,7 +12,6 @@ dependencies:
     - field.field.paragraph.4c.field_prgf_title
     - paragraphs.paragraphs_type.4c
   module:
-    - entity_browser_entity_form
     - inline_entity_form
     - link_attributes
     - text
@@ -38,9 +37,7 @@ content:
       allow_existing: true
       match_operator: CONTAINS
       override_labels: false
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
+    third_party_settings: {  }
     type: inline_entity_form_complex
     region: content
   field_prgf_4c_2nd:
@@ -53,9 +50,7 @@ content:
       allow_existing: true
       match_operator: CONTAINS
       override_labels: false
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
+    third_party_settings: {  }
     type: inline_entity_form_complex
     region: content
   field_prgf_4c_3rd:
@@ -68,9 +63,7 @@ content:
       allow_existing: true
       match_operator: CONTAINS
       override_labels: false
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
+    third_party_settings: {  }
     type: inline_entity_form_complex
     region: content
   field_prgf_4c_4th:
@@ -83,9 +76,7 @@ content:
       allow_existing: true
       match_operator: CONTAINS
       override_labels: false
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
+    third_party_settings: {  }
     type: inline_entity_form_complex
     region: content
   field_prgf_4c_button:

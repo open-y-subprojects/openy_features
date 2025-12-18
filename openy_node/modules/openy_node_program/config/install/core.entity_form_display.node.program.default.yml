@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.images_library
     - field.field.node.program.field_content
     - field.field.node.program.field_header_content
     - field.field.node.program.field_meta_tags
@@ -13,8 +12,8 @@ dependencies:
     - field.field.node.program.field_sidebar_content
     - node.type.program
   module:
-    - entity_browser
     - field_group
+    - media_library
     - metatag
     - paragraphs
     - path
@@ -133,30 +132,18 @@ content:
   field_program_icon:
     weight: 9
     settings:
-      entity_browser: images_library
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: thumbnail_for_preview
-      open: false
+      media_types:
+        - image
     third_party_settings: {  }
-    type: entity_browser_entity_reference
+    type: media_library_widget
     region: content
   field_program_image:
     weight: 10
     settings:
-      entity_browser: images_library
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: thumbnail_for_preview
-      open: false
+      media_types:
+        - image
     third_party_settings: {  }
-    type: entity_browser_entity_reference
+    type: media_library_widget
     region: content
   field_sidebar_content:
     weight: 12

@@ -12,7 +12,7 @@ dependencies:
   - drupal:link
   - drupal:media (>= 8.6)
   - drupal:text
-  - entity_browser:entity_browser
+  - drupal:media_library
   - focal_point:focal_point
   - link_attributes:link_attributes
   - openy_focal_point:openy_focal_point

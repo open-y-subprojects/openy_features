@@ -3,13 +3,12 @@ status: true
 dependencies:
   config:
     - block_content.type.featured_highlights_block
-    - entity_browser.browser.images_library
     - field.field.block_content.featured_highlights_block.field_block_content
     - field.field.block_content.featured_highlights_block.field_featured_hl_block_image
     - field.field.block_content.featured_highlights_block.field_featured_hl_block_link
   module:
     - content_moderation
-    - entity_browser
+    - media_library
     - link_attributes
     - text
 id: block_content.featured_highlights_block.default
@@ -28,16 +27,10 @@ content:
   field_featured_hl_block_image:
     weight: 2
     settings:
-      entity_browser: images_library
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: thumbnail_for_preview
-      open: false
+      media_types:
+        - image
     third_party_settings: {  }
-    type: entity_browser_entity_reference
+    type: media_library_widget
     region: content
   field_featured_hl_block_link:
     weight: 1

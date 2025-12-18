@@ -345,3 +345,74 @@ function openy_node_category_update_8017() {
     'image.style.node_program_subcategory_teaser',
   ]);
 }
+
+/**
+ * Replace entity_browser with media_library widget for image fields.
+ */
+function openy_node_category_update_8018() {
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('node.program_subcategory.default');
+
+  if (!$display) {
+    return;
+  }
+
+  $component = $display->getComponent('field_category_image');
+  if ($component && in_array($component['type'], ['entity_browser_entity_reference', 'openy_focal_point_entity_browser_entity_reference', 'entity_reference_autocomplete'])) {
+    $display->setComponent('field_category_image', [
+      'type' => 'media_library_widget',
+      'weight' => $component['weight'] ?? 0,
+      'region' => 'content',
+      'settings' => [
+        'media_types' => ['image'],
+      ],
+      'third_party_settings' => [],
+    ]);
+    $display->calculateDependencies();
+    $display->save();
+  }
+}
+
+/**
+ * Migrate field_category_image from entity_browser to media_library widget.
+ */
+function openy_node_category_update_10001() {
+  $config_factory = \Drupal::configFactory();
+  $config = $config_factory->getEditable('core.entity_form_display.node.program_subcategory.default');
+
+  if ($config->isNew()) {
+    return;
+  }
+
+  $content = $config->get('content');
+
+  if (isset($content['field_category_image']) && in_array($content['field_category_image']['type'], ['entity_browser_entity_reference', 'openy_focal_point_entity_browser_entity_reference', 'entity_reference_autocomplete'])) {
+    $content['field_category_image'] = [
+      'type' => 'media_library_widget',
+      'weight' => $content['field_category_image']['weight'] ?? 10,
+      'region' => 'content',
+      'settings' => [
+        'media_types' => ['image'],
+      ],
+      'third_party_settings' => [],
+    ];
+    $config->set('content', $content);
+  }
+
+  $dependencies = $config->get('dependencies');
+  if (isset($dependencies['config'])) {
+    $dependencies['config'] = array_values(array_filter($dependencies['config'], function ($item) {
+      return strpos($item, 'entity_browser.browser.') !== 0;
+    }));
+  }
+  if (isset($dependencies['module'])) {
+    $dependencies['module'] = array_values(array_diff($dependencies['module'], ['entity_browser', 'openy_focal_point']));
+    if (!in_array('media_library', $dependencies['module'])) {
+      $dependencies['module'][] = 'media_library';
+    }
+  }
+  $config->set('dependencies', $dependencies);
+
+  $config->save();
+}

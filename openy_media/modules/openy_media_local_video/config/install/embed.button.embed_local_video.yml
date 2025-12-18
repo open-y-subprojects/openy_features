@@ -15,7 +15,4 @@ type_settings:
     - video_local
   display_plugins:
     - 'view_mode:media.embedded_full'
-  entity_browser: local_video_library_embed
-  entity_browser_settings:
-    display_review: false
 icon_uuid: null

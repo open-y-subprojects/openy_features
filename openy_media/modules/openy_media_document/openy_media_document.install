@@ -190,3 +190,56 @@ function openy_media_document_update_8006() {
 function openy_media_document_update_9001() {
   EmbedButtonIconHelper::setEmbedButtonIcon('openy_media_document', 'document.svg', 'embed_document');
 }
+
+/**
+ * Deprecate entity_browser in favor of media_library.
+ *
+ * Delete entity_browser configs and enable media_library module.
+ */
+function openy_media_document_update_10001() {
+  // Enable media_library module if not already enabled.
+  $module_handler = \Drupal::service('module_handler');
+  if (!$module_handler->moduleExists('media_library')) {
+    \Drupal::service('module_installer')->install(['media_library']);
+  }
+
+  // Clear entity_browser settings from embed_document button.
+  $config_factory = \Drupal::configFactory();
+  $embed_config = $config_factory->getEditable('embed.button.embed_document');
+  if (!$embed_config->isNew()) {
+    $embed_config->clear('type_settings.entity_browser');
+    $embed_config->clear('type_settings.entity_browser_settings');
+    $deps = $embed_config->get('dependencies.config');
+    if ($deps) {
+      $deps = array_values(array_filter($deps, function ($d) {
+        return strpos($d, 'entity_browser.browser.') !== 0;
+      }));
+      $embed_config->set('dependencies.config', $deps);
+    }
+    $embed_config->save();
+  }
+
+  // Delete entity_browser and views configs.
+  $configs_to_delete = [
+    'entity_browser.browser.documents_library',
+    'entity_browser.browser.documents_library_embed',
+    'views.view.documents_library',
+  ];
+
+  foreach ($configs_to_delete as $config_name) {
+    $config = $config_factory->getEditable($config_name);
+    if (!$config->isNew()) {
+      $config->delete();
+    }
+  }
+
+  // Update form display using entity approach.
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('media.document.default');
+
+  if ($display) {
+    $display->calculateDependencies();
+    $display->save();
+  }
+}

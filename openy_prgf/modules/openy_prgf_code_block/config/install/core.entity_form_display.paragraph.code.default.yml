@@ -5,7 +5,6 @@ dependencies:
     - field.field.paragraph.code.field_prgf_code_block
     - paragraphs.paragraphs_type.code
   module:
-    - entity_browser_entity_form
     - inline_entity_form
 id: paragraph.code.default
 targetEntityType: paragraph
@@ -22,9 +21,7 @@ content:
       allow_existing: true
       match_operator: CONTAINS
       override_labels: false
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
+    third_party_settings: {  }
     type: inline_entity_form_complex
 hidden:
   created: true

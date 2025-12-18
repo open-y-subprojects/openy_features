@@ -2,7 +2,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - entity_browser.browser.images_library
     - field.field.node.program_subcategory.field_bottom_content
     - field.field.node.program_subcategory.field_category_color
     - field.field.node.program_subcategory.field_category_description
@@ -14,8 +13,8 @@ dependencies:
     - field.field.node.program_subcategory.field_sidebar_content
     - node.type.program_subcategory
   module:
-    - entity_browser
     - field_group
+    - media_library
     - metatag
     - paragraphs
     - path
@@ -125,16 +124,10 @@ content:
   field_category_image:
     weight: 10
     settings:
-      entity_browser: images_library
-      field_widget_display: rendered_entity
-      field_widget_edit: true
-      field_widget_remove: true
-      selection_mode: selection_append
-      field_widget_display_settings:
-        view_mode: thumbnail_for_preview
-      open: false
+      media_types:
+        - image
     third_party_settings: {  }
-    type: entity_browser_entity_reference
+    type: media_library_widget
     region: content
   field_category_program:
     weight: 1

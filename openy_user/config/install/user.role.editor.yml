@@ -7,10 +7,6 @@ weight: 4
 is_admin: null
 permissions:
   - 'access content overview'
-  - 'access documents_library entity browser pages'
-  - 'access documents_library_embed entity browser pages'
-  - 'access images_library entity browser pages'
-  - 'access images_library_embed entity browser pages'
   - 'access media overview'
   - 'access site in maintenance mode'
   - 'access structure page'
@@ -29,7 +25,6 @@ permissions:
   - 'delete own alert content'
   - 'delete terms in color'
   - 'delete terms in media_tags'
-  - 'dropzone upload files'
   - 'edit own alert content'
   - 'edit terms in color'
   - 'edit terms in media_tags'

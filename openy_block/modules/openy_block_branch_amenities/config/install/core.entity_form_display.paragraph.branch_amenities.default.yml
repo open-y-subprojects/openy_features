@@ -5,7 +5,7 @@ dependencies:
     - field.field.paragraph.branch_amenities.field_amenities_block
     - paragraphs.paragraphs_type.branch_amenities
   module:
-    - entity_browser_entity_form
+    - media_library
 id: paragraph.branch_amenities.default
 targetEntityType: paragraph
 bundle: branch_amenities
@@ -16,9 +16,7 @@ content:
     weight: 0
     region: content
     settings: {  }
-    third_party_settings:
-      entity_browser_entity_form:
-        entity_browser_id: _none
+    third_party_settings: {  }
   paragraph_background_color:
     type: options_select
     weight: -9
@@ -26,17 +24,10 @@ content:
     settings: {  }
     third_party_settings: {  }
   paragraph_background_image:
-    type: entity_browser_entity_reference
+    type: media_library_widget
     settings:
-      entity_browser: images_library
-      field_widget_display: rendered_entity
-      field_widget_display_settings:
-        view_mode: thumbnail_for_preview
-      open: false
-      field_widget_edit: true
-      field_widget_remove: true
-      field_widget_replace: false
-      selection_mode: selection_append
+      media_types:
+        - image
     weight: -10
     region: content
     third_party_settings: {  }

@@ -1,0 +1,6 @@
+openy_media.media_tags_autocomplete:
+  path: '/openy-media/media-tags/autocomplete'
+  defaults:
+    _controller: '\Drupal\openy_media\Controller\MediaTagsAutocompleteController::autocomplete'
+  requirements:
+    _permission: 'access media overview'

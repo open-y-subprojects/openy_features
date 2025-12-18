@@ -380,7 +380,7 @@ function openy_media_image_update_8016() {
  */
 function openy_media_image_update_10001() {
  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_media_image') . '/config/install/';
-  
+
   // List of configurations to update.
   $configs = [
     'core.entity_view_display.media.image.embedded_full',
@@ -393,6 +393,93 @@ function openy_media_image_update_10001() {
     if ($config->get('content.field_media_image.settings.ratio') === 'enforced') {
       $config->clear('content.field_media_image.settings.ratio')
         ->save();
+    }
+  }
+}
+
+/**
+ * Deprecate entity_browser in favor of media_library.
+ *
+ * Delete entity_browser configs and enable media_library module.
+ */
+function openy_media_image_update_10002() {
+  // Enable media_library module if not already enabled.
+  $module_handler = \Drupal::service('module_handler');
+  if (!$module_handler->moduleExists('media_library')) {
+    \Drupal::service('module_installer')->install(['media_library']);
+  }
+
+  // Update media image default form display to use media_library widget.
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('media.image.default');
+
+  if ($display) {
+    $display->calculateDependencies();
+    $display->save();
+  }
+
+  // Create media_library form display if it doesn't exist.
+  $display_storage = \Drupal::entityTypeManager()->getStorage('entity_form_display');
+  $media_library_display = $display_storage->load('media.image.media_library');
+  if (!$media_library_display) {
+    $media_library_display = $display_storage->create([
+      'targetEntityType' => 'media',
+      'bundle' => 'image',
+      'mode' => 'media_library',
+      'status' => TRUE,
+    ]);
+    $media_library_display->setComponent('field_media_image', [
+      'type' => 'image_image',
+      'weight' => 0,
+      'region' => 'content',
+      'settings' => [
+        'progress_indicator' => 'throbber',
+        'preview_image_style' => 'medium',
+      ],
+      'third_party_settings' => [],
+    ]);
+    $media_library_display->save();
+  }
+
+  // Clear entity_browser settings from embed_image button.
+  $config_factory = \Drupal::configFactory();
+  $embed_config = $config_factory->getEditable('embed.button.embed_image');
+  if (!$embed_config->isNew()) {
+    $embed_config->clear('type_settings.entity_browser');
+    $embed_config->clear('type_settings.entity_browser_settings');
+    $deps = $embed_config->get('dependencies.config');
+    if ($deps) {
+      $deps = array_values(array_filter($deps, function ($d) {
+        return strpos($d, 'entity_browser.browser.') !== 0;
+      }));
+      $embed_config->set('dependencies.config', $deps);
+    }
+    $embed_config->save();
+  }
+
+  // Delete entity_browser and views configs LAST.
+  $configs_to_delete = [
+    'entity_browser.browser.images_library',
+    'entity_browser.browser.images_library_embed',
+    'views.view.images_library',
+  ];
+
+  foreach ($configs_to_delete as $config_name) {
+    $config = $config_factory->getEditable($config_name);
+    if (!$config->isNew()) {
+      $config->delete();
+    }
+  }
+
+  // Remove entity_browser from entity_clone cloneable entities list.
+  $entity_clone_config = $config_factory->getEditable('entity_clone.cloneable_entities');
+  if (!$entity_clone_config->isNew()) {
+    $cloneable = $entity_clone_config->get('cloneable_entities');
+    if ($cloneable && is_array($cloneable)) {
+      $cloneable = array_values(array_diff($cloneable, ['entity_browser']));
+      $entity_clone_config->set('cloneable_entities', $cloneable);
+      $entity_clone_config->save();
     }
   }
 }

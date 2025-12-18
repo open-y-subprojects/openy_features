@@ -70,3 +70,32 @@ function openy_user_update_8007() {
   $config .= 'user.role.editor.yml';
   $config_importer->update($config, 'user.role.editor', 'permissions');
 }
+
+/**
+ * Remove entity_browser and dropzone permissions from Contributor and Editor.
+ */
+function openy_user_update_8008() {
+  // Remove entity_browser related permissions from contributor and editor roles.
+  $permissions_to_remove = [
+    'access documents_library entity browser pages',
+    'access documents_library_embed entity browser pages',
+    'access images_library entity browser pages',
+    'access images_library_embed entity browser pages',
+    'access local_video_library entity browser pages',
+    'access local_video_library_embed entity browser pages',
+    'access videos_library entity browser pages',
+    'access videos_library_embed entity browser pages',
+    'dropzone upload files',
+  ];
+
+  $roles = ['contributor', 'editor'];
+  foreach ($roles as $role_id) {
+    $role = \Drupal::entityTypeManager()->getStorage('user_role')->load($role_id);
+    if ($role) {
+      foreach ($permissions_to_remove as $permission) {
+        $role->revokePermission($permission);
+      }
+      $role->save();
+    }
+  }
+}
