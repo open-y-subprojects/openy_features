@@ -329,21 +329,34 @@ function openy_node_program_update_8015() {
  * Replace entity_browser with media_library widget for image fields.
  */
 function openy_node_program_update_8016() {
-  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_node_program') . '/config/install/';
-  $configs = [
-    'core.entity_form_display.node.program.default' => [
-      'dependencies.module',
-      'content.field_program_icon',
-      'content.field_program_image',
-    ],
-  ];
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('node.program.default');
 
-  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
-  foreach ($configs as $config_name => $params) {
-    $config = $config_dir . $config_name . '.yml';
-    foreach ($params as $param) {
-      $config_updater->update($config, $config_name, $param);
+  if (!$display) {
+    return;
+  }
+
+  $changed = FALSE;
+  foreach (['field_program_icon', 'field_program_image'] as $field_name) {
+    $component = $display->getComponent($field_name);
+    if ($component && in_array($component['type'], ['entity_browser_entity_reference', 'openy_focal_point_entity_browser_entity_reference', 'entity_reference_autocomplete'])) {
+      $display->setComponent($field_name, [
+        'type' => 'media_library_widget',
+        'weight' => $component['weight'] ?? 0,
+        'region' => 'content',
+        'settings' => [
+          'media_types' => ['image'],
+        ],
+        'third_party_settings' => [],
+      ]);
+      $changed = TRUE;
     }
+  }
+
+  if ($changed) {
+    $display->calculateDependencies();
+    $display->save();
   }
 }
 
