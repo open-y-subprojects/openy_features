@@ -91,28 +91,13 @@ function openy_media_local_video_update_10001() {
     }
   }
 
-  // Update changed configs.
-  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_media_local_video') . '/config/install/';
-  $configs = [
-    'core.entity_form_display.media.video_local.default' => [
-      'content.field_media_tags',
-    ],
-    'embed.button.embed_local_video' => [
-      'type_settings',
-    ],
-    'field.field.media.video_local.field_media_tags' => [
-      'settings.handler_settings',
-    ],
-  ];
+  // Update form display using entity approach.
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('media.video_local.default');
 
-  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
-  foreach ($configs as $config_name => $params) {
-    $config = $config_dir . $config_name . '.yml';
-    foreach ($params as $param) {
-      $config_updater->update($config, $config_name, $param);
-    }
+  if ($display) {
+    $display->calculateDependencies();
+    $display->save();
   }
-
-  $message = "Entity Browser 'local_video_library' and 'local_video_library_embed' have been deprecated. Media fields now use Drupal core Media Library.";
-  \Drupal::messenger()->addWarning($message);
 }

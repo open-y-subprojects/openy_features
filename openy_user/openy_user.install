@@ -75,8 +75,12 @@ function openy_user_update_8007() {
  * Remove entity_browser and dropzone permissions from Contributor and Editor.
  */
 function openy_user_update_8008() {
-  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_user') . '/config/install/';
-  $config_importer = \Drupal::service('openy_upgrade_tool.param_updater');
-  $config_importer->update($config_dir . 'user.role.contributor.yml', 'user.role.contributor', 'permissions');
-  $config_importer->update($config_dir . 'user.role.editor.yml', 'user.role.editor', 'permissions');
+  $path = \Drupal::service('extension.list.module')->getPath('openy_user') . '/config/install';
+  /** @var \Drupal\config_import\ConfigImporterService $config_importer */
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
+  $config_importer->importConfigs([
+    'user.role.contributor',
+    'user.role.editor',
+  ]);
 }
