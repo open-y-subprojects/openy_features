@@ -425,35 +425,35 @@ function openy_media_image_update_10002() {
   }
 
   // Import new media_library form display config.
-  $config_dir = \Drupal::service('extension.list.module')->getPath('openy_media_image') . '/config/install/';
-  $config_importer = \Drupal::service('openy_upgrade_tool.importer');
-  $config_importer->setDirectory($config_dir);
+  $path = \Drupal::service('extension.list.module')->getPath('openy_media_image') . '/config/install';
+  /** @var \Drupal\config_import\ConfigImporterService $config_importer */
+  $config_importer = \Drupal::service('config_import.importer');
+  $config_importer->setDirectory($path);
   $config_importer->importConfigs([
     'core.entity_form_display.media.image.media_library',
   ]);
 
-  // Update changed configs.
-  $configs = [
-    'core.entity_form_display.media.image.default' => [
-      'content.field_media_tags',
-    ],
-    'embed.button.embed_image' => [
-      'type_settings',
-    ],
-    'field.field.media.image.field_media_tags' => [
-      'settings.handler_settings',
-    ],
-  ];
+  // Update media image default form display to use media_library widget.
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('media.image.default');
 
-  $config_updater = \Drupal::service('openy_upgrade_tool.param_updater');
-  foreach ($configs as $config_name => $params) {
-    $config = $config_dir . $config_name . '.yml';
-    foreach ($params as $param) {
-      $config_updater->update($config, $config_name, $param);
+  if ($display) {
+    $component = $display->getComponent('field_media_image');
+    if ($component && in_array($component['type'], ['entity_browser_entity_reference', 'openy_focal_point_entity_browser_entity_reference', 'image_focal_point', 'image_image'])) {
+      $display->setComponent('field_media_image', [
+        'type' => 'image_image',
+        'weight' => $component['weight'] ?? 0,
+        'region' => 'content',
+        'settings' => [
+          'progress_indicator' => 'throbber',
+          'preview_image_style' => 'thumbnail',
+        ],
+        'third_party_settings' => [],
+      ]);
+      $display->calculateDependencies();
+      $display->save();
     }
   }
-
-  $message = "Entity Browser 'images_library' and 'images_library_embed' have been deprecated. Media fields now use Drupal core Media Library.";
-  \Drupal::messenger()->addWarning($message);
 }
 
