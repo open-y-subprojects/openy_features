@@ -529,3 +529,28 @@ function openy_media_image_update_10003() {
   return t('media_library view display already exists.');
 }
 
+/**
+ * Add edit_link extra field to media_library view display.
+ */
+function openy_media_image_update_10004() {
+  $display_storage = \Drupal::entityTypeManager()->getStorage('entity_view_display');
+  $media_library_display = $display_storage->load('media.image.media_library');
+
+  if ($media_library_display) {
+    // Add edit_link component if not already present.
+    if (!$media_library_display->getComponent('edit_link')) {
+      $media_library_display->setComponent('edit_link', [
+        'weight' => 10,
+        'region' => 'content',
+        'settings' => [],
+        'third_party_settings' => [],
+      ]);
+      $media_library_display->save();
+      return t('Added edit_link to media_library view display.');
+    }
+    return t('edit_link already exists in media_library view display.');
+  }
+
+  return t('media_library view display not found. Run update 10003 first.');
+}
+
