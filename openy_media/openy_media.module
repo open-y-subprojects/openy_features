@@ -44,3 +44,40 @@ function openy_media_library_info_alter(&$libraries, $extension) {
 function openy_media_blazy_attach_alter(array &$load, array $settings = []) {
   $load['library'][] = 'openy_media/blazy_ratio';
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for media entities.
+ *
+ * Fix thumbnail dimensions for video media using video_embed_field.
+ * The video_embed_field MediaSource doesn't provide thumbnail_width and
+ * thumbnail_height metadata, causing 0x0 dimensions to be saved.
+ *
+ * @see https://www.drupal.org/project/drupal/issues/3202016
+ */
+function openy_media_media_presave(\Drupal\media\MediaInterface $media) {
+  $source = $media->getSource();
+  if ($source->getPluginId() !== 'video_embed_field') {
+    return;
+  }
+
+  $thumbnail = $media->get('thumbnail');
+
+  // Get thumbnail URI - try from field first, then from source metadata.
+  $thumbnail_uri = NULL;
+  if ($thumbnail->entity) {
+    $thumbnail_uri = $thumbnail->entity->getFileUri();
+  }
+  if (!$thumbnail_uri || !file_exists($thumbnail_uri)) {
+    $thumbnail_uri = $source->getMetadata($media, 'thumbnail_uri');
+  }
+
+  // Fix dimensions if they are 0.
+  if (($thumbnail->width == 0 || $thumbnail->height == 0) && $thumbnail_uri && file_exists($thumbnail_uri)) {
+    $image = \Drupal::service('image.factory')->get($thumbnail_uri);
+    if ($image->isValid()) {
+      $thumbnail->width = $image->getWidth();
+      $thumbnail->height = $image->getHeight();
+    }
+  }
+}
+

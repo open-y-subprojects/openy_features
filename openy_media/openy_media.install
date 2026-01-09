@@ -168,6 +168,93 @@ function openy_media_update_10003() {
 }
 
 /**
+ * Fix image styles for Drupal 11.3+ AVIF conversion issue.
+ *
+ * Drupal 11.3 added image_convert_avif effect to core image styles.
+ * PHP's getimagesize() returns 0 for AVIF dimensions, causing display issues.
+ * This replaces AVIF conversion with WebP conversion.
+ *
+ * @see https://www.drupal.org/project/drupal/issues/3202016
+ * @see https://www.drupal.org/project/drupal/issues/3510582
+ */
+function openy_media_update_10005() {
+  $style_storage = \Drupal::entityTypeManager()->getStorage('image_style');
+  $styles = $style_storage->loadMultiple();
+  $updated_styles = [];
+
+  foreach ($styles as $style_id => $style) {
+    $effects = $style->getEffects();
+    $avif_effects = [];
+
+    // Find all AVIF effects.
+    foreach ($effects as $uuid => $effect) {
+      if ($effect->getPluginId() === 'image_convert_avif') {
+        $avif_effects[$uuid] = $effect->getConfiguration();
+      }
+    }
+
+    // Replace AVIF with WebP.
+    foreach ($avif_effects as $uuid => $config) {
+      $style->deleteImageEffect($style->getEffect($uuid));
+      $style->addImageEffect([
+        'id' => 'image_convert',
+        'weight' => $config['weight'],
+        'data' => [
+          'extension' => 'webp',
+        ],
+      ]);
+      $updated_styles[] = $style_id;
+    }
+
+    if ($avif_effects) {
+      $style->save();
+      $style->flush();
+    }
+  }
+
+  if ($updated_styles) {
+    return t('Replaced AVIF with WebP conversion in image styles: @styles', [
+      '@styles' => implode(', ', array_unique($updated_styles)),
+    ]);
+  }
+
+  return t('No image styles with AVIF conversion found.');
+}
+
+/**
+ * Fix video media thumbnail dimensions (0x0) in database.
+ *
+ * video_embed_field doesn't provide thumbnail_width/height metadata,
+ * causing Media to save 0x0 dimensions. This updates existing media.
+ */
+function openy_media_update_10006() {
+  $media_storage = \Drupal::entityTypeManager()->getStorage('media');
+  $media_ids = $media_storage->getQuery()
+    ->condition('bundle', ['video', 'video_local'], 'IN')
+    ->accessCheck(FALSE)
+    ->execute();
+
+  $updated = 0;
+  foreach ($media_storage->loadMultiple($media_ids) as $media) {
+    $thumbnail = $media->get('thumbnail');
+    if ($thumbnail->width == 0 || $thumbnail->height == 0) {
+      $thumbnail_uri = $thumbnail->entity ? $thumbnail->entity->getFileUri() : NULL;
+      if ($thumbnail_uri && file_exists($thumbnail_uri)) {
+        $image = \Drupal::service('image.factory')->get($thumbnail_uri);
+        if ($image->isValid()) {
+          $thumbnail->width = $image->getWidth();
+          $thumbnail->height = $image->getHeight();
+          $media->save();
+          $updated++;
+        }
+      }
+    }
+  }
+
+  return t('Updated thumbnail dimensions for @count video media items.', ['@count' => $updated]);
+}
+
+/**
  * Switch Media Tags field to Hybrid Autocomplete widget.
  */
 function openy_media_update_10004() {
