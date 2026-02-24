@@ -8,7 +8,7 @@
     "drupal/ctools": ">=3.13",
     "drupal/diff": "*",
     "drupal/google_analytics": "^4.0.2",
-    "drupal/rabbit_hole": "^1.0@beta || ^1.0 || ^2.0@beta",
+    "drupal/rabbit_hole": "^1.1 || ^2.0@beta || ^2.0",
     "drupal/metatag": "*",
     "drupal/schema_metatag": "^3.0",
     "open-y-subprojects/openy_custom": ">=2.1.0",
