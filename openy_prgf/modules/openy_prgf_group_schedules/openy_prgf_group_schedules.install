@@ -31,6 +31,38 @@ function openy_prgf_group_schedules_update_8001() {
 }
 
 /**
+ * Delete group_schedules paragraph content before module removal.
+ *
+ * Runs during cascade uninstall (when openy_group_schedules or openy_gxp is
+ * uninstalled). At this point all dependency modules are still loaded, so
+ * field widget plugins (plugin_selector:plugin_autocomplete_list) resolve
+ * correctly and Drupal can cascade-delete the bundle config cleanly.
+ */
+function openy_prgf_group_schedules_uninstall() {
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  $ids = \Drupal::entityQuery('paragraph')
+    ->condition('type', 'group_schedules')
+    ->accessCheck(FALSE)
+    ->execute();
+  if ($ids) {
+    $paragraph_storage->delete($paragraph_storage->loadMultiple($ids));
+  }
+
+  // Delete the bundle config entity while all dependency modules are still
+  // loaded — plugin:plugin (which provides plugin_selector:plugin_autocomplete_list
+  // used by field_prgf_schedules_ref) is still active at hook_uninstall time.
+  // Without this, openy_system's postUninstall() fires after module removal
+  // and tries to delete the bundle when the plugin module is already gone,
+  // causing a plugin-not-found exception.
+  $paragraphs_type = \Drupal::entityTypeManager()
+    ->getStorage('paragraphs_type')
+    ->load('group_schedules');
+  if ($paragraphs_type) {
+    $paragraphs_type->delete();
+  }
+}
+
+/**
  * Enable openy_gxp if not enabled.
  */
 function openy_prgf_group_schedules_update_8002() {
