@@ -5,8 +5,6 @@ core_version_requirement: ^10 || ^11
 package: Open Y Groupex PRO Integration
 dependencies:
   - drupal:field
-  - openy_group_schedules:openy_group_schedules
   - paragraphs:paragraphs
   - plugin:plugin
-  - openy_gxp:openy_gxp
 version: 8.x-1.0
