@@ -99,3 +99,17 @@ function openy_user_update_8008() {
     }
   }
 }
+
+/**
+ * Remove google_analytics permission from all roles.
+ */
+function openy_user_update_8009() {
+  $permission = 'opt-in or out of google analytics tracking';
+  $roles = \Drupal::entityTypeManager()->getStorage('user_role')->loadMultiple();
+  foreach ($roles as $role) {
+    if ($role->hasPermission($permission)) {
+      $role->revokePermission($permission);
+      $role->save();
+    }
+  }
+}
