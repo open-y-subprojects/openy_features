@@ -1,0 +1,29 @@
+views.filter.better_taxonomy_index_tid:
+  type: views.filter.many_to_one
+  label: 'Better Taxonomy Index TID'
+  mapping:
+    type:
+      type: string
+      label: 'Selection type'
+    limit:
+      type: boolean
+      label: 'Limit to vocabulary'
+    vid:
+      type: string
+      label: 'Vocabulary ID'
+    hierarchy:
+      type: boolean
+      label: 'Show hierarchy'
+    error_message:
+      type: boolean
+      label: 'Display error message'
+    reduce_duplicates:
+      type: boolean
+      label: 'Reduce duplicates'
+    expose:
+      type: mapping
+      label: 'Expose'
+      mapping:
+        reduce:
+          type: boolean
+          label: 'Reduce'
