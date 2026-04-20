@@ -55,8 +55,8 @@ class ClassSessionsService implements ClassSessionsServiceInterface {
   /**
    * {@inheritdoc}
    */
-  public function getClassNodeSessionInstances(NodeInterface $node, $location_id = NULL) {
-    return $this->sessionInstanceManager->getSessionInstancesByClassNode($node, $location_id);
+  public function getClassNodeSessionInstances(NodeInterface $node, $conditions = []) {
+    return $this->sessionInstanceManager->getSessionInstancesByClassNode($node, $conditions);
   }
 
   /**
