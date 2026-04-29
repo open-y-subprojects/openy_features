@@ -163,3 +163,56 @@ function openy_node_update_8011()
 function openy_node_update_91001() {
   openy_node_update_8010();
 }
+
+/**
+ * Implements hook_install().
+ *
+ * Bundles owned by syncers (activity, class, program, program_subcategory)
+ * are created and removed in lockstep with their upstream APIs (Daxko,
+ * GroupEx Pro, YMCA360, Traction Rec, …). Letting Trash soft-delete them
+ * builds an ever-growing backlog the next sync re-creates. We opt those
+ * bundles out of Trash on install. Operators can re-enable them via the
+ * Trash settings UI if they prefer.
+ */
+function openy_node_install() {
+  openy_node_disable_trash_for_syncer_bundles();
+}
+
+/**
+ * Backfill Trash exclusions for syncer-owned bundles on existing sites.
+ */
+function openy_node_update_10001(): string {
+  return openy_node_disable_trash_for_syncer_bundles();
+}
+
+/**
+ * Removes syncer-owned bundles from trash.settings.enabled_entity_types.node.
+ *
+ * Trash interprets:
+ *   - missing key  → bundle not tracked
+ *   - empty array  → all bundles tracked
+ *   - bundle list  → only those bundles tracked
+ *
+ * To opt our bundles out without affecting others, we expand the empty
+ * shorthand into an explicit list when needed and strip our names.
+ */
+function openy_node_disable_trash_for_syncer_bundles(): string {
+  if (!\Drupal::moduleHandler()->moduleExists('trash')) {
+    return 'Trash module not enabled — nothing to do.';
+  }
+  $opt_out = ['activity', 'class', 'program', 'program_subcategory'];
+  $config = \Drupal::configFactory()->getEditable('trash.settings');
+  $enabled = $config->get('enabled_entity_types') ?? [];
+  if (!array_key_exists('node', $enabled)) {
+    return 'Node entity type is not Trash-tracked — nothing to do.';
+  }
+  if ($enabled['node'] === []) {
+    $all = array_keys(\Drupal::service('entity_type.bundle.info')->getBundleInfo('node'));
+    $enabled['node'] = array_values(array_diff($all, $opt_out));
+  }
+  else {
+    $enabled['node'] = array_values(array_diff($enabled['node'], $opt_out));
+  }
+  $config->set('enabled_entity_types', $enabled)->save();
+  return 'Excluded from Trash: ' . implode(', ', $opt_out) . '.';
+}
