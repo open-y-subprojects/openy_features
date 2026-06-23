@@ -9,7 +9,7 @@ dependencies:
     - field.field.media.image.field_media_tags
     - media.type.image
   module:
-    - blazy
+    - image
 id: media.image.prgf_banner_fixed
 targetEntityType: media
 bundle: image
@@ -68,7 +68,7 @@ content:
       grid_medium: 0
       grid_small: 0
     third_party_settings: {  }
-    type: blazy
+    type: image
     region: content
 hidden:
   created: true

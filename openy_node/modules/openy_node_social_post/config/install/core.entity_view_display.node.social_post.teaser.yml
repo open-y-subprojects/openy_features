@@ -12,7 +12,7 @@ dependencies:
     - field.field.node.social_post.field_sp_image
     - node.type.social_post
   module:
-    - blazy
+    - image
     - datetime
     - link
     - text
@@ -60,7 +60,7 @@ content:
       granularity: 2
     third_party_settings: {  }
   field_sp_image:
-    type: blazy
+    type: image
     weight: 0
     region: content
     label: hidden
