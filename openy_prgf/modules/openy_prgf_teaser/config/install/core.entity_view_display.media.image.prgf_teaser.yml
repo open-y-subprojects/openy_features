@@ -10,7 +10,7 @@ dependencies:
     - image.style.paragraph_teaser_520_440
     - media.type.image
   module:
-    - blazy
+    - image
 id: media.image.prgf_teaser
 targetEntityType: media
 bundle: image
@@ -69,7 +69,7 @@ content:
       grid_medium: 0
       grid_small: 0
     third_party_settings: {  }
-    type: blazy
+    type: image
     region: content
 hidden:
   created: true
