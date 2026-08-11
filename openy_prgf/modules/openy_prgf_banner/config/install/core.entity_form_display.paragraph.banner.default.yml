@@ -44,6 +44,8 @@ content:
     settings:
       media_types:
         - image
+        - video
+        - video_local
     third_party_settings: {  }
     type: media_library_widget
     region: content
