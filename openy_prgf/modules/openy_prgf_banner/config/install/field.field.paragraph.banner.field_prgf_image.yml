@@ -4,13 +4,15 @@ dependencies:
   config:
     - field.storage.paragraph.field_prgf_image
     - media.type.image
+    - media.type.video
+    - media.type.video_local
     - paragraphs.paragraphs_type.banner
 id: paragraph.banner.field_prgf_image
 field_name: field_prgf_image
 entity_type: paragraph
 bundle: banner
 label: Image
-description: 'Entityreference to media image. Single value.'
+description: 'Entityreference to media image or video. Single value.'
 required: false
 translatable: true
 default_value: {  }
@@ -20,6 +22,8 @@ settings:
   handler_settings:
     target_bundles:
       image: image
+      video: video
+      video_local: video_local
     sort:
       field: name
       direction: ASC

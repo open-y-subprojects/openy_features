@@ -319,3 +319,38 @@ function _openy_prgf_banner_itcr1271_blazy_to_image(string $id): void {
   $config->set('content', $content);
   $config->save();
 }
+
+/**
+ * ITCP-712: allow video / video_local media on the Banner background field.
+ *
+ * Existing sites never re-import config, so field_prgf_image stays
+ * image-only until this update widens it. Mirrors lb_hero's field_media,
+ * which already supports image/video/video_local on the same
+ * entity_reference-to-media pattern.
+ */
+function openy_prgf_banner_update_10003() {
+  $field = \Drupal\field\Entity\FieldConfig::loadByName('paragraph', 'banner', 'field_prgf_image');
+  if ($field) {
+    $settings = $field->getSettings();
+    $settings['handler_settings']['target_bundles'] = [
+      'image' => 'image',
+      'video' => 'video',
+      'video_local' => 'video_local',
+    ];
+    $field->setSettings($settings);
+    $field->save();
+  }
+
+  $display = \Drupal::entityTypeManager()
+    ->getStorage('entity_form_display')
+    ->load('paragraph.banner.default');
+  if (!$display) {
+    return;
+  }
+  $component = $display->getComponent('field_prgf_image');
+  if ($component) {
+    $component['settings']['media_types'] = ['image', 'video', 'video_local'];
+    $display->setComponent('field_prgf_image', $component);
+    $display->save();
+  }
+}
