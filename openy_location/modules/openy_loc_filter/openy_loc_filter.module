@@ -55,6 +55,7 @@ function openy_loc_filter_preprocess_checkboxes(&$variables) {
 /**
  * Implements hook_form_alter().
  */
+#[\Drupal\Core\Hook\Attribute\Hook('form_alter', order: \Drupal\Core\Hook\Order\Order::Last)]
 function openy_loc_filter_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $groups = [];
   $locations = [];
