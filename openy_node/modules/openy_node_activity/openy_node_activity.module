@@ -22,8 +22,12 @@ function openy_node_activity_node_update(EntityInterface $entity) {
     return;
   }
 
+  // D12: EntityBase::$original was renamed to $originalEntity with no
+  // BC magic getter (change record 3295826) — use getOriginal() when
+  // present.
+  $original_entity = method_exists($entity, 'getOriginal') ? $entity->getOriginal() : $entity->original;
   // Published will be true, unpublished false.
-  $original_status = $entity->original->isPublished();
+  $original_status = $original_entity->isPublished();
   $current_status = $entity->isPublished();
 
   if ($original_status && !$current_status) {
