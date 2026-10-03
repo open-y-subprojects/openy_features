@@ -7,6 +7,6 @@ weight: 5
 is_admin: null
 permissions:
   - 'access content overview'
-  - 'access toolbar'
+  - 'access navigation'
   - 'view retention campaign reports'
   - 'view the administration theme'
