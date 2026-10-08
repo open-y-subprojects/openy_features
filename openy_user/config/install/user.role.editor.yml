@@ -10,7 +10,7 @@ permissions:
   - 'access media overview'
   - 'access site in maintenance mode'
   - 'access structure page'
-  - 'access navigation'
+  - 'access toolbar'
   - 'administer blocks'
   - 'administer menu'
   - 'administer nodes'
