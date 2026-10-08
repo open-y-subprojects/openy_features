@@ -22,10 +22,11 @@ function openy_node_class_node_update(EntityInterface $entity) {
     return;
   }
 
-  // Published will be true, unpublished false.
-  // D12: EntityBase::$original was renamed to $originalEntity with no BC
-  // magic getter (change record 3295826) -- use getOriginal() when present.
+  // D12: EntityBase::$original was renamed to $originalEntity with no
+  // BC magic getter (change record 3295826) — use getOriginal() when
+  // present.
   $original_entity = method_exists($entity, 'getOriginal') ? $entity->getOriginal() : $entity->original;
+  // Published will be true, unpublished false.
   $original_status = $original_entity->isPublished();
   $current_status = $entity->isPublished();
 

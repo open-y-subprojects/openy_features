@@ -8,7 +8,7 @@ use Drupal\media\Entity\Media;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\Entity\Paragraph;
-use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\File\FileExists;
 
 /**
  * @file
@@ -35,7 +35,7 @@ function openy_egym_iwatch_install() {
     if (file_exists($file_path)) {
       $file = file_get_contents($file_path);
 
-      $file = \Drupal::service('file.repository')->writeData($file, 'public://egym/' . $image_file_name, FileSystemInterface::EXISTS_REPLACE);
+      $file = \Drupal::service('file.repository')->writeData($file, 'public://egym/' . $image_file_name, FileExists::Replace);
       $media = Media::create([
         'bundle' => 'image',
         'uid' => \Drupal::currentUser()->id(),
