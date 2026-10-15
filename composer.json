@@ -3,7 +3,7 @@
   "description": "Features from Open Y Distribution.",
   "type": "drupal-module",
   "require": {
-    "drupal/core": "^10 || ^11",
+    "drupal/core": "^10 || ^11 || ^12",
     "drupal/ckeditor5_plugin_pack": "^1.4",
     "drupal/ctools": ">=3.13",
     "drupal/diff": "*",
