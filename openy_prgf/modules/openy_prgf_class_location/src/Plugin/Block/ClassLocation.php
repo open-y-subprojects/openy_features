@@ -8,7 +8,7 @@ use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\openy_prgf_class_location\ClassLocationServiceInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * Provides a leader board block.
@@ -38,7 +38,7 @@ class ClassLocation extends BlockBase implements ContainerFactoryPluginInterface
   /**
    * EntityTypeManager.
    *
-   * @var \Drupal\Core\Entity\EntityTypeManager
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
 
@@ -55,10 +55,10 @@ class ClassLocation extends BlockBase implements ContainerFactoryPluginInterface
    *   The Class Location service.
    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The Route match service.
-   * @param \Drupal\Core\Entity\EntityTypeManager $entityTypeManager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entityTypeManager
    *   EntityTypeManager.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ClassLocationServiceInterface $class_location_service, RouteMatchInterface $route_match, EntityTypeManager $entityTypeManager) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, ClassLocationServiceInterface $class_location_service, RouteMatchInterface $route_match, EntityTypeManagerInterface $entityTypeManager) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->classLocationService = $class_location_service;
     $this->routeMatch = $route_match;

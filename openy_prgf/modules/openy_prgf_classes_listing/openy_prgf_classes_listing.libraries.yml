@@ -4,7 +4,6 @@ openy_classes_listing:
     js/openy-classes-listing.js: {}
   dependencies:
     - core/jquery
-    - core/jquery.cookie
     - core/jquery.history
     - core/drupal
     - core/drupalSettings

@@ -62,7 +62,8 @@
           setTimeout(function() {
             // When an openy_preferred_branch cookie is present and the location
             // is not set then set location from the cookie and submit the form.
-            var preferred_branch = $.cookie('openy_preferred_branch')
+            var cookie_match = document.cookie.match(/(?:^|; )openy_preferred_branch=([^;]*)/)
+              , preferred_branch = cookie_match ? decodeURIComponent(cookie_match[1].replace(/\+/g, ' ')) : undefined
               , pagebase = {}
               , query = getUrlParams(window.location.href, pagebase)
               , location = query['location'];
