@@ -67,9 +67,19 @@ class HybridAutocompleteWidget extends EntityReferenceAutocompleteWidget {
     $element['target_id']['#attributes']['class'][] = 'hybrid-autocomplete';
 
     // The custom JS renders its own dropdown, so keep core's autocomplete from
-    // binding a second one to the same input.
-    $process = $this->elementInfo->getInfoProperty('entity_autocomplete', '#process', []);
-    array_splice($process, 1, 0, [[static::class, 'disableCoreAutocomplete']]);
+    // binding a second one to the same input. The callback has to run after
+    // processEntityAutocomplete() sets the route and before processAutocomplete()
+    // reads it. The callable's class is the element class, so match the method
+    // name; fall back to the core order (index 1) if it is not found.
+    $process = array_values($this->elementInfo->getInfoProperty('entity_autocomplete', '#process', []));
+    $position = 1;
+    foreach ($process as $index => $callback) {
+      if (is_array($callback) && ($callback[1] ?? NULL) === 'processAutocomplete') {
+        $position = $index;
+        break;
+      }
+    }
+    array_splice($process, $position, 0, [[static::class, 'disableCoreAutocomplete']]);
     $element['target_id']['#process'] = $process;
 
     return $element;
